@@ -4,4 +4,4 @@ This is the main repository for all of the projects written with mainly javascri
 
 |  #  |            Project             | Live Demo |
 | :-: | :----------------------------: | :-------: |
-| 01  |       [Form Validator](https://github.com/barisgunduz/teenytinyweb/tree/master/form-validator)       | [Coming Soon...](#)  |
+| 01  |       [Form Validator](https://github.com/barisgunduz/teeny-tiny-web/tree/master/form-validator)       | [Coming Soon...](#)  |
