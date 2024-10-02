@@ -2,24 +2,24 @@
 
 This is the main repository for all of the projects written with mainly javascript.
 
-## Form Validator
+## Movie Seat Booking
 
-Form validation with error messages, mail and password validations etc...
+Display movie choices and seats in a theater to select from in order to purchase tickets.
 
 ### Project Specifications
 
-- Create form UI
-- Show error messages under specific inputs
-- checkRequired() to accept array of inputs
-- checkLength() to check min and max length
-- checkEmail() to validate email with regex
-- checkPasswordsMatch() to match confirm password
+- Display UI with movie select, screen, seats, legend & seat info
+- User can select a movie/price
+- User can select/deselect seats
+- User can not select occupied seats
+- Number of seats and price will update
+- Save seats, movie and price to local storage so that UI is still populated on refresh
 
 ### Screenshots
 
 
-![Form Validator Screenshot](form-validator.png)
-![Form Validator Screenshot](form-validator-warning.png)
+![Movie Seat Booking Screenshot](movie-seat-booking.png)
+
 
 ### Authors
 
