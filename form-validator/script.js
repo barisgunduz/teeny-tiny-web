@@ -30,7 +30,7 @@ function checkEmail(input) {
 }
 
 // Check required fields
-function checkRequired(inputArr) {
+function checkRequiredFields(inputArr) {
     let isRequired = false;
     inputArr.forEach(function (input) {
         if (input.value.trim() === "") {
@@ -77,10 +77,9 @@ function getFieldName(input) {
 form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    if (checkRequired([username, email, password, password2])) {
-        checkLength(username, 3, 15);
-        checkLength(password, 6, 25);
-        checkEmail(email);
-        checkPasswordsMatch(password, password2);
-    }
+    checkRequiredFields([username, email, password, password2])
+    checkLength(username, 3, 15);
+    checkLength(password, 6, 25);
+    checkEmail(email);
+    checkPasswordsMatch(password, password2);
 });
