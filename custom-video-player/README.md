@@ -17,7 +17,7 @@ Custom video player using the HTML5 video element and it's JavaScript API with a
 
 ### Screenshots
 
-![Custom Video Player Screenshot](/img/custom-video-player.png)
+![Custom Video Player Screenshot](img/custom-video-player.png)
 
 ### Authors
 
