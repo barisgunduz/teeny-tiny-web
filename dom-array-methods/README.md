@@ -37,7 +37,7 @@ Project to teach high order array methods and DOM manipulation
 | 08  |            [Mealfinder App](/meal-finder)             | [Coming Soon...](#) |
 | 09  |          [Expense Tracker](/expense-tracker)          | [Coming Soon...](#) |
 | 10  |             [Music Player](/music-player)             | [Coming Soon...](#) |
-| 11  |      [Infinite Scrolling](/infinite_scroll_blog)      | [Coming Soon...](#) |
+| 11  |      [Infinite Scrolling](/infinite-scroll-blog)      | [Coming Soon...](#) |
 | 12  |              [Typing Game](/typing-game)              | [Coming Soon...](#) |
 | 13  |       [Speech Text Reader](/speech-text-reader)       | [Coming Soon...](#) |
 | 14  |             [Memory Cards](/memory-cards)             | [Coming Soon...](#) |
