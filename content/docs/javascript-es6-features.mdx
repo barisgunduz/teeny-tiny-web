@@ -1,0 +1,194 @@
+---
+title: "JavaScript ES6+ Features"
+category: "Web Development"
+---
+
+## 📌 Introduction to JavaScript ES6+
+
+ECMAScript 6 (ES6) introduced modern JavaScript features that improve code readability, performance, and maintainability. Here are the most important ES6+ features.
+
+### 🔹 Let & Const (Block Scoped Variables)
+
+Before ES6, `var` was used, but it had issues with scope. ES6 introduced `let` and `const`:
+
+```javascript
+let name = "Alice";  // Can be reassigned
+const age = 25;  // Cannot be reassigned
+
+if (true) {
+  let city = "New York";  // Block scoped
+  console.log(city);
+}
+// console.log(city); // ❌ ReferenceError: city is not defined
+```
+
+### 🔹 Template Literals
+
+Template literals allow embedding expressions inside strings using backticks (`` ` ``).
+
+```javascript
+const user = "Alice";
+console.log(`Hello, ${user}! Welcome to ES6.`);
+```
+
+### 🔹 Arrow Functions
+
+Arrow functions provide a concise syntax for writing functions.
+
+```javascript
+const add = (a, b) => a + b;
+
+console.log(add(3, 5)); // 8
+```
+
+### 🔹 Default Parameters
+
+Function parameters can have default values.
+
+```javascript
+function greet(name = "Guest") {
+  console.log(`Hello, ${name}!`);
+}
+
+greet(); // "Hello, Guest!"
+greet("Alice"); // "Hello, Alice!"
+```
+
+### 🔹 Destructuring Assignment
+
+Allows extracting values from arrays or objects easily.
+
+```javascript
+// Array destructuring
+const [first, second] = ["Apple", "Banana"];
+console.log(first); // Apple
+
+// Object destructuring
+const user = { name: "Alice", age: 25 };
+const { name, age } = user;
+console.log(name, age); // Alice 25
+```
+
+### 🔹 Spread & Rest Operators (`...`)
+
+The **spread operator** is used to expand arrays or objects.
+
+```javascript
+const fruits = ["Apple", "Banana"];
+const moreFruits = [...fruits, "Cherry"];
+console.log(moreFruits); // ["Apple", "Banana", "Cherry"]
+```
+
+The **rest operator** gathers arguments into an array.
+
+```javascript
+function sum(...numbers) {
+  return numbers.reduce((acc, num) => acc + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // 10
+```
+
+### 🔹 Object Property Shorthand
+
+When a variable name matches an object key, you can use shorthand syntax.
+
+```javascript
+const name = "Alice";
+const age = 25;
+
+const user = { name, age };
+console.log(user); // { name: "Alice", age: 25 }
+```
+
+### 🔹 Promises & Async/Await
+
+ES6 introduced **Promises** for handling asynchronous operations.
+
+```javascript
+const fetchData = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Data fetched!"), 2000);
+  });
+
+fetchData().then((data) => console.log(data));
+```
+
+ES8 introduced **async/await**, making asynchronous code more readable.
+
+```javascript
+async function getData() {
+  const data = await fetchData();
+  console.log(data);
+}
+
+getData();
+```
+
+### 🔹 Modules (Import & Export)
+
+ES6 introduced **module exports and imports**.
+
+📌 `math.js`
+```javascript
+export const add = (a, b) => a + b;
+export const multiply = (a, b) => a * b;
+```
+
+📌 `main.js`
+```javascript
+import { add, multiply } from "./math.js";
+
+console.log(add(2, 3)); // 5
+console.log(multiply(2, 3)); // 6
+```
+
+### 🔹 Optional Chaining (`?.`)
+
+Optional chaining prevents errors when accessing deeply nested properties.
+
+```javascript
+const user = { profile: { name: "Alice" } };
+
+console.log(user.profile?.name); // "Alice"
+console.log(user.address?.city); // undefined (no error)
+```
+
+### 🔹 Nullish Coalescing Operator (`??`)
+
+Returns the right-hand value only if the left-hand value is `null` or `undefined`.
+
+```javascript
+const user = null;
+console.log(user ?? "Guest"); // "Guest"
+```
+
+### 🔹 Enhanced Object Literals
+
+Shorthand syntax for defining methods inside objects.
+
+```javascript
+const user = {
+  name: "Alice",
+  greet() {
+    console.log(`Hello, ${this.name}!`);
+  },
+};
+
+user.greet(); // "Hello, Alice!"
+```
+
+### 🔹 BigInt (Handling Large Numbers)
+
+BigInt allows working with very large numbers.
+
+```javascript
+const bigNumber = 123456789012345678901234567890n;
+console.log(bigNumber + 10n); // 123456789012345678901234567900n
+```
+
+## 📌 Conclusion
+
+These ES6+ features improve JavaScript development by making code more readable, efficient, and maintainable.
+
+---

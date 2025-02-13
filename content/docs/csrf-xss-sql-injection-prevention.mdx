@@ -1,0 +1,156 @@
+---
+title: "CSRF, XSS & SQL Injection Prevention"
+category: "Security & Best Practices"
+---
+
+## 📌 Introduction to Web Security Threats
+
+Web applications are vulnerable to various security threats such as **Cross-Site Request Forgery (CSRF)**, **Cross-Site Scripting (XSS)**, and **SQL Injection (SQLi)**. These attacks can lead to data breaches, unauthorized access, and system compromise.
+
+---
+
+## 🔹 1. CSRF (Cross-Site Request Forgery) Prevention
+
+CSRF occurs when a **malicious site tricks a logged-in user** into performing unwanted actions on another site.
+
+### **Example of a CSRF Attack**
+A hacker creates a malicious link that submits a **fake request** on behalf of a logged-in user.
+
+```html
+<form action="https://bank.com/transfer" method="POST">
+  <input type="hidden" name="amount" value="1000">
+  <input type="hidden" name="to" value="hacker">
+  <input type="submit" value="Click Me">
+</form>
+```
+
+✅ **How to Prevent CSRF**
+
+1️⃣ **Use CSRF Tokens**  
+   - Generate a **random token** for each session/request.
+   - Validate the token before processing sensitive actions.
+
+```javascript
+const csrf = require("csurf");
+app.use(csrf());
+
+app.post("/transfer", (req, res) => {
+  if (req.body.csrfToken !== req.csrfToken()) {
+    return res.status(403).send("CSRF Protection Failed!");
+  }
+  // Process request securely
+});
+```
+
+2️⃣ **Use SameSite Cookies**  
+   - Configure cookies to **reject third-party requests**.
+
+```javascript
+app.use(
+  session({
+    secret: "secureSecret",
+    cookie: { sameSite: "Strict", httpOnly: true },
+  })
+);
+```
+
+3️⃣ **Implement CORS Policy**  
+   - Allow only **trusted domains** to send requests.
+
+```javascript
+app.use(
+  cors({
+    origin: "https://trusted-domain.com",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+```
+
+---
+
+## 🔹 2. XSS (Cross-Site Scripting) Prevention
+
+XSS allows attackers to **inject malicious JavaScript** into a website.
+
+### **Example of an XSS Attack**
+A hacker injects a **malicious script** into a comment field:
+
+```html
+<script>alert("Hacked!");</script>
+```
+
+✅ **How to Prevent XSS**
+
+1️⃣ **Sanitize User Input**  
+   - Remove or escape **HTML tags** from user inputs.
+
+```javascript
+const sanitizeHtml = require("sanitize-html");
+const safeInput = sanitizeHtml(userInput);
+```
+
+2️⃣ **Use Content Security Policy (CSP)**  
+   - Prevents **unauthorized scripts** from running.
+
+```javascript
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'");
+  next();
+});
+```
+
+3️⃣ **Escape Output Data**  
+   - Convert **special characters** into safe text.
+
+```javascript
+const escape = require("escape-html");
+const safeOutput = escape(userInput);
+```
+
+---
+
+## 🔹 3. SQL Injection Prevention
+
+SQL Injection (SQLi) occurs when **unvalidated user input** is directly executed in SQL queries.
+
+### **Example of an SQL Injection Attack**
+```javascript
+app.get("/user", (req, res) => {
+  db.query(`SELECT * FROM users WHERE name = '${req.query.name}'`);
+});
+```
+❌ **If an attacker enters** `name=' OR '1'='1` → It **bypasses authentication**.
+
+✅ **How to Prevent SQL Injection**
+
+1️⃣ **Use Parameterized Queries**  
+   - Never directly insert user input into SQL statements.
+
+```javascript
+db.query("SELECT * FROM users WHERE name = ?", [req.query.name]);
+```
+
+2️⃣ **Use ORM (Object-Relational Mapping)**  
+   - ORM libraries **prevent SQL injection** by default.
+
+```javascript
+const user = await User.findOne({ where: { name: req.query.name } });
+```
+
+3️⃣ **Sanitize Inputs**  
+   - Remove **malicious characters** from user input.
+
+```javascript
+const sanitize = require("validator");
+const safeInput = sanitize.escape(req.query.name);
+```
+
+---
+
+## 📌 Conclusion
+
+Web security threats like **CSRF, XSS, and SQL Injection** can compromise user data and system integrity.  
+Follow **best practices**, use **security libraries**, and implement **proper validation** to protect your applications. 🚀
+
+---

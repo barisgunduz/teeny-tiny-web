@@ -1,0 +1,131 @@
+---
+title: "CI/CD Pipelines with Jenkins"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to CI/CD with Jenkins
+
+Jenkins is an **open-source automation tool** used for **Continuous Integration (CI) and Continuous Deployment (CD)**. It automates building, testing, and deploying applications.
+
+---
+
+## 🔹 1. Installing Jenkins
+
+### **1.1 Install Jenkins on Linux (Ubuntu)**
+```bash
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt update
+sudo apt install -y jenkins
+```
+
+### **1.2 Start and Enable Jenkins**
+```bash
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+```
+
+### **1.3 Access Jenkins UI**
+- Open a browser and visit: **`http://localhost:8080`**
+- Find the initial admin password:
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+✅ **Now, install recommended plugins and create an admin user.**  
+
+---
+
+## 🔹 2. Setting Up a Simple CI/CD Pipeline
+
+### **2.1 Install Required Plugins**
+- Go to **Manage Jenkins → Manage Plugins**  
+- Install: **"Pipeline"**, **"Git"**, and **"Docker Pipeline"** plugins.
+
+### **2.2 Create a New Pipeline Job**
+- Navigate to **Jenkins Dashboard → New Item → Pipeline**  
+- Enter a name, select **Pipeline**, and click **OK**  
+
+---
+
+## 🔹 3. Writing a Jenkinsfile (Declarative Pipeline)
+
+📌 **`Jenkinsfile` (CI/CD Pipeline)**  
+```groovy
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git 'https://github.com/your-repo/sample-app.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Tests') {
+            steps {
+                sh 'npm test'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t my-app:latest .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker run -d -p 3000:3000 my-app:latest'
+            }
+        }
+    }
+}
+```
+
+✅ **This pipeline:**  
+1. Clones the repo.  
+2. Installs dependencies.  
+3. Runs tests.  
+4. Builds a Docker image.  
+5. Deploys the app.  
+
+---
+
+## 🔹 4. Running the Jenkins Pipeline
+
+1️⃣ **Navigate to Your Pipeline Job**  
+2️⃣ Click **"Build Now"**  
+3️⃣ View the logs under **"Console Output"**  
+
+✅ **Your CI/CD pipeline is now automated!**  
+
+---
+
+## 🔹 5. Automating Deployments with Webhooks
+
+Enable **GitHub Webhooks** to trigger builds automatically:
+
+1️⃣ Go to **GitHub → Repo Settings → Webhooks**  
+2️⃣ Add **Jenkins URL**:  
+   ```
+   http://your-jenkins-server/github-webhook/
+   ```
+3️⃣ Select **Push events** and click **"Add Webhook"**  
+
+✅ **Now, every Git push triggers a Jenkins build.**  
+
+---
+
+## 📌 Conclusion
+
+Jenkins automates **building, testing, and deploying applications** in a **CI/CD pipeline**. 🚀  
+This guide covered **Jenkins setup, pipeline creation, and GitHub integration**.
+
+---

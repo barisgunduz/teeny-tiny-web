@@ -1,0 +1,91 @@
+---
+title: "Essential Terminal Commands"
+category: "Terminal"
+---
+
+## Basic Terminal Commands
+
+Below are some of the most commonly used terminal commands for file and directory management, process control, and system monitoring.
+
+### 🔹 File & Directory Management
+These commands help you navigate and manage files and directories.
+
+```bash
+ls -la      # List all files and directories (including hidden ones) in long format
+cd mydir    # Change to the specified directory
+pwd         # Print the current directory path
+mkdir newdir  # Create a new directory
+rm myfile.txt  # Delete a file
+rm -r mydir  # Delete a directory and its contents
+mv file.txt /path/to/destination/  # Move a file to another directory
+cp file.txt /path/to/destination/  # Copy a file to another directory
+```
+
+### 🔹 File Content Manipulation
+These commands allow you to view, edit, or search file contents.
+
+```bash
+cat file.txt  # Display the content of a file
+less file.txt  # View file content with pagination
+nano file.txt  # Open a file in the nano text editor
+vim file.txt   # Open a file in the vim text editor
+grep "search term" file.txt  # Search for a keyword inside a file
+```
+
+### 🔹 System Monitoring & Processes
+Use these commands to monitor and manage system processes.
+
+```bash
+ps aux      # Show running processes
+top         # Display real-time system resource usage
+htop        # Interactive system monitor (requires installation)
+kill 1234   # Kill a process by its process ID (PID)
+pkill firefox  # Kill all processes matching the name
+```
+
+### 🔹 Networking
+These commands are useful for checking network connectivity.
+
+```bash
+ping google.com  # Check if a website is reachable
+curl -I example.com  # Get HTTP headers of a website
+wget http://example.com/file.zip  # Download a file from a URL
+```
+
+### 🔹 Disk & Storage Management
+Check your system storage details.
+
+```bash
+df -h  # Display disk space usage in a human-readable format
+du -sh mydir  # Show the total size of a directory
+```
+
+### 🔹 User & Permissions
+Manage users and permissions with these commands.
+
+```bash
+whoami   # Show the current logged-in user
+chmod 755 myscript.sh  # Change permissions of a file
+chown user:group file.txt  # Change the owner of a file
+```
+
+### 🔹 Package Management (Linux)
+Install, update, and manage software packages.
+
+```bash
+apt update && apt upgrade  # Update package list and upgrade all packages (Debian/Ubuntu)
+yum update  # Update system packages (RedHat/CentOS)
+brew install node  # Install Node.js (macOS Homebrew)
+```
+
+### 🔹 Miscellaneous Commands
+Some additional helpful commands.
+
+```bash
+history  # Show command history
+clear  # Clear the terminal screen
+exit  # Close the terminal session
+```
+
+## 📌 Conclusion
+These are some of the most essential terminal commands for everyday use. Learning them will greatly improve your efficiency in working with the command line.

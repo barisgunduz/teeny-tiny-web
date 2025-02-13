@@ -1,0 +1,193 @@
+---
+title: "Clean Code Principles"
+category: "Programming & Best Practices"
+---
+
+## 📌 Introduction to Clean Code
+
+Clean code is readable, maintainable, and follows best practices to make collaboration and debugging easier. These principles ensure that code is structured well and scalable.
+
+### 🔹 1. Meaningful Variable & Function Names
+
+✅ Use descriptive and clear names:
+
+```javascript
+// ❌ Bad
+let d = new Date(); 
+
+// ✅ Good
+let currentDate = new Date();
+```
+
+✅ Function names should describe **what** they do:
+
+```javascript
+// ❌ Bad
+function c(n) {
+  return n * n;
+}
+
+// ✅ Good
+function calculateSquare(number) {
+  return number * number;
+}
+```
+
+### 🔹 2. Keep Functions Small & Focused
+
+Functions should do **one thing only**:
+
+```javascript
+// ❌ Bad - Doing too many things
+function processUser(user) {
+  validateUser(user);
+  saveToDatabase(user);
+  sendWelcomeEmail(user);
+}
+
+// ✅ Good - Single Responsibility
+function validateUser(user) { ... }
+function saveUser(user) { ... }
+function sendWelcomeEmail(user) { ... }
+```
+
+### 🔹 3. Avoid Deep Nesting
+
+Too many nested `if` statements reduce readability.
+
+```javascript
+// ❌ Bad - Too many levels
+if (user) {
+  if (user.isAdmin) {
+    if (user.permissions.includes("edit")) {
+      console.log("Access granted");
+    }
+  }
+}
+
+// ✅ Good - Use early returns
+if (!user) return;
+if (!user.isAdmin) return;
+if (!user.permissions.includes("edit")) return;
+
+console.log("Access granted");
+```
+
+### 🔹 4. Use Consistent Formatting
+
+✅ Use consistent indentation and spacing:
+
+```javascript
+// ❌ Inconsistent Formatting
+function foo(){return true;}
+
+// ✅ Well-formatted
+function foo() {
+  return true;
+}
+```
+
+✅ Follow a **consistent naming convention**:
+
+- `camelCase` for variables and functions (`isAdmin`, `fetchData`)
+- `PascalCase` for classes (`UserManager`, `DataService`)
+- `SCREAMING_SNAKE_CASE` for constants (`API_URL`, `MAX_LIMIT`)
+
+### 🔹 5. Avoid Magic Numbers
+
+Replace numbers with meaningful constants:
+
+```javascript
+// ❌ Bad - Magic number
+if (user.age > 18) { ... }
+
+// ✅ Good - Use constants
+const ADULT_AGE = 18;
+if (user.age > ADULT_AGE) { ... }
+```
+
+### 🔹 6. Use Comments Wisely
+
+✅ Explain **why**, not **what**:
+
+```javascript
+// ❌ Bad - Redundant comment
+// Increment i by 1
+i++;
+
+// ✅ Good - Explain why
+// Retry API request if the first attempt fails
+retryApiRequest();
+```
+
+### 🔹 7. Avoid Side Effects in Functions
+
+Functions should not modify global variables.
+
+```javascript
+// ❌ Bad - Modifying external variable
+let count = 0;
+
+function increment() {
+  count++;
+}
+
+// ✅ Good - Return new value instead
+function increment(count) {
+  return count + 1;
+}
+```
+
+### 🔹 8. DRY (Don't Repeat Yourself)
+
+Refactor duplicate code into reusable functions.
+
+```javascript
+// ❌ Bad - Repeated code
+function getUserFullName(user) {
+  return user.firstName + " " + user.lastName;
+}
+
+function getAdminFullName(admin) {
+  return admin.firstName + " " + admin.lastName;
+}
+
+// ✅ Good - Reusable function
+function getFullName(person) {
+  return person.firstName + " " + person.lastName;
+}
+```
+
+### 🔹 9. Use Error Handling
+
+Handle errors properly to prevent application crashes.
+
+```javascript
+// ❌ Bad - No error handling
+const data = JSON.parse(userInput);
+
+// ✅ Good - Try-Catch for safety
+try {
+  const data = JSON.parse(userInput);
+} catch (error) {
+  console.error("Invalid JSON format", error);
+}
+```
+
+### 🔹 10. Keep Code Modular
+
+✅ Break code into separate modules:
+
+```javascript
+// userService.js
+export function getUser(id) { ... }
+
+// main.js
+import { getUser } from "./userService.js";
+```
+
+## 📌 Conclusion
+
+Clean code makes projects **easier to maintain, debug, and scale**. Follow these principles to write **better, more readable code**! 🚀
+
+---

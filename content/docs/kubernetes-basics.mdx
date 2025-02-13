@@ -1,0 +1,146 @@
+---
+title: "Kubernetes Basics"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to Kubernetes
+
+Kubernetes (K8s) is an **open-source container orchestration platform** for automating deployment, scaling, and management of containerized applications.
+
+---
+
+## 🔹 1. Key Kubernetes Concepts
+
+| Component      | Description |
+|---------------|------------|
+| **Pod**       | The smallest deployable unit, usually contains one or more containers. |
+| **Node**      | A worker machine that runs pods. |
+| **Cluster**   | A collection of nodes managed by Kubernetes. |
+| **Service**   | Exposes a set of pods as a network service. |
+| **Deployment** | Manages pod scaling & rolling updates. |
+| **Ingress**   | Manages external access to services via HTTP/HTTPS. |
+
+---
+
+## 🔹 2. Installing Kubernetes (Minikube for Local Testing)
+
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+
+minikube start  # Start Kubernetes cluster
+kubectl get nodes  # Verify setup
+```
+
+✅ **Minikube runs a local Kubernetes cluster for testing.**  
+
+---
+
+## 🔹 3. Deploying a Simple App on Kubernetes
+
+📌 **1. Create a Deployment**
+
+📌 **`deployment.yaml`**
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-app
+          image: nginx
+          ports:
+            - containerPort: 80
+```
+
+Apply deployment:
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl get pods  # Check running pods
+```
+
+✅ **Now, Kubernetes manages the deployment with 2 replicas.**  
+
+---
+
+## 🔹 4. Exposing a Service
+
+Pods are **ephemeral**, so we expose them using a **Service**.
+
+📌 **`service.yaml`**
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: NodePort
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30007
+```
+
+Apply service:
+
+```bash
+kubectl apply -f service.yaml
+minikube service my-service  # Open in browser
+```
+
+✅ **Service exposes the app via `http://localhost:30007`.**  
+
+---
+
+## 🔹 5. Scaling Pods
+
+Increase pod count:
+
+```bash
+kubectl scale deployment my-app --replicas=5
+kubectl get pods
+```
+
+✅ **Kubernetes automatically scales the deployment.**  
+
+---
+
+## 🔹 6. Rolling Updates & Rollbacks
+
+📌 **Update the Deployment Image**
+
+```bash
+kubectl set image deployment/my-app my-app=nginx:latest
+kubectl rollout status deployment/my-app  # Check status
+```
+
+📌 **Rollback to Previous Version**
+
+```bash
+kubectl rollout undo deployment/my-app
+```
+
+✅ **Ensures zero-downtime deployments.**  
+
+---
+
+## 📌 Conclusion
+
+Kubernetes simplifies **container orchestration, scaling, and networking**.  
+This guide covered **pods, services, deployments, and scaling** to get started. 🚀  
+
+---

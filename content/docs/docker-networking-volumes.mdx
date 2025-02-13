@@ -1,0 +1,155 @@
+---
+title: "Docker Networking & Volumes"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to Docker Networking & Volumes
+
+Docker provides **networking** for communication between containers and **volumes** for persistent data storage. These features help in building **scalable and reliable** containerized applications.
+
+---
+
+## 🔹 1. Docker Networking Basics
+
+Docker supports different network types:
+
+| Network Type  | Description |
+|--------------|-------------|
+| **Bridge**   | Default network; allows containers to communicate with each other. |
+| **Host**     | Uses the host machine's networking directly. |
+| **None**     | Completely disables networking. |
+| **Overlay**  | Used for multi-host networking (Docker Swarm). |
+| **Macvlan**  | Assigns containers a real IP from the network. |
+
+### **1.1 Listing Available Networks**
+```bash
+docker network ls
+```
+
+### **1.2 Creating a Custom Network**
+```bash
+docker network create my_custom_network
+```
+
+### **1.3 Running a Container with a Custom Network**
+```bash
+docker run -d --name app --network my_custom_network nginx
+```
+
+✅ **Now the container runs in an isolated network.**  
+
+---
+
+## 🔹 2. Connecting Multiple Containers
+
+Containers can communicate if they share the **same network**.
+
+```bash
+docker network create app_network
+
+docker run -d --network app_network --name db postgres
+docker run -d --network app_network --name backend node
+docker run -d --network app_network --name frontend nginx
+```
+
+✅ **All three containers can now communicate within `app_network`.**  
+
+---
+
+## 🔹 3. Docker Compose for Multi-Container Networking
+
+📌 **`docker-compose.yml`**
+```yaml
+version: "3"
+services:
+  db:
+    image: postgres
+    networks:
+      - my_network
+
+  backend:
+    image: node
+    networks:
+      - my_network
+    depends_on:
+      - db
+
+  frontend:
+    image: nginx
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
+```
+
+Run with:
+```bash
+docker-compose up -d
+```
+
+✅ **Now all services are automatically networked together.**  
+
+---
+
+## 🔹 4. Docker Volumes for Persistent Storage
+
+Containers **lose data** when stopped. **Volumes** provide **persistent storage**.
+
+### **4.1 Creating a Volume**
+```bash
+docker volume create my_volume
+```
+
+### **4.2 Using a Volume with a Container**
+```bash
+docker run -d --name db -v my_volume:/var/lib/postgresql/data postgres
+```
+
+✅ **Now, PostgreSQL data persists even after container restarts.**  
+
+---
+
+## 🔹 5. Mounting Local Directories as Volumes
+
+To sync local files with a container:
+
+```bash
+docker run -d --name web -v $(pwd)/app:/usr/share/nginx/html nginx
+```
+
+✅ **Now, local changes to `/app` reflect inside the container.**  
+
+---
+
+## 🔹 6. Managing Volumes
+
+### **6.1 Listing All Volumes**
+```bash
+docker volume ls
+```
+
+### **6.2 Removing a Volume**
+```bash
+docker volume rm my_volume
+```
+
+### **6.3 Removing Unused Volumes**
+```bash
+docker volume prune
+```
+
+✅ **Always clean up unused volumes to free space.**  
+
+---
+
+## 📌 Conclusion
+
+- **Use Docker networks** for inter-container communication.  
+- **Use volumes** to persist container data.  
+- **Combine networking & volumes** for scalable, stateful applications.  
+
+🚀 **Now you can manage Docker networking & storage like a pro!**
+
+---

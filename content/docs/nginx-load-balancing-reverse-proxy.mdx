@@ -1,0 +1,156 @@
+---
+title: "Nginx Load Balancing & Reverse Proxy"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to Nginx as a Reverse Proxy & Load Balancer
+
+Nginx is a powerful **reverse proxy** and **load balancer** used to improve the performance, security, and scalability of web applications.
+
+---
+
+## 🔹 1. Installing Nginx
+
+### **1.1 Install Nginx on Linux (Ubuntu)**
+```bash
+sudo apt update
+sudo apt install -y nginx
+```
+
+### **1.2 Start and Enable Nginx**
+```bash
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+### **1.3 Verify Installation**
+```bash
+nginx -v  # Check Nginx version
+systemctl status nginx  # Verify Nginx is running
+```
+
+✅ **Nginx is now installed and running.**  
+
+---
+
+## 🔹 2. Setting Up Nginx as a Reverse Proxy
+
+A **reverse proxy** forwards client requests to backend servers.
+
+📌 **Modify Nginx Configuration (`/etc/nginx/sites-available/default`)**:
+
+```nginx
+server {
+    listen 80;
+
+    server_name myapp.com;
+
+    location / {
+        proxy_pass http://localhost:3000;  # Forward requests to backend
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+Apply changes:
+```bash
+sudo systemctl restart nginx
+```
+
+✅ **Now, Nginx routes traffic to `localhost:3000`.**
+
+---
+
+## 🔹 3. Setting Up Nginx as a Load Balancer
+
+Load balancing distributes traffic across multiple backend servers.
+
+📌 **Modify Nginx Configuration (`/etc/nginx/sites-available/default`)**:
+
+```nginx
+upstream backend_servers {
+    server 192.168.1.10:3000;
+    server 192.168.1.11:3000;
+    server 192.168.1.12:3000;
+}
+
+server {
+    listen 80;
+    server_name myapp.com;
+
+    location / {
+        proxy_pass http://backend_servers;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+Apply changes:
+```bash
+sudo systemctl restart nginx
+```
+
+✅ **Now, Nginx distributes traffic across `backend_servers`.**
+
+---
+
+## 🔹 4. Using Different Load Balancing Methods
+
+Modify the upstream block to use different strategies:
+
+| Load Balancing Method | Configuration |
+|----------------------|--------------|
+| **Round Robin** (default) | `server backend1; server backend2;` |
+| **Least Connections** | `least_conn;` |
+| **IP Hash (sticky sessions)** | `ip_hash;` |
+
+Example:
+```nginx
+upstream backend_servers {
+    least_conn;  # Distribute to the server with the fewest connections
+    server 192.168.1.10:3000;
+    server 192.168.1.11:3000;
+}
+```
+
+✅ **Choose the best method for your application.**
+
+---
+
+## 🔹 5. Enabling SSL with Let's Encrypt
+
+### **5.1 Install Certbot for Free SSL**
+```bash
+sudo apt install -y certbot python3-certbot-nginx
+```
+
+### **5.2 Generate SSL Certificate**
+```bash
+sudo certbot --nginx -d myapp.com -d www.myapp.com
+```
+
+### **5.3 Auto-Renew SSL**
+```bash
+sudo crontab -e
+```
+
+Add this line:
+```bash
+0 0 1 * * certbot renew --quiet
+```
+
+✅ **Now, SSL is enabled for your site.**
+
+---
+
+## 📌 Conclusion
+
+Nginx provides **reverse proxying, load balancing, and SSL termination**, making it essential for **scalable, high-performance applications**. 🚀  
+
+---

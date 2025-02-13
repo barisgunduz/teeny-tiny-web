@@ -1,0 +1,154 @@
+---
+title: "Nginx Setup for Hosting"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to Nginx
+
+Nginx is a high-performance web server, reverse proxy, and load balancer. It is widely used for hosting websites, APIs, and applications.
+
+### 🔹 Installing Nginx
+
+#### **On Ubuntu/Debian**
+```bash
+sudo apt update
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+#### **On CentOS**
+```bash
+sudo yum install epel-release -y
+sudo yum install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+```
+
+#### **On macOS (Using Homebrew)**
+```bash
+brew install nginx
+nginx
+```
+
+Verify Nginx installation:
+
+```bash
+nginx -v
+```
+
+### 🔹 Configuring Nginx
+
+The main Nginx configuration file is located at:
+
+```bash
+/etc/nginx/nginx.conf
+```
+
+For individual sites, use configuration files in:
+
+```bash
+/etc/nginx/sites-available/
+```
+
+Enable a site by creating a symbolic link:
+
+```bash
+ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/
+```
+
+### 🔹 Setting Up a Static Website
+
+Create a directory for your website:
+
+```bash
+sudo mkdir -p /var/www/mywebsite
+sudo chown -R $USER:$USER /var/www/mywebsite
+```
+
+Create an Nginx configuration file:
+
+```bash
+sudo nano /etc/nginx/sites-available/mywebsite
+```
+
+Add the following content:
+
+```nginx
+server {
+    listen 80;
+    server_name mywebsite.com www.mywebsite.com;
+
+    root /var/www/mywebsite;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+Enable the site and restart Nginx:
+
+```bash
+ln -s /etc/nginx/sites-available/mywebsite /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+```
+
+### 🔹 Setting Up a Reverse Proxy for Node.js
+
+If you have a **Node.js** application running on port 3000, configure Nginx as a reverse proxy:
+
+```bash
+server {
+    listen 80;
+    server_name myapi.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
+### 🔹 Securing Nginx with Let's Encrypt (SSL)
+
+Install **Certbot** for SSL:
+
+```bash
+sudo apt install certbot python3-certbot-nginx -y
+```
+
+Generate and apply an SSL certificate:
+
+```bash
+sudo certbot --nginx -d mywebsite.com -d www.mywebsite.com
+```
+
+Set up auto-renewal:
+
+```bash
+sudo certbot renew --dry-run
+```
+
+### 🔹 Testing and Restarting Nginx
+
+Check configuration syntax:
+
+```bash
+sudo nginx -t
+```
+
+Restart Nginx:
+
+```bash
+sudo systemctl restart nginx
+```
+
+## 📌 Conclusion
+
+Nginx is a powerful web server that can serve static files, act as a reverse proxy, and handle SSL certificates for secure websites.
+
+---

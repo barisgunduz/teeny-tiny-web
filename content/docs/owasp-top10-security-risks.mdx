@@ -1,0 +1,171 @@
+---
+title: "OWASP Top 10 Security Risks"
+category: "Security & Best Practices"
+---
+
+## 📌 Introduction to OWASP Top 10
+
+The **OWASP Top 10** is a list of the most critical web security risks, maintained by the **Open Web Application Security Project (OWASP)**.
+
+### 🔹 1. Broken Access Control (A01:2021)
+
+Occurs when users can **access unauthorized data or perform actions** outside their permission level.
+
+**Example:**  
+```javascript
+// ❌ Insecure API endpoint allows unauthorized access
+app.get("/admin", (req, res) => {
+  if (req.query.admin === "true") {
+    res.send("Admin Access Granted");
+  } else {
+    res.send("Access Denied");
+  }
+});
+```
+
+✅ **Fix:** Use **role-based access control (RBAC)** & validate permissions.
+
+---
+
+### 🔹 2. Cryptographic Failures (A02:2021)
+
+Sensitive data exposure due to **weak encryption or improper storage**.
+
+**Example:** Storing passwords in plain text:
+```plaintext
+username: alice
+password: mypassword123
+```
+
+✅ **Fix:** Use **bcrypt or Argon2** for password hashing:
+```javascript
+const bcrypt = require("bcrypt");
+const hashedPassword = await bcrypt.hash("mypassword123", 10);
+```
+
+---
+
+### 🔹 3. Injection (A03:2021)
+
+Occurs when untrusted data is **executed as code**, leading to SQL injection, command injection, etc.
+
+**Example:** SQL Injection  
+```javascript
+app.get("/user", (req, res) => {
+  db.query(`SELECT * FROM users WHERE name = '${req.query.name}'`);
+});
+```
+
+✅ **Fix:** Use **parameterized queries**:
+
+```javascript
+db.query("SELECT * FROM users WHERE name = ?", [req.query.name]);
+```
+
+---
+
+### 🔹 4. Insecure Design (A04:2021)
+
+Occurs when security **isn't considered** in the application design phase.
+
+✅ **Fix:** Implement **threat modeling** & **security-first principles**.
+
+---
+
+### 🔹 5. Security Misconfiguration (A05:2021)
+
+Weak default settings, exposed admin panels, or **unnecessary open ports**.
+
+✅ **Fix:**  
+- Remove **default credentials**  
+- Disable **unnecessary services**  
+- Use **security headers** (e.g., `Content-Security-Policy`)
+
+```javascript
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'");
+  next();
+});
+```
+
+---
+
+### 🔹 6. Vulnerable & Outdated Components (A06:2021)
+
+Using **outdated dependencies** with known vulnerabilities.
+
+✅ **Fix:** Regularly update dependencies:
+```bash
+npm audit fix
+```
+
+Use tools like **Snyk** to check for vulnerabilities.
+
+---
+
+### 🔹 7. Identification & Authentication Failures (A07:2021)
+
+Weak authentication mechanisms allow **brute-force attacks** or **session hijacking**.
+
+✅ **Fix:**  
+- Enforce **strong password policies**  
+- Use **multi-factor authentication (MFA)**  
+- Implement **JWT expiration**
+
+```javascript
+const token = jwt.sign({ userId: 123 }, "secret", { expiresIn: "1h" });
+```
+
+---
+
+### 🔹 8. Software & Data Integrity Failures (A08:2021)
+
+Tampering with **CI/CD pipelines or unverified dependencies**.
+
+✅ **Fix:** Use **code signing, dependency validation**, and protect **build pipelines**.
+
+---
+
+### 🔹 9. Security Logging & Monitoring Failures (A09:2021)
+
+Lack of **proper logs** prevents **detection of security breaches**.
+
+✅ **Fix:**  
+- Use **log monitoring tools** like **ELK Stack**  
+- Implement **real-time alerts**  
+- Mask sensitive data in logs
+
+```javascript
+console.log("User login attempt: ", userId);
+```
+
+---
+
+### 🔹 10. Server-Side Request Forgery (SSRF) (A10:2021)
+
+Occurs when a server fetches a malicious URL due to **unvalidated user input**.
+
+**Example:**
+
+```javascript
+app.get("/fetch", (req, res) => {
+  fetch(req.query.url).then(response => response.text());
+});
+```
+
+✅ **Fix:** Validate & restrict external requests:
+
+```javascript
+const allowedDomains = ["example.com", "api.myservice.com"];
+if (!allowedDomains.includes(new URL(req.query.url).hostname)) {
+  return res.status(400).send("Invalid request");
+}
+```
+
+---
+
+## 📌 Conclusion
+
+Understanding and mitigating these **OWASP Top 10** risks is essential for building **secure web applications**. Follow best practices and implement **security measures early** in development. 🚀
+
+---

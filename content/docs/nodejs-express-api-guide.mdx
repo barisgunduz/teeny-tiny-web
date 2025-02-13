@@ -1,0 +1,215 @@
+---
+title: "Node.js & Express API Guide"
+category: "Web Development"
+---
+
+## 📌 Introduction to Node.js & Express
+
+Node.js is a JavaScript runtime that allows you to run JavaScript on the server-side.  
+Express.js is a lightweight framework for Node.js that simplifies backend API development.
+
+### 🔹 Setting Up a Node.js Project
+
+First, install Node.js from [nodejs.org](https://nodejs.org).  
+Then, create a new Node.js project:
+
+```bash
+mkdir my-api
+cd my-api
+npm init -y   # Initialize a package.json file
+npm install express   # Install Express.js
+```
+
+### 🔹 Creating a Basic Express Server
+
+Create a new file `server.js` and add the following code:
+
+```javascript
+const express = require("express");
+const app = express();
+const PORT = 5000;
+
+app.get("/", (req, res) => {
+  res.send("Welcome to my Express API!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+```
+
+Run the server:
+
+```bash
+node server.js
+```
+
+### 🔹 Handling Different HTTP Methods
+
+```javascript
+app.post("/submit", (req, res) => {
+  res.send("POST request received");
+});
+
+app.put("/update", (req, res) => {
+  res.send("PUT request received");
+});
+
+app.delete("/delete", (req, res) => {
+  res.send("DELETE request received");
+});
+```
+
+### 🔹 Using Middleware
+
+Middleware functions process requests before reaching the route handlers.
+
+```javascript
+app.use(express.json());  // Built-in middleware for parsing JSON
+
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.url}`);
+  next();
+});
+```
+
+### 🔹 Handling Query Parameters & URL Parameters
+
+```javascript
+app.get("/search", (req, res) => {
+  const query = req.query.q;
+  res.send(`You searched for: ${query}`);
+});
+
+app.get("/users/:id", (req, res) => {
+  res.send(`User ID: ${req.params.id}`);
+});
+```
+
+### 🔹 Creating a REST API with Express
+
+```javascript
+const users = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+];
+
+app.get("/api/users", (req, res) => {
+  res.json(users);
+});
+
+app.post("/api/users", (req, res) => {
+  const newUser = { id: users.length + 1, name: req.body.name };
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
+app.put("/api/users/:id", (req, res) => {
+  const user = users.find((u) => u.id == req.params.id);
+  if (!user) return res.status(404).send("User not found");
+  user.name = req.body.name;
+  res.json(user);
+});
+
+app.delete("/api/users/:id", (req, res) => {
+  const index = users.findIndex((u) => u.id == req.params.id);
+  if (index === -1) return res.status(404).send("User not found");
+  users.splice(index, 1);
+  res.status(204).send();
+});
+```
+
+### 🔹 Using Express Router for Modular Routes
+
+Instead of defining all routes in `server.js`, create separate route files.
+
+📌 `routes/users.js`:
+
+```javascript
+const express = require("express");
+const router = express.Router();
+
+const users = [{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }];
+
+router.get("/", (req, res) => res.json(users));
+router.post("/", (req, res) => {
+  const newUser = { id: users.length + 1, name: req.body.name };
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
+module.exports = router;
+```
+
+📌 In `server.js`, import and use the router:
+
+```javascript
+const usersRouter = require("./routes/users");
+app.use("/api/users", usersRouter);
+```
+
+### 🔹 Connecting Express to a Database
+
+Example using **MongoDB with Mongoose**:
+
+```bash
+npm install mongoose
+```
+
+```javascript
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost/mydatabase", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const UserSchema = new mongoose.Schema({ name: String });
+const User = mongoose.model("User", UserSchema);
+
+app.post("/users", async (req, res) => {
+  const newUser = new User({ name: req.body.name });
+  await newUser.save();
+  res.status(201).json(newUser);
+});
+```
+
+### 🔹 Error Handling in Express
+
+```javascript
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something went wrong!");
+});
+```
+
+### 🔹 CORS (Cross-Origin Resource Sharing)
+
+If you're building an API, enable **CORS**:
+
+```bash
+npm install cors
+```
+
+```javascript
+const cors = require("cors");
+app.use(cors());
+```
+
+### 🔹 Deploying an Express App
+
+1️⃣ **Deploy with Vercel**:
+```bash
+vercel
+```
+
+2️⃣ **Deploy with Railway**:
+```bash
+railway up
+```
+
+## 📌 Conclusion
+
+Express.js simplifies backend development by providing an easy-to-use routing system, middleware support, and database integration. Mastering these concepts will help you build scalable and efficient APIs.
+
+---

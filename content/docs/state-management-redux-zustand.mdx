@@ -1,0 +1,177 @@
+---
+title: "State Management with Redux & Zustand"
+category: "Web Development"
+---
+
+## 📌 Introduction to State Management
+
+State management in React applications is essential for handling **global state**, **efficient data flow**, and **performance optimization**. The two most popular state management solutions are **Redux** and **Zustand**.
+
+---
+
+## 🔹 1. Managing State with Redux
+
+**Redux** is a predictable state container for JavaScript applications.
+
+### **1.1 Install Redux Toolkit & React-Redux**
+
+```bash
+npm install @reduxjs/toolkit react-redux
+```
+
+### **1.2 Create a Redux Store**
+
+📌 **`store.js`**
+```javascript
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => { state.value += 1; },
+    decrement: (state) => { state.value -= 1; },
+    reset: (state) => { state.value = 0; }
+  },
+});
+
+export const { increment, decrement, reset } = counterSlice.actions;
+
+const store = configureStore({ reducer: { counter: counterSlice.reducer } });
+
+export default store;
+```
+
+### **1.3 Provide the Store to React**
+
+📌 **`_app.js` or `index.js`**
+```javascript
+import { Provider } from "react-redux";
+import store from "./store";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
+}
+
+export default MyApp;
+```
+
+### **1.4 Using Redux State in Components**
+
+📌 **`Counter.js`**
+```javascript
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement, reset } from "../store";
+
+export default function Counter() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={() => dispatch(increment())}>+</button>
+      <button onClick={() => dispatch(decrement())}>-</button>
+      <button onClick={() => dispatch(reset())}>Reset</button>
+    </div>
+  );
+}
+```
+
+✅ **Redux Benefits:**  
+- Centralized **global state management**.  
+- **Middleware support** (e.g., logging, async operations).  
+- Built-in **time-travel debugging**.  
+
+❌ **Downsides:**  
+- **Boilerplate code** required.  
+- Performance overhead if **misconfigured**.
+
+---
+
+## 🔹 2. Managing State with Zustand
+
+**Zustand** is a minimal, fast, and scalable state management library.
+
+### **2.1 Install Zustand**
+
+```bash
+npm install zustand
+```
+
+### **2.2 Create a Zustand Store**
+
+📌 **`store.js`**
+```javascript
+import { create } from "zustand";
+
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+  reset: () => set({ count: 0 }),
+}));
+
+export default useStore;
+```
+
+### **2.3 Using Zustand in Components**
+
+📌 **`Counter.js`**
+```javascript
+import useStore from "../store";
+
+export default function Counter() {
+  const { count, increment, decrement, reset } = useStore();
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={increment}>+</button>
+      <button onClick={decrement}>-</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
+}
+```
+
+✅ **Zustand Benefits:**  
+- **Minimal boilerplate** (no reducers, actions, providers).  
+- **Performance optimized** (no unnecessary re-renders).  
+- **Lightweight (~1KB)** compared to Redux.  
+
+❌ **Downsides:**  
+- Lacks built-in **middleware** compared to Redux.  
+- No **time-travel debugging** like Redux DevTools.  
+
+---
+
+## 🔹 3. When to Use Redux vs. Zustand
+
+| Feature         | Redux                        | Zustand                      |
+|----------------|-----------------------------|------------------------------|
+| Boilerplate    | High                         | Low                          |
+| Performance    | Good (requires optimization) | Very high performance        |
+| Debugging     | Excellent (Redux DevTools)   | Limited                      |
+| Middleware    | Supports middlewares         | Requires manual setup        |
+| Learning Curve | Steep                        | Very easy                    |
+
+✅ **Use Redux if:**  
+- Your app has **complex global state** and needs **middleware**.  
+- You need **time-travel debugging**.  
+
+✅ **Use Zustand if:**  
+- You want **minimal boilerplate** and fast performance.  
+- Your state logic is **simple and component-scoped**.  
+
+---
+
+## 📌 Conclusion
+
+Both **Redux and Zustand** are powerful **state management tools**. Choose Redux for **scalability and debugging**, and Zustand for **simplicity and performance**. 🚀
+
+---

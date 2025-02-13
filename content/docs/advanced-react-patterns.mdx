@@ -1,0 +1,153 @@
+---
+title: "Advanced React Patterns"
+category: "Web Development"
+---
+
+## 📌 Introduction to Advanced React Patterns
+
+React provides powerful composition patterns that help build scalable and maintainable applications. This guide covers **Higher-Order Components (HOCs)**, **Render Props**, **Compound Components**, and **Controlled vs. Uncontrolled Components**.
+
+---
+
+## 🔹 1. Higher-Order Components (HOC)
+
+A **Higher-Order Component (HOC)** is a function that takes a component and returns an enhanced version of it.
+
+### **Example: Adding Authentication to a Component**
+```javascript
+function withAuth(WrappedComponent) {
+  return function AuthenticatedComponent(props) {
+    const isAuthenticated = localStorage.getItem("authToken");
+    return isAuthenticated ? <WrappedComponent {...props} /> : <p>Please log in.</p>;
+  };
+}
+
+const Dashboard = () => <h2>Welcome to Dashboard</h2>;
+const ProtectedDashboard = withAuth(Dashboard);
+
+// Usage
+<ProtectedDashboard />;
+```
+
+✅ **When to Use HOCs**:  
+- Code reusability (e.g., authentication, permissions, logging).  
+- Adding common functionality without modifying the original component.  
+
+❌ **Downsides**:  
+- Can introduce **prop drilling**.  
+- Debugging HOCs can be challenging.
+
+---
+
+## 🔹 2. Render Props Pattern
+
+A **Render Prop** is a function prop used to **share logic** between components.
+
+### **Example: Mouse Position Tracker**
+```javascript
+const MouseTracker = ({ render }) => {
+  const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+  React.useEffect(() => {
+    const handleMouseMove = (e) => setPosition({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return render(position);
+};
+
+// Usage
+<MouseTracker render={({ x, y }) => <p>Mouse position: {x}, {y}</p>} />;
+```
+
+✅ **When to Use Render Props**:  
+- Avoiding HOC nesting issues.  
+- Dynamic logic sharing (e.g., animations, tracking).  
+
+❌ **Downsides**:  
+- Can lead to **"Prop Drilling Hell"** if overused.  
+
+---
+
+## 🔹 3. Compound Components
+
+**Compound Components** allow multiple related components to work together seamlessly.
+
+### **Example: Custom Tabs Component**
+```javascript
+const Tabs = ({ children }) => {
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
+  return React.Children.map(children, (child, index) =>
+    React.cloneElement(child, { activeIndex, setActiveIndex, index })
+  );
+};
+
+const TabList = ({ children }) => <div className="tab-list">{children}</div>;
+const Tab = ({ index, activeIndex, setActiveIndex, children }) => (
+  <button onClick={() => setActiveIndex(index)} className={index === activeIndex ? "active" : ""}>
+    {children}
+  </button>
+);
+const TabPanel = ({ index, activeIndex, children }) => (index === activeIndex ? <div>{children}</div> : null);
+
+// Usage
+<Tabs>
+  <TabList>
+    <Tab>Tab 1</Tab>
+    <Tab>Tab 2</Tab>
+  </TabList>
+  <TabPanel>Content for Tab 1</TabPanel>
+  <TabPanel>Content for Tab 2</TabPanel>
+</Tabs>;
+```
+
+✅ **When to Use Compound Components**:  
+- Creating highly flexible UI components (Tabs, Modals, Accordions).  
+- Improving **reusability and maintainability**.  
+
+❌ **Downsides**:  
+- Requires more **setup and structuring** compared to other patterns.
+
+---
+
+## 🔹 4. Controlled vs. Uncontrolled Components
+
+### **Controlled Components** (React handles state)
+
+```javascript
+function ControlledInput() {
+  const [value, setValue] = React.useState("");
+
+  return <input value={value} onChange={(e) => setValue(e.target.value)} />;
+}
+```
+
+✅ **Advantages**:  
+- Predictable state management.  
+- Can be easily manipulated and validated.  
+
+---
+
+### **Uncontrolled Components** (DOM handles state)
+
+```javascript
+function UncontrolledInput() {
+  const inputRef = React.useRef();
+
+  return <input ref={inputRef} defaultValue="Hello" />;
+}
+```
+
+✅ **Advantages**:  
+- Useful for forms where **React state isn't required**.  
+- Performance benefits in large applications.
+
+---
+
+## 📌 Conclusion
+
+These **advanced React patterns** help build **scalable, maintainable, and reusable components**. Mastering these patterns is essential for **real-world React applications**. 🚀
+
+---

@@ -1,0 +1,186 @@
+---
+title: "Common Sorting Algorithms"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Sorting Algorithms
+
+Sorting is a fundamental operation in computer science used to organize data efficiently. Here are the most common sorting algorithms, along with their time complexities.
+
+### 🔹 1. Bubble Sort (O(n²)) – Simple but Inefficient
+
+Bubble Sort compares adjacent elements and swaps them if they are in the wrong order.
+
+```javascript
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // Swap
+      }
+    }
+  }
+  return arr;
+}
+```
+
+✅ Easy to implement  
+❌ Very slow for large arrays  
+
+---
+
+### 🔹 2. Selection Sort (O(n²)) – Simple but Inefficient
+
+Selection Sort finds the **smallest element** and places it at the beginning.
+
+```javascript
+function selectionSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    }
+    [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+  }
+  return arr;
+}
+```
+
+✅ Uses fewer swaps than Bubble Sort  
+❌ Still inefficient for large arrays  
+
+---
+
+### 🔹 3. Insertion Sort (O(n²)) – Good for Small Data
+
+Insertion Sort places each element in its correct position.
+
+```javascript
+function insertionSort(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+    while (j >= 0 && arr[j] > key) {
+      arr[j + 1] = arr[j];
+      j--;
+    }
+    arr[j + 1] = key;
+  }
+  return arr;
+}
+```
+
+✅ Fast for small datasets  
+❌ Inefficient for large datasets  
+
+---
+
+### 🔹 4. Merge Sort (O(n log n)) – Efficient & Stable
+
+Merge Sort divides the array into halves, sorts them, and merges them.
+
+```javascript
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+  const left = mergeSort(arr.slice(0, mid));
+  const right = mergeSort(arr.slice(mid));
+
+  return merge(left, right);
+}
+
+function merge(left, right) {
+  let result = [];
+  while (left.length && right.length) {
+    result.push(left[0] < right[0] ? left.shift() : right.shift());
+  }
+  return [...result, ...left, ...right];
+}
+```
+
+✅ Efficient for large datasets  
+✅ Stable sorting algorithm  
+
+---
+
+### 🔹 5. Quick Sort (O(n log n)) – Fastest in Practice
+
+Quick Sort selects a **pivot**, partitions the array, and recursively sorts both parts.
+
+```javascript
+function quickSort(arr) {
+  if (arr.length <= 1) return arr;
+
+  const pivot = arr[arr.length - 1];
+  const left = arr.filter(el => el < pivot);
+  const right = arr.filter(el => el > pivot);
+  const middle = arr.filter(el => el === pivot);
+
+  return [...quickSort(left), ...middle, ...quickSort(right)];
+}
+```
+
+✅ Fastest in most cases  
+❌ Worst-case O(n²) if pivot is poorly chosen  
+
+---
+
+### 🔹 6. Heap Sort (O(n log n)) – Efficient but Complex
+
+Heap Sort builds a heap and sorts the elements.
+
+```javascript
+function heapSort(arr) {
+  function heapify(arr, length, i) {
+    let largest = i;
+    let left = 2 * i + 1;
+    let right = 2 * i + 2;
+
+    if (left < length && arr[left] > arr[largest]) largest = left;
+    if (right < length && arr[right] > arr[largest]) largest = right;
+
+    if (largest !== i) {
+      [arr[i], arr[largest]] = [arr[largest], arr[i]];
+      heapify(arr, length, largest);
+    }
+  }
+
+  for (let i = Math.floor(arr.length / 2) - 1; i >= 0; i--) {
+    heapify(arr, arr.length, i);
+  }
+
+  for (let i = arr.length - 1; i > 0; i--) {
+    [arr[0], arr[i]] = [arr[i], arr[0]];
+    heapify(arr, i, 0);
+  }
+
+  return arr;
+}
+```
+
+✅ Efficient, works well in real-world cases  
+❌ More complex than Merge & Quick Sort  
+
+---
+
+## 📌 Sorting Algorithm Comparison
+
+| Algorithm       | Best Case | Average Case | Worst Case | Stable? | In-Place? |
+|---------------|-----------|-------------|------------|---------|-----------|
+| **Bubble Sort** | O(n) | O(n²) | O(n²) | ✅ | ✅ |
+| **Selection Sort** | O(n²) | O(n²) | O(n²) | ❌ | ✅ |
+| **Insertion Sort** | O(n) | O(n²) | O(n²) | ✅ | ✅ |
+| **Merge Sort** | O(n log n) | O(n log n) | O(n log n) | ✅ | ❌ |
+| **Quick Sort** | O(n log n) | O(n log n) | O(n²) | ❌ | ✅ |
+| **Heap Sort** | O(n log n) | O(n log n) | O(n log n) | ❌ | ✅ |
+
+---
+
+## 📌 Conclusion
+
+Sorting algorithms are crucial in **searching, organizing, and optimizing performance**. Understanding these algorithms helps in **choosing the best one** for different use cases.
+
+---

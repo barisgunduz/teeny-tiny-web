@@ -1,0 +1,215 @@
+---
+title: "Next.js Essentials"
+category: "Web Development"
+---
+
+## 📌 Introduction to Next.js
+
+Next.js is a React framework that enables **server-side rendering (SSR)**, **static site generation (SSG)**, and many other performance optimizations.
+
+### 🔹 Setting Up a Next.js Project
+
+To create a new Next.js project, use:
+
+```bash
+npx create-next-app@latest my-next-app
+cd my-next-app
+npm run dev  # Start the development server
+```
+
+or with TypeScript:
+
+```bash
+npx create-next-app@latest my-next-app --typescript
+```
+
+### 🔹 File Structure
+
+```
+my-next-app/
+│── src/ (optional)
+│── app/ (if using App Router)
+│── pages/ (if using Pages Router)
+│── public/
+│── components/
+│── styles/
+│── next.config.js
+│── package.json
+```
+
+### 🔹 Pages & Routing
+
+Next.js provides **two routing approaches**:
+
+1️⃣ **App Router (`app/` directory - Recommended for Next.js 13+)**  
+2️⃣ **Pages Router (`pages/` directory - Used in older versions)**  
+
+#### 📌 App Router (Recommended for Next.js 13+)
+- Uses **Server Components by default**.
+- Supports **layouts, nested routes, and async components**.
+
+📌 Example: `src/app/page.tsx`
+```tsx
+export default function Home() {
+  return <h1>Welcome to Next.js App Router!</h1>;
+}
+```
+
+📌 Example: Dynamic Route `src/app/blog/[slug]/page.tsx`
+```tsx
+export default function BlogPost({ params }: { params: { slug: string } }) {
+  return <h1>Blog Post: {params.slug}</h1>;
+}
+```
+
+#### 📌 Pages Router (`pages/` Directory - Traditional Approach)
+📌 Example: `pages/index.tsx`
+```tsx
+export default function Home() {
+  return <h1>Welcome to Next.js Pages Router!</h1>;
+}
+```
+
+📌 Example: Dynamic Route `pages/blog/[slug].tsx`
+```tsx
+import { useRouter } from "next/router";
+
+export default function BlogPost() {
+  const router = useRouter();
+  const { slug } = router.query;
+
+  return <h1>Blog Post: {slug}</h1>;
+}
+```
+
+### 🔹 API Routes
+
+You can create server-side API endpoints inside the `app/api/` (App Router) or `pages/api/` (Pages Router) directories.
+
+📌 Example API Route (`app/api/hello/route.ts` - App Router)
+```tsx
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  return NextResponse.json({ message: "Hello from API!" });
+}
+```
+
+📌 Example API Route (`pages/api/hello.ts` - Pages Router)
+```tsx
+export default function handler(req, res) {
+  res.status(200).json({ message: "Hello from API!" });
+}
+```
+
+### 🔹 Data Fetching in Next.js
+
+Next.js supports different data-fetching strategies:
+
+1️⃣ **Server-Side Rendering (SSR)**  
+```tsx
+export async function getServerSideProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  return { props: { data } };
+}
+
+export default function Page({ data }) {
+  return <ul>{data.map((post) => <li key={post.id}>{post.title}</li>)}</ul>;
+}
+```
+
+2️⃣ **Static Site Generation (SSG)**  
+```tsx
+export async function getStaticProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  return { props: { data } };
+}
+```
+
+3️⃣ **Incremental Static Regeneration (ISR)**
+```tsx
+export async function getStaticProps() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  return { props: { data }, revalidate: 10 }; // Regenerate page every 10 seconds
+}
+```
+
+4️⃣ **Client-Side Fetching (useEffect + fetch)**
+```tsx
+import { useState, useEffect } from "react";
+
+export default function Page() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
+  return <ul>{data.map((post) => <li key={post.id}>{post.title}</li>)}</ul>;
+}
+```
+
+### 🔹 Next.js Image Optimization
+
+Next.js provides an optimized `<Image>` component.
+
+```tsx
+import Image from "next/image";
+
+export default function Page() {
+  return <Image src="/logo.png" width={500} height={300} alt="Logo" />;
+}
+```
+
+### 🔹 Next.js Metadata & SEO
+
+Next.js provides built-in metadata management.
+
+📌 **App Router (`src/app/layout.tsx`)**  
+```tsx
+export const metadata = {
+  title: "Next.js App",
+  description: "A Next.js application with SEO",
+};
+```
+
+📌 **Pages Router (`pages/_app.tsx`)**  
+```tsx
+import Head from "next/head";
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <Head>
+        <title>Next.js App</title>
+        <meta name="description" content="A Next.js application with SEO" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
+}
+```
+
+### 🔹 Deploying a Next.js App
+
+1️⃣ **Deploy to Vercel (Recommended)**
+```bash
+vercel
+```
+
+2️⃣ **Deploy to a Custom Server**
+```bash
+npm run build
+npm run start
+```
+
+## 📌 Conclusion
+
+Next.js offers powerful features like **server-side rendering, static generation, API routes, and optimized performance**. Mastering these concepts will help you build modern and scalable applications.
+
+---

@@ -1,0 +1,242 @@
+---
+title: "Next.js Performance Optimization"
+category: "Web Development"
+---
+
+## 📌 Introduction to Next.js Performance Optimization
+
+Next.js provides **server-side rendering (SSR), static site generation (SSG), and client-side rendering (CSR)** to improve performance. This guide covers **best practices** to optimize a Next.js application for speed and efficiency.
+
+---
+
+## 🔹 1. Image Optimization with `next/image`
+
+Next.js has built-in **automatic image optimization** using `next/image`.
+
+✅ **Use `next/image` instead of `<img>` for optimized images:**
+
+```javascript
+import Image from "next/image";
+
+export default function Home() {
+  return <Image src="/example.jpg" alt="Example" width={500} height={300} priority />;
+}
+```
+
+✅ **Benefits:**  
+- **Lazy loading** (only loads images when needed).  
+- **Automatic resizing** for different screen sizes.  
+- **WebP support** for better compression.  
+
+---
+
+## 🔹 2. Optimize Fonts with `next/font`
+
+Next.js provides **automatic font optimization**.
+
+✅ **Use Google Fonts with built-in Next.js font optimization:**
+
+```javascript
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function Home() {
+  return <p className={inter.className}>Optimized Font</p>;
+}
+```
+
+✅ **Benefits:**  
+- No **FOIT (Flash of Invisible Text)**.  
+- Loads only **required font subsets**.  
+
+---
+
+## 🔹 3. Use Static Site Generation (SSG) When Possible
+
+SSG **pre-renders pages at build time**, making them **blazing fast**.
+
+✅ **Use `getStaticProps` for static pages:**
+
+```javascript
+export async function getStaticProps() {
+  const res = await fetch("https://api.example.com/posts");
+  const posts = await res.json();
+
+  return { props: { posts }, revalidate: 60 }; // ISR (Incremental Static Regeneration)
+}
+```
+
+✅ **When to use SSG?**  
+- Content **does not change frequently** (e.g., blogs, landing pages).  
+- You need **fast initial load** times.  
+
+---
+
+## 🔹 4. Use Server-Side Rendering (SSR) Only When Necessary
+
+SSR generates pages **on each request**, which can slow down performance.
+
+✅ **Use `getServerSideProps` for dynamic data fetching:**
+
+```javascript
+export async function getServerSideProps() {
+  const res = await fetch("https://api.example.com/user");
+  const user = await res.json();
+
+  return { props: { user } };
+}
+```
+
+✅ **When to use SSR?**  
+- When **real-time data** is needed (e.g., dashboards, authenticated pages).  
+
+❌ **Avoid SSR for static pages** to prevent unnecessary re-renders.
+
+---
+
+## 🔹 5. Enable Compression & Caching
+
+✅ **Use Gzip or Brotli compression** for faster asset delivery.
+
+In `next.config.js`, enable compression:
+
+```javascript
+module.exports = {
+  compress: true,
+};
+```
+
+✅ **Use HTTP caching headers**:
+
+```javascript
+res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+```
+
+---
+
+## 🔹 6. Reduce JavaScript Bundle Size
+
+✅ **Analyze your Next.js bundle using Webpack Bundle Analyzer**:
+
+```bash
+npm install --save-dev @next/bundle-analyzer
+```
+
+In `next.config.js`:
+
+```javascript
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
+module.exports = withBundleAnalyzer({});
+```
+
+Run the analyzer:
+
+```bash
+ANALYZE=true npm run build
+```
+
+✅ **Remove unnecessary libraries and optimize imports**:
+
+```javascript
+// ❌ Bad - Imports everything
+import * as lodash from "lodash";
+
+// ✅ Good - Import only needed functions
+import debounce from "lodash/debounce";
+```
+
+---
+
+## 🔹 7. Code Splitting & Lazy Loading
+
+✅ **Use React Dynamic Imports for Lazy Loading Components:**
+
+```javascript
+import dynamic from "next/dynamic";
+
+const HeavyComponent = dynamic(() => import("../components/HeavyComponent"), {
+  ssr: false, // Only load on client-side
+});
+```
+
+✅ **Benefits:**  
+- Reduces **initial JavaScript load**.  
+- Loads components **only when needed**.  
+
+---
+
+## 🔹 8. Optimize API Requests
+
+✅ **Use SWR for client-side data fetching & caching:**
+
+```javascript
+import useSWR from "swr";
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function Dashboard() {
+  const { data, error } = useSWR("/api/data", fetcher);
+
+  if (error) return <div>Failed to load</div>;
+  if (!data) return <div>Loading...</div>;
+
+  return <div>{data.message}</div>;
+}
+```
+
+✅ **Use Incremental Static Regeneration (ISR) to Refresh Data**:
+
+```javascript
+export async function getStaticProps() {
+  return { props: { data }, revalidate: 60 }; // Re-generates every 60 seconds
+}
+```
+
+✅ **Batch API requests** instead of sending multiple fetch requests:
+
+```javascript
+const [users, posts] = await Promise.all([fetchUsers(), fetchPosts()]);
+```
+
+---
+
+## 🔹 9. Optimize CSS & Reduce Unused Styles
+
+✅ **Use Tailwind CSS for minimal CSS footprint:**
+
+```bash
+npm install tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+✅ **Enable PurgeCSS to remove unused styles in production:**
+
+In `tailwind.config.js`:
+
+```javascript
+module.exports = {
+  purge: ["./pages/**/*.tsx", "./components/**/*.tsx"],
+};
+```
+
+✅ **Use `@layer` to minimize unused styles:**
+
+```css
+@layer base {
+  h1 {
+    font-size: 2rem;
+  }
+}
+```
+
+---
+
+## 📌 Conclusion
+
+Optimizing a **Next.js** application involves **efficient rendering strategies, image & font optimization, caching, lazy loading, and reducing bundle sizes**. Following these best practices will **improve performance, SEO, and user experience**. 🚀
+
+---

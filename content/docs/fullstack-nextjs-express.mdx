@@ -1,0 +1,199 @@
+---
+title: "Building Full-Stack Apps with Next.js & Express"
+category: "Web Development"
+---
+
+## 📌 Introduction to Full-Stack Development with Next.js & Express
+
+Next.js is a powerful **React framework** that supports **server-side rendering (SSR)** and **API routes**. However, for more advanced backend logic, **Express.js** can be integrated with Next.js to build **scalable full-stack applications**.
+
+---
+
+## 🔹 1. Setting Up a Next.js + Express Project
+
+### **1.1 Initialize a Next.js Project**
+
+```bash
+npx create-next-app@latest my-fullstack-app
+cd my-fullstack-app
+```
+
+### **1.2 Install Express.js**
+
+```bash
+npm install express cors dotenv
+```
+
+---
+
+## 🔹 2. Setting Up the Express Server
+
+Create an `server.js` file in the project root:
+
+📌 **`server.js`**
+```javascript
+const express = require("express");
+const next = require("next");
+require("dotenv").config();
+
+const dev = process.env.NODE_ENV !== "production";
+const app = next({ dev });
+const handle = app.getRequestHandler();
+
+const server = express();
+
+server.use(express.json()); // Parse JSON requests
+server.use(require("cors")()); // Enable CORS
+
+server.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello from Express API!" });
+});
+
+server.all("*", (req, res) => {
+  return handle(req, res); // Pass everything else to Next.js
+});
+
+app.prepare().then(() => {
+  server.listen(3001, () => {
+    console.log("Server running on http://localhost:3001");
+  });
+});
+```
+
+✅ **Now, Next.js and Express will run together!**
+
+Run the app:
+
+```bash
+node server.js
+```
+
+---
+
+## 🔹 3. Connecting Next.js to Express API
+
+Modify `next.config.js` to **proxy API requests** to Express:
+
+📌 **`next.config.js`**
+```javascript
+module.exports = {
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:3001/api/:path*",
+      },
+    ];
+  },
+};
+```
+
+✅ **Now, requests to `/api/...` in Next.js will be forwarded to Express.**
+
+---
+
+## 🔹 4. Fetching Data from Express API in Next.js
+
+📌 **`pages/index.js`**
+```javascript
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch("/api/hello")
+      .then((res) => res.json())
+      .then((data) => setData(data.message));
+  }, []);
+
+  return <h1>{data || "Loading..."}</h1>;
+}
+```
+
+✅ **Your Next.js app is now fetching data from the Express API.**
+
+---
+
+## 🔹 5. Adding MongoDB for Full-Stack Data Handling
+
+### **5.1 Install Mongoose**
+```bash
+npm install mongoose
+```
+
+### **5.2 Connect to MongoDB in Express API**
+
+📌 **`server.js`**
+```javascript
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const UserSchema = new mongoose.Schema({ name: String });
+const User = mongoose.model("User", UserSchema);
+
+server.post("/api/users", async (req, res) => {
+  const user = await User.create({ name: req.body.name });
+  res.json(user);
+});
+```
+
+### **5.3 Calling the API from Next.js**
+
+📌 **`components/UserForm.js`**
+```javascript
+import { useState } from "react";
+
+export default function UserForm() {
+  const [name, setName] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name }),
+    });
+    const data = await res.json();
+    console.log("User added:", data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
+      <button type="submit">Add User</button>
+    </form>
+  );
+}
+```
+
+✅ **Now, users can be added to MongoDB from Next.js!**
+
+---
+
+## 🔹 6. Deploying Next.js & Express Together
+
+### **Deploy on Vercel (Frontend)**
+1. Push the code to GitHub.
+2. Deploy via **Vercel** (`vercel deploy`).
+
+### **Deploy on DigitalOcean / AWS (Backend)**
+1. Deploy Express using **Docker** or **PM2**.
+2. Use **Nginx as a reverse proxy** to route requests.
+
+---
+
+## 📌 Conclusion
+
+Combining **Next.js and Express** allows for a **powerful full-stack architecture**. This setup provides:
+- **Fast Frontend Rendering (Next.js SSR/SSG)**
+- **Scalable API Handling (Express + MongoDB)**
+- **Seamless Client-Server Communication**
+
+🚀 **Now you can build full-stack apps with ease!**
+
+---

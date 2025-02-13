@@ -1,0 +1,111 @@
+---
+title: "AWS Basics: EC2, S3, Lambda, API Gateway"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to AWS Basics
+
+Amazon Web Services (**AWS**) provides **compute, storage, and API management** solutions.  
+This guide covers **EC2 (Compute), S3 (Storage), Lambda (Serverless), and API Gateway**.
+
+---
+
+## 🔹 1. EC2 (Elastic Compute Cloud)
+
+EC2 provides **virtual servers** to run applications.
+
+### **1.1 Launching an EC2 Instance**
+
+1️⃣ Go to **AWS Console → EC2 → Instances → Launch Instance**  
+2️⃣ Choose **Amazon Linux** or **Ubuntu**  
+3️⃣ Select instance type (e.g., **t2.micro** for free tier)  
+4️⃣ Configure security group (**Allow SSH, HTTP, HTTPS**)  
+5️⃣ Launch and **Download Key Pair (.pem file)**  
+
+### **1.2 Connect to EC2 via SSH**
+
+```bash
+ssh -i my-key.pem ec2-user@<EC2-PUBLIC-IP>
+```
+
+✅ **Now you are connected to your EC2 instance.**
+
+---
+
+## 🔹 2. S3 (Simple Storage Service)
+
+S3 provides **scalable object storage** for static files.
+
+### **2.1 Create an S3 Bucket**
+
+```bash
+aws s3 mb s3://my-bucket-name
+```
+
+### **2.2 Upload Files to S3**
+
+```bash
+aws s3 cp myfile.txt s3://my-bucket-name/
+```
+
+### **2.3 Make File Public (for Static Hosting)**
+
+```bash
+aws s3api put-object-acl --bucket my-bucket-name --key myfile.txt --acl public-read
+```
+
+✅ **Now, your file is publicly accessible via URL.**  
+
+---
+
+## 🔹 3. AWS Lambda (Serverless Functions)
+
+Lambda lets you **run code without managing servers**.
+
+### **3.1 Create a Simple Lambda Function**
+
+```python
+import json
+
+def lambda_handler(event, context):
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"message": "Hello from Lambda!"})
+    }
+```
+
+### **3.2 Deploy Lambda via AWS CLI**
+
+```bash
+aws lambda create-function --function-name MyLambda --runtime python3.8 --role <IAM-ROLE-ARN> --handler lambda_function.lambda_handler --zip-file fileb://lambda.zip
+```
+
+✅ **Your Lambda function is now deployed.**  
+
+---
+
+## 🔹 4. API Gateway (Managing API Endpoints)
+
+API Gateway allows you to **expose Lambda functions as REST APIs**.
+
+### **4.1 Create an API Gateway**
+1️⃣ Go to **AWS Console → API Gateway → Create API**  
+2️⃣ Choose **REST API** and click **Build**  
+3️⃣ Create a new **resource** (e.g., `/hello`)  
+4️⃣ Create a new **GET method**, link it to **Lambda Function**  
+5️⃣ Deploy the API and get the **Invoke URL**  
+
+✅ **Now, you can call the API:**
+
+```bash
+curl https://your-api-id.execute-api.amazonaws.com/prod/hello
+```
+
+---
+
+## 📌 Conclusion
+
+AWS provides **powerful cloud solutions** for computing, storage, and APIs.  
+This guide covered **EC2 for virtual servers, S3 for storage, Lambda for serverless functions, and API Gateway for APIs**. 🚀
+
+---

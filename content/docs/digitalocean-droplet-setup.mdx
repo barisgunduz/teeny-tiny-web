@@ -1,0 +1,217 @@
+---
+title: "DigitalOcean Droplet Setup"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to DigitalOcean Droplets
+
+A **Droplet** in DigitalOcean is a cloud-based virtual private server (VPS) that you can use to deploy applications, websites, or databases.
+
+### 🔹 Creating a DigitalOcean Droplet
+
+1️⃣ **Sign up/Login to DigitalOcean** → [https://www.digitalocean.com](https://www.digitalocean.com/?refcode=525051e9e7a7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)  
+2️⃣ **Click "Create Droplet"**  
+3️⃣ **Choose an Image (Operating System)**  
+   - Ubuntu (Recommended)  
+   - Debian / CentOS / Fedora  
+4️⃣ **Choose a Plan**  
+   - Basic: Best for small projects  
+   - General Purpose: Balanced performance  
+5️⃣ **Select Data Center Region** (Closest to your users for lower latency)  
+6️⃣ **Set Authentication**  
+   - SSH Key (Recommended)  
+   - Password Authentication  
+7️⃣ **Click "Create Droplet"**  
+
+After the Droplet is created, you will get an **IP Address** to connect.
+
+### 🔹 Connecting to Your Droplet (SSH)
+
+To connect to your Droplet, open a terminal and run:
+
+```bash
+ssh root@your-droplet-ip
+```
+
+If using an SSH key, add the `-i` flag:
+
+```bash
+ssh -i /path/to/private_key root@your-droplet-ip
+```
+
+### 🔹 Updating & Securing Your Droplet
+
+Once logged in, update your packages:
+
+```bash
+apt update && apt upgrade -y
+```
+
+For security, create a new user:
+
+```bash
+adduser myuser
+usermod -aG sudo myuser
+```
+
+Disable root SSH login:
+
+```bash
+nano /etc/ssh/sshd_config
+# Change 'PermitRootLogin yes' to 'PermitRootLogin no'
+systemctl restart sshd
+```
+
+### 🔹 Setting Up a Firewall
+
+Enable **UFW (Uncomplicated Firewall)**:
+
+```bash
+ufw allow OpenSSH
+ufw allow 80/tcp  # Allow HTTP traffic
+ufw allow 443/tcp # Allow HTTPS traffic
+ufw enable
+```
+
+### 🔹 Installing & Configuring Nginx
+
+Install Nginx:
+
+```bash
+apt install nginx -y
+systemctl start nginx
+systemctl enable nginx
+```
+
+Check if Nginx is running:
+
+```bash
+systemctl status nginx
+```
+
+### 🔹 Setting Up a Domain Name (Optional)
+
+1️⃣ **Purchase a domain** (e.g., from Namecheap, GoDaddy)  
+2️⃣ **Go to DigitalOcean → Networking → Domains**  
+3️⃣ **Add an A record:**  
+   - Hostname: `@`  
+   - Value: Your Droplet's IP Address  
+
+### 🔹 Installing Let's Encrypt SSL (HTTPS)
+
+Install Certbot:
+
+```bash
+apt install certbot python3-certbot-nginx -y
+```
+
+Run the SSL installation:
+
+```bash
+certbot --nginx -d yourdomain.com -d www.yourdomain.com
+```
+
+Set up auto-renewal:
+
+```bash
+certbot renew --dry-run
+```
+
+### 🔹 Deploying a Node.js Application
+
+Install Node.js:
+
+```bash
+apt install nodejs npm -y
+```
+
+Create a sample **Node.js server**:
+
+```bash
+mkdir myapp && cd myapp
+nano server.js
+```
+
+📌 Add the following code:
+
+```javascript
+const http = require("http");
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("Hello from DigitalOcean Droplet!");
+});
+
+server.listen(3000, () => console.log("Server running on port 3000"));
+```
+
+Run the server:
+
+```bash
+node server.js
+```
+
+### 🔹 Using PM2 for Process Management
+
+Install PM2:
+
+```bash
+npm install -g pm2
+```
+
+Run the Node.js app:
+
+```bash
+pm2 start server.js
+pm2 save
+pm2 startup
+```
+
+### 🔹 Deploying with Git
+
+Clone your project:
+
+```bash
+git clone https://github.com/your-repo.git myproject
+cd myproject
+npm install
+```
+
+Run the project:
+
+```bash
+pm2 start npm --name "myapp" -- start
+```
+
+### 🔹 Deploying with Docker
+
+Install Docker:
+
+```bash
+apt install docker.io -y
+```
+
+Run a container:
+
+```bash
+docker run -d -p 80:80 nginx
+```
+
+### 🔹 Monitoring & Managing Your Droplet
+
+Check server resources:
+
+```bash
+htop  # Install with: apt install htop
+```
+
+Restart the Droplet:
+
+```bash
+reboot
+```
+
+## 📌 Conclusion
+
+DigitalOcean Droplets provide a flexible and scalable environment for deploying applications. This guide covers **setup, security, firewall, web server, SSL, deployment, and monitoring.**
+
+---

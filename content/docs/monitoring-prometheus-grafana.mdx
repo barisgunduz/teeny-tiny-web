@@ -1,0 +1,123 @@
+---
+title: "Monitoring with Prometheus & Grafana"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to Monitoring with Prometheus & Grafana
+
+**Prometheus** is an open-source monitoring tool designed for **metrics collection** and **alerting**, while **Grafana** is used for **visualizing** those metrics.
+
+---
+
+## 🔹 1. Installing Prometheus
+
+### **1.1 Download and Install Prometheus**
+
+```bash
+wget https://github.com/prometheus/prometheus/releases/latest/download/prometheus-linux-amd64.tar.gz
+tar -xvf prometheus-linux-amd64.tar.gz
+cd prometheus-linux-amd64
+```
+
+### **1.2 Configure Prometheus**
+
+Modify **prometheus.yml** to scrape metrics from a target (e.g., a Node Exporter).
+
+📌 **`prometheus.yml`**
+```yaml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["localhost:9100"]
+```
+
+### **1.3 Start Prometheus**
+
+```bash
+./prometheus --config.file=prometheus.yml
+```
+
+✅ **Prometheus is now running on `http://localhost:9090`.**  
+
+---
+
+## 🔹 2. Installing Node Exporter (For System Metrics)
+
+Node Exporter allows Prometheus to collect **CPU, Memory, Disk, and Network usage**.
+
+```bash
+wget https://github.com/prometheus/node_exporter/releases/latest/download/node_exporter-linux-amd64.tar.gz
+tar -xvf node_exporter-linux-amd64.tar.gz
+cd node_exporter-linux-amd64
+./node_exporter
+```
+
+✅ **Metrics are now available at `http://localhost:9100/metrics`.**
+
+---
+
+## 🔹 3. Installing Grafana
+
+### **3.1 Install Grafana on Ubuntu**
+
+```bash
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+sudo apt-get update
+sudo apt-get install -y grafana
+```
+
+### **3.2 Start Grafana**
+
+```bash
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+```
+
+✅ **Grafana is now running on `http://localhost:3000` (Default login: `admin/admin`).**
+
+---
+
+## 🔹 4. Connecting Prometheus to Grafana
+
+1️⃣ Go to **Grafana → Settings → Data Sources → Add Data Source**  
+2️⃣ Select **Prometheus**  
+3️⃣ Set **URL** to `http://localhost:9090`  
+4️⃣ Click **Save & Test**  
+
+✅ **Now, Prometheus is connected to Grafana.**
+
+---
+
+## 🔹 5. Creating Dashboards in Grafana
+
+1️⃣ Go to **Grafana → Create Dashboard → Add New Panel**  
+2️⃣ Choose a **Prometheus Query** (e.g., `node_cpu_seconds_total`)  
+3️⃣ Select **Graph Visualization**  
+4️⃣ Click **Save Dashboard**  
+
+✅ **Now, Grafana visualizes real-time system metrics.**  
+
+---
+
+## 🔹 6. Setting Up Alerts in Grafana
+
+1️⃣ Go to **Alerting → Create New Alert Rule**  
+2️⃣ Select a **Prometheus Query**  
+3️⃣ Set **Threshold Conditions** (e.g., CPU usage > 80%)  
+4️⃣ Configure **Notification Channel (Email, Slack, etc.)**  
+
+✅ **Now, alerts trigger when thresholds are exceeded.**  
+
+---
+
+## 📌 Conclusion
+
+- **Prometheus** collects real-time metrics.  
+- **Grafana** visualizes and alerts on performance issues.  
+- Together, they provide a **powerful monitoring solution**. 🚀  
+
+---

@@ -1,0 +1,223 @@
+---
+title: "Data Structures Overview"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Data Structures
+
+Data structures are **ways of organizing and storing data** efficiently to optimize operations such as searching, inserting, and deleting.
+
+---
+
+### 🔹 1. Arrays (O(1) Access, O(n) Search)
+
+Arrays store elements in a contiguous memory block.
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers[2]); // O(1) - Access element at index 2
+```
+
+✅ Fast access (O(1))  
+❌ Slow search (O(n)) unless sorted  
+
+---
+
+### 🔹 2. Linked List (O(n) Access, O(1) Insert/Delete at Head)
+
+A **linked list** consists of nodes where each node contains a value and a pointer to the next node.
+
+```javascript
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  append(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      return;
+    }
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newNode;
+  }
+}
+```
+
+✅ Efficient insertion/deletion at head (O(1))  
+❌ Slow search (O(n))  
+
+---
+
+### 🔹 3. Stack (LIFO - Last In First Out)
+
+Stack follows **LIFO (Last In First Out)**.
+
+```javascript
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  push(value) {
+    this.items.push(value); // O(1)
+  }
+
+  pop() {
+    return this.items.pop(); // O(1)
+  }
+}
+```
+
+✅ Fast push/pop (O(1))  
+❌ Cannot search easily (O(n))  
+
+---
+
+### 🔹 4. Queue (FIFO - First In First Out)
+
+Queue follows **FIFO (First In First Out)**.
+
+```javascript
+class Queue {
+  constructor() {
+    this.items = [];
+  }
+
+  enqueue(value) {
+    this.items.push(value); // O(1)
+  }
+
+  dequeue() {
+    return this.items.shift(); // O(1)
+  }
+}
+```
+
+✅ Fast enqueue/dequeue (O(1))  
+❌ Searching is slow (O(n))  
+
+---
+
+### 🔹 5. Hash Table (O(1) Access, O(1) Insert/Delete)
+
+Hash tables use key-value pairs for **constant time (O(1)) lookup**.
+
+```javascript
+const hashTable = new Map();
+hashTable.set("name", "Alice");
+console.log(hashTable.get("name")); // Alice
+```
+
+✅ Fast lookup (O(1))  
+❌ Can have collisions, requiring resolution techniques  
+
+---
+
+### 🔹 6. Binary Search Tree (BST) (O(log n) Search)
+
+A BST is a **hierarchical tree** where each node has at most two children.
+
+```javascript
+class TreeNode {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    const newNode = new TreeNode(value);
+    if (!this.root) {
+      this.root = newNode;
+      return;
+    }
+
+    let current = this.root;
+    while (true) {
+      if (value < current.value) {
+        if (!current.left) {
+          current.left = newNode;
+          return;
+        }
+        current = current.left;
+      } else {
+        if (!current.right) {
+          current.right = newNode;
+          return;
+        }
+        current = current.right;
+      }
+    }
+  }
+}
+```
+
+✅ Fast search (O(log n))  
+❌ Unbalanced trees degrade performance to O(n)  
+
+---
+
+### 🔹 7. Graph (Nodes + Edges)
+
+A **graph** is a collection of nodes (vertices) connected by edges.
+
+```javascript
+class Graph {
+  constructor() {
+    this.adjacencyList = {};
+  }
+
+  addVertex(vertex) {
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+
+  addEdge(vertex1, vertex2) {
+    this.adjacencyList[vertex1].push(vertex2);
+    this.adjacencyList[vertex2].push(vertex1);
+  }
+}
+```
+
+✅ Useful for representing **networks & paths**  
+❌ Graph traversal can be slow (O(V + E))  
+
+---
+
+## 📌 Data Structure Complexity Comparison
+
+| Data Structure | Access | Search | Insert | Delete |
+|---------------|--------|--------|--------|--------|
+| **Array** | O(1) | O(n) | O(n) | O(n) |
+| **Linked List** | O(n) | O(n) | O(1) | O(1) |
+| **Stack** | O(n) | O(n) | O(1) | O(1) |
+| **Queue** | O(n) | O(n) | O(1) | O(1) |
+| **Hash Table** | O(1) | O(1) | O(1) | O(1) |
+| **BST (Balanced)** | O(log n) | O(log n) | O(log n) | O(log n) |
+| **Graph** | O(V+E) | O(V+E) | O(1) | O(1) |
+
+---
+
+## 📌 Conclusion
+
+Choosing the right **data structure** depends on the problem requirements.  
+✅ Use **arrays** for fast indexing, **hash tables** for quick lookups, and **graphs** for network-related problems.
+
+---

@@ -2,20 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Link ve Buton Stilleri */
+a {
+  transition: color 0.2s ease-in-out;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+a:hover {
+  color: theme("colors.accent");
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Koyu Tema (Dark Mode İçin Hazır) */
+.dark body {
+  background-color: theme("colors.darkBg");
+  color: theme("colors.darkText");
+}
+
+.dark aside {
+  background-color: theme("colors.darkBg");
+  border-color: theme("colors.darkBorder");
+}
+
+.dark a:hover {
+  color: theme("colors.accent");
+}
+
+
+/* Markdown İçin Tabloların Biçimlendirilmesi */
+.prose table {
+  @apply table-auto border-collapse border border-gray-400 w-full;
+}
+
+.prose thead {
+  @apply bg-gray-200 text-gray-900 font-semibold;
+}
+
+.prose th {
+  @apply border border-gray-400 px-4 py-2;
+}
+
+.prose td {
+  @apply border border-gray-400 px-4 py-2;
+}
+
+.prose tr:nth-child(even) {
+  @apply bg-gray-100;
 }

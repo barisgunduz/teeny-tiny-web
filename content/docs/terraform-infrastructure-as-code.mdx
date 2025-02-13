@@ -1,0 +1,162 @@
+---
+title: "Terraform for Infrastructure as Code (IaC)"
+category: "DevOps & Cloud"
+---
+
+## 📌 Introduction to Terraform
+
+Terraform is an **Infrastructure as Code (IaC)** tool that allows you to **define, provision, and manage cloud infrastructure** using a declarative configuration language.
+
+---
+
+## 🔹 1. Installing Terraform
+
+### **1.1 Install Terraform on Linux/Mac**
+```bash
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt update && sudo apt install terraform
+```
+
+### **1.2 Verify Installation**
+```bash
+terraform -v
+```
+
+✅ **Terraform is now installed.**  
+
+---
+
+## 🔹 2. Writing Your First Terraform Configuration
+
+Create a new directory for your Terraform project:
+```bash
+mkdir terraform-project && cd terraform-project
+```
+
+Create a Terraform configuration file:
+
+📌 **`main.tf`**
+```hcl
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "my_instance" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "TerraformInstance"
+  }
+}
+```
+
+✅ **This configuration defines an AWS EC2 instance.**  
+
+---
+
+## 🔹 3. Initializing Terraform
+
+Run the following command to initialize Terraform:
+
+```bash
+terraform init
+```
+
+✅ **This sets up the required Terraform providers.**  
+
+---
+
+## 🔹 4. Creating Infrastructure
+
+### **4.1 Plan the Deployment**
+```bash
+terraform plan
+```
+
+✅ **Shows the resources that Terraform will create.**  
+
+### **4.2 Apply the Changes**
+```bash
+terraform apply
+```
+
+✅ **Creates the infrastructure on AWS.**  
+
+---
+
+## 🔹 5. Destroying Infrastructure
+
+To delete the created infrastructure:
+
+```bash
+terraform destroy
+```
+
+✅ **Cleans up all deployed resources.**  
+
+---
+
+## 🔹 6. Using Terraform Variables
+
+Define variables in **`variables.tf`**:
+
+```hcl
+variable "instance_type" {
+  default = "t2.micro"
+}
+
+variable "region" {
+  default = "us-east-1"
+}
+```
+
+Modify **`main.tf`** to use variables:
+
+```hcl
+provider "aws" {
+  region = var.region
+}
+
+resource "aws_instance" "my_instance" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "TerraformInstance"
+  }
+}
+```
+
+✅ **Now, you can change configurations easily.**  
+
+---
+
+## 🔹 7. Managing State with Terraform
+
+Terraform maintains state in a **terraform.tfstate** file.
+
+📌 **Best Practices for Managing State**:
+- Store Terraform state in **S3** for shared access.
+- Use **Terraform backend configuration** to manage state.
+
+```hcl
+terraform {
+  backend "s3" {
+    bucket = "my-terraform-state"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+```
+
+✅ **This stores the state file remotely in AWS S3.**  
+
+---
+
+## 📌 Conclusion
+
+Terraform simplifies **infrastructure management** by enabling **declarative configuration, automated provisioning, and easy updates**. 🚀  
+
+---

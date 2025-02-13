@@ -1,0 +1,166 @@
+---
+title: "Big O Notation & Complexity"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Big O Notation
+
+**Big O Notation** is used to describe the efficiency of an algorithm in terms of time (speed) and space (memory usage). It helps compare different algorithms by focusing on their **growth rate** as input size increases.
+
+### 🔹 1. Common Big O Complexities
+
+| Notation | Complexity Name     | Example            |
+|----------|--------------------|--------------------|
+| O(1)     | Constant Time      | Accessing an array element |
+| O(log n) | Logarithmic Time   | Binary search      |
+| O(n)     | Linear Time        | Loop through an array |
+| O(n log n) | Linearithmic Time | Merge sort        |
+| O(n²)    | Quadratic Time     | Nested loops      |
+| O(2ⁿ)    | Exponential Time   | Fibonacci recursion |
+| O(n!)    | Factorial Time     | Traveling Salesman Problem |
+
+---
+
+### 🔹 2. O(1) - Constant Time Complexity
+
+The time complexity remains constant regardless of input size.
+
+```javascript
+function getFirstElement(arr) {
+  return arr[0]; // Always takes the same time
+}
+```
+
+✅ **Best Case Scenario:** When looking for an element at a known index.  
+❌ **Worst Case Scenario:** Does not apply as execution time does not change.
+
+---
+
+### 🔹 3. O(log n) - Logarithmic Time Complexity
+
+Reduces the problem size by half on each iteration. Common in **binary search**.
+
+```javascript
+function binarySearch(arr, target) {
+  let left = 0, right = arr.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    target < arr[mid] ? right = mid - 1 : left = mid + 1;
+  }
+  return -1;
+}
+```
+
+✅ **Efficient for large datasets**.  
+❌ **Requires sorted input**.
+
+---
+
+### 🔹 4. O(n) - Linear Time Complexity
+
+Executes in proportion to input size. Common in **loops**.
+
+```javascript
+function findElement(arr, target) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) return i;
+  }
+  return -1;
+}
+```
+
+✅ **Good for small data sets**.  
+❌ **Slow for large inputs**.
+
+---
+
+### 🔹 5. O(n log n) - Linearithmic Time Complexity
+
+Used in **efficient sorting algorithms** like **Merge Sort & Quick Sort**.
+
+```javascript
+function mergeSort(arr) {
+  if (arr.length <= 1) return arr;
+  let mid = Math.floor(arr.length / 2);
+  let left = mergeSort(arr.slice(0, mid));
+  let right = mergeSort(arr.slice(mid));
+  return merge(left, right);
+}
+
+function merge(left, right) {
+  let result = [];
+  while (left.length && right.length) {
+    result.push(left[0] < right[0] ? left.shift() : right.shift());
+  }
+  return [...result, ...left, ...right];
+}
+```
+
+✅ **Faster than O(n²) sorting**.  
+❌ **Requires extra memory**.
+
+---
+
+### 🔹 6. O(n²) - Quadratic Time Complexity
+
+Appears in **nested loops**, e.g., **Bubble Sort**.
+
+```javascript
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1; j++) {
+      if (arr[j] > arr[j + 1]) [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+    }
+  }
+  return arr;
+}
+```
+
+✅ **Simple to implement**.  
+❌ **Terrible for large datasets**.
+
+---
+
+### 🔹 7. O(2ⁿ) - Exponential Time Complexity
+
+Common in **recursive problems** like Fibonacci.
+
+```javascript
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+```
+
+✅ **Solves complex recursive problems**.  
+❌ **Extremely slow for large `n`**.
+
+---
+
+### 🔹 8. O(n!) - Factorial Time Complexity
+
+Used in **brute-force algorithms** like **Traveling Salesman Problem**.
+
+```javascript
+function permutations(arr) {
+  if (arr.length === 1) return [arr];
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let rest = [...arr.slice(0, i), ...arr.slice(i + 1)];
+    for (let perm of permutations(rest)) result.push([arr[i], ...perm]);
+  }
+  return result;
+}
+```
+
+✅ **Finds all possible solutions**.  
+❌ **Not feasible for `n > 10`**.
+
+---
+
+## 📌 Conclusion
+
+Understanding **Big O notation** helps in writing **optimized algorithms** and improves **coding efficiency**. Use efficient approaches whenever possible! 🚀
+
+---

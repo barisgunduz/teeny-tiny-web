@@ -1,0 +1,187 @@
+---
+title: "TypeScript for Beginners"
+category: "Programming & Best Practices"
+---
+
+## 📌 Introduction to TypeScript
+
+TypeScript is a **superset of JavaScript** that adds **static typing** and other modern features to make JavaScript development more robust and maintainable.
+
+### 🔹 1. Installing TypeScript
+
+You can install TypeScript globally using npm:
+
+```bash
+npm install -g typescript
+```
+
+Check the installed version:
+
+```bash
+tsc --version
+```
+
+To initialize a TypeScript project:
+
+```bash
+tsc --init
+```
+
+### 🔹 2. Basic Types in TypeScript
+
+```typescript
+let username: string = "Alice";
+let age: number = 25;
+let isAdmin: boolean = true;
+```
+
+**Arrays & Tuples:**
+
+```typescript
+let names: string[] = ["Alice", "Bob"];
+let user: [string, number] = ["Alice", 25]; // Tuple
+```
+
+**Enums:**
+
+```typescript
+enum Role {
+  Admin,
+  User,
+  Guest,
+}
+
+let myRole: Role = Role.Admin;
+```
+
+### 🔹 3. Functions & Type Annotations
+
+```typescript
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet("Alice"));
+```
+
+**Optional & Default Parameters:**
+
+```typescript
+function greetUser(name: string, age?: number): string {
+  return age ? `Hello, ${name}. You are ${age} years old.` : `Hello, ${name}.`;
+}
+```
+
+### 🔹 4. Interfaces & Object Types
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+  isAdmin?: boolean; // Optional property
+}
+
+const user: User = { name: "Alice", age: 25 };
+```
+
+### 🔹 5. Classes & Inheritance
+
+```typescript
+class Person {
+  constructor(public name: string, public age: number) {}
+
+  greet(): void {
+    console.log(`Hello, my name is ${this.name}.`);
+  }
+}
+
+class Student extends Person {
+  constructor(name: string, age: number, public grade: number) {
+    super(name, age);
+  }
+}
+
+const student = new Student("Alice", 20, 12);
+student.greet();
+```
+
+### 🔹 6. Generics
+
+```typescript
+function identity<T>(arg: T): T {
+  return arg;
+}
+
+console.log(identity<string>("Hello"));
+console.log(identity<number>(123));
+```
+
+### 🔹 7. Type Assertions
+
+```typescript
+let value: any = "Hello";
+let length: number = (value as string).length;
+```
+
+### 🔹 8. Utility Types
+
+```typescript
+type User = {
+  id: number;
+  name: string;
+  email?: string;
+};
+
+const user: Partial<User> = { name: "Alice" }; // Partial makes properties optional
+
+const readonlyUser: Readonly<User> = { id: 1, name: "Alice" };
+// readonlyUser.id = 2; // ❌ Error: Cannot assign to 'id' because it is a read-only property.
+```
+
+### 🔹 9. Working with Modules
+
+📌 `math.ts`:
+```typescript
+export function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+📌 `main.ts`:
+```typescript
+import { add } from "./math";
+
+console.log(add(2, 3));
+```
+
+### 🔹 10. TypeScript Configuration (`tsconfig.json`)
+
+Modify the `tsconfig.json` file:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true
+  }
+}
+```
+
+Compile TypeScript files:
+
+```bash
+tsc
+```
+
+Run compiled JavaScript:
+
+```bash
+node dist/main.js
+```
+
+## 📌 Conclusion
+
+TypeScript provides **static typing, interfaces, generics, and modern JavaScript features**, making code **safer, scalable, and maintainable**.
+
+---
