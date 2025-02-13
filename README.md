@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Teeny Tiny Web
 
-## Getting Started
+## 🚀 About the Project
+Teeny Tiny Web is a collection of small, useful web development projects and resources aimed at helping developers get started quickly. The project includes various **example applications, documentation guides, roadmaps, and freebies**, making it an ideal starting point for developers looking to learn and build efficiently.
 
-First, run the development server:
+## 📌 What's Inside?
+- **Projects:** Real-world mini projects that demonstrate essential web development concepts.
+- **Docs:** Concise guides and tutorials covering development best practices.
+- **Roadmaps:** Step-by-step learning paths for various developer roles.
+- **Freebies:** A collection of downloadable resources, such as PDFs and templates.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🛠️ Technologies Used
+This project is built using:
+- **Next.js** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **React.js**
+- **Markdown & MDX Support**
+- **LocalStorage for persistent progress tracking**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📚 What We Learned
+While developing this project, we explored:
+- Implementing **MDX support** for interactive documentation.
+- Managing state across pages and **persisting user progress** using LocalStorage.
+- Structuring a scalable Next.js project with **modular JSON-based data storage**.
+- Optimizing for performance and responsiveness using **Tailwind CSS**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🤝 Contributing
+We welcome contributions! Here's how you can help:
+1. **Fork** the repository.
+2. Create a **new branch** (`feature/your-feature` or `fix/your-bug`).
+3. Commit your changes with a clear message.
+4. **Open a pull request** explaining your updates.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+If you're unsure where to start, check the **Issues** section for ideas!
 
-## Learn More
+## 📜 License
+This project is licensed under the **MIT License** – feel free to use and modify it as needed!
 
-To learn more about Next.js, take a look at the following resources:
+## 🔗 Useful Links
+- **Live Demo:** [Teeny Tiny Web](https://www.teenytinyweb.com)
+- **GitHub Repository:** [Teeny Tiny Web Repo](https://github.com/Gunduz-Medya/teeny-tiny-web)
+- **Project-Based Repository:** [Project Collection](https://github.com/barisgunduz/teeny-tiny-web-projects)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🚀 Happy coding! Feel free to contribute and explore! 😊
