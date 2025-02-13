@@ -1,0 +1,294 @@
+---
+title: "SOLID Principles in JavaScript"
+category: "Programming & Best Practices"
+---
+
+## 📌 Introduction to SOLID Principles
+
+The **SOLID** principles are five design principles that improve the **maintainability, scalability, and readability** of software.
+
+---
+
+## 🔹 1. **S**ingle Responsibility Principle (SRP)
+
+**"A class should have only one reason to change."**  
+Each module or function should **only do one thing**.
+
+### **❌ Bad Example (Violating SRP)**
+```javascript
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+
+  saveToDatabase() {
+    console.log("Saving user to database...");
+  }
+
+  sendEmail() {
+    console.log(`Sending email to ${this.email}...`);
+  }
+}
+```
+
+### ✅ **Good Example (Following SRP)**
+```javascript
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+  }
+}
+
+class UserRepository {
+  save(user) {
+    console.log("Saving user to database...");
+  }
+}
+
+class EmailService {
+  sendEmail(user) {
+    console.log(`Sending email to ${user.email}...`);
+  }
+}
+```
+
+✅ **Now, each class has a single responsibility!**  
+
+---
+
+## 🔹 2. **O**pen/Closed Principle (OCP)
+
+**"Software entities should be open for extension, but closed for modification."**  
+Instead of modifying existing code, extend it with new functionality.
+
+### **❌ Bad Example (Violating OCP)**
+```javascript
+class PaymentProcessor {
+  processPayment(type, amount) {
+    if (type === "credit") {
+      console.log(`Processing credit card payment of $${amount}`);
+    } else if (type === "paypal") {
+      console.log(`Processing PayPal payment of $${amount}`);
+    }
+  }
+}
+```
+
+### ✅ **Good Example (Following OCP)**
+```javascript
+class Payment {
+  process(amount) {
+    throw new Error("Method not implemented");
+  }
+}
+
+class CreditCardPayment extends Payment {
+  process(amount) {
+    console.log(`Processing credit card payment of $${amount}`);
+  }
+}
+
+class PayPalPayment extends Payment {
+  process(amount) {
+    console.log(`Processing PayPal payment of $${amount}`);
+  }
+}
+
+function processPayment(paymentMethod, amount) {
+  paymentMethod.process(amount);
+}
+
+processPayment(new CreditCardPayment(), 100);
+processPayment(new PayPalPayment(), 200);
+```
+
+✅ **Now, new payment methods can be added without modifying existing code!**  
+
+---
+
+## 🔹 3. **L**iskov Substitution Principle (LSP)
+
+**"Subtypes must be substitutable for their base types."**  
+A subclass should be able to replace its superclass without altering functionality.
+
+### **❌ Bad Example (Violating LSP)**
+```javascript
+class Bird {
+  fly() {
+    console.log("Flying...");
+  }
+}
+
+class Penguin extends Bird {
+  fly() {
+    throw new Error("Penguins cannot fly!");
+  }
+}
+```
+
+### ✅ **Good Example (Following LSP)**
+```javascript
+class Bird {
+  move() {
+    console.log("Moving...");
+  }
+}
+
+class FlyingBird extends Bird {
+  fly() {
+    console.log("Flying...");
+  }
+}
+
+class Penguin extends Bird {
+  swim() {
+    console.log("Swimming...");
+  }
+}
+
+const eagle = new FlyingBird();
+eagle.fly();
+
+const penguin = new Penguin();
+penguin.swim();
+```
+
+✅ **Now, `Penguin` doesn't break the parent class expectations.**  
+
+---
+
+## 🔹 4. **I**nterface Segregation Principle (ISP)
+
+**"Clients should not be forced to depend on interfaces they do not use."**  
+Avoid bloated interfaces by **splitting them into smaller ones**.
+
+### **❌ Bad Example (Violating ISP)**
+```javascript
+class Worker {
+  work() {
+    console.log("Working...");
+  }
+
+  eat() {
+    console.log("Eating...");
+  }
+}
+
+class Robot extends Worker {
+  eat() {
+    throw new Error("Robots do not eat!");
+  }
+}
+```
+
+### ✅ **Good Example (Following ISP)**
+```javascript
+class Workable {
+  work() {
+    console.log("Working...");
+  }
+}
+
+class Eatable {
+  eat() {
+    console.log("Eating...");
+  }
+}
+
+class Human extends Workable {
+  constructor() {
+    super();
+    this.eatable = new Eatable();
+  }
+
+  eat() {
+    this.eatable.eat();
+  }
+}
+
+class Robot extends Workable {}
+
+const human = new Human();
+human.work();
+human.eat();
+
+const robot = new Robot();
+robot.work();
+```
+
+✅ **Now, `Robot` is not forced to implement `eat()`.**  
+
+---
+
+## 🔹 5. **D**ependency Inversion Principle (DIP)
+
+**"Depend on abstractions, not concretions."**  
+High-level modules should not depend on low-level modules.
+
+### **❌ Bad Example (Violating DIP)**
+```javascript
+class MySQLDatabase {
+  connect() {
+    console.log("Connecting to MySQL...");
+  }
+}
+
+class Application {
+  constructor() {
+    this.database = new MySQLDatabase();
+  }
+
+  start() {
+    this.database.connect();
+  }
+}
+```
+
+### ✅ **Good Example (Following DIP)**
+```javascript
+class Database {
+  connect() {
+    throw new Error("Method not implemented");
+  }
+}
+
+class MySQLDatabase extends Database {
+  connect() {
+    console.log("Connecting to MySQL...");
+  }
+}
+
+class PostgreSQLDatabase extends Database {
+  connect() {
+    console.log("Connecting to PostgreSQL...");
+  }
+}
+
+class Application {
+  constructor(database) {
+    this.database = database;
+  }
+
+  start() {
+    this.database.connect();
+  }
+}
+
+const app = new Application(new MySQLDatabase());
+app.start();
+
+const app2 = new Application(new PostgreSQLDatabase());
+app2.start();
+```
+
+✅ **Now, the application is decoupled from a specific database!**  
+
+---
+
+## 📌 Conclusion
+
+**SOLID Principles** improve **scalability, maintainability, and reusability** in JavaScript applications. Following these principles leads to **better architecture and cleaner code**. 🚀  
+
+---

@@ -1,0 +1,125 @@
+---
+title: "Working with Firebase for Scalable Backend Solutions"
+category: "Backend Development"
+---
+
+## 📌 Introduction to Firebase
+
+Firebase is a **backend-as-a-service (BaaS)** platform that provides scalable cloud-based solutions for web and mobile applications.  
+It offers **real-time databases, authentication, hosting, cloud functions, and more**.
+
+✅ **Goal:** Build and scale backend services without managing infrastructure.
+
+---
+
+## 🔹 1. Setting Up Firebase
+
+### **1.1 Install Firebase CLI**
+```bash
+npm install -g firebase-tools
+```
+
+### **1.2 Login to Firebase**
+```bash
+firebase login
+```
+
+### **1.3 Initialize a Firebase Project**
+```bash
+firebase init
+```
+
+✅ **Select services like Firestore, Authentication, and Hosting.**  
+
+---
+
+## 🔹 2. Firestore Database (NoSQL)
+
+Firestore is a **real-time NoSQL database** for scalable applications.
+
+### **2.1 Adding Data to Firestore**
+```javascript
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+const db = getFirestore();
+setDoc(doc(db, "users", "user1"), { name: "John", age: 30 });
+```
+
+### **2.2 Fetching Data**
+```javascript
+import { getDoc } from "firebase/firestore";
+
+const userDoc = await getDoc(doc(db, "users", "user1"));
+console.log(userDoc.data());
+```
+
+✅ **Firestore automatically syncs data in real-time.**  
+
+---
+
+## 🔹 3. Firebase Authentication
+
+Firebase provides **secure authentication** with multiple providers.
+
+### **3.1 Email & Password Authentication**
+```javascript
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, "user@example.com", "password123")
+  .then(user => console.log(user))
+  .catch(error => console.error(error));
+```
+
+### **3.2 Google Authentication**
+```javascript
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
+const provider = new GoogleAuthProvider();
+signInWithPopup(auth, provider)
+  .then(user => console.log(user))
+  .catch(error => console.error(error));
+```
+
+✅ **Supports Google, Facebook, GitHub, and more.**  
+
+---
+
+## 🔹 4. Cloud Functions for Serverless Backend
+
+Cloud Functions allow you to run **server-side logic without managing servers**.
+
+### **4.1 Deploying a Cloud Function**
+```javascript
+const functions = require("firebase-functions");
+
+exports.helloWorld = functions.https.onRequest((req, res) => {
+  res.send("Hello from Firebase!");
+});
+```
+
+✅ **Runs on demand, scalable, and event-driven.**  
+
+---
+
+## 🔹 5. Firebase Hosting for Web Apps
+
+Deploy web apps with Firebase Hosting.
+
+### **5.1 Deploy a Web App**
+```bash
+firebase deploy
+```
+
+✅ **Serves content over a global CDN with SSL support.**  
+
+---
+
+## 📌 Conclusion
+
+- **Firestore** provides a real-time NoSQL database.  
+- **Authentication** simplifies user management.  
+- **Cloud Functions** enable serverless backend logic.  
+- **Firebase Hosting** deploys scalable web applications. 🚀  
+
+---

@@ -1,0 +1,132 @@
+---
+title: "Testing in JavaScript"
+category: "Programming & Best Practices"
+---
+
+## 📌 Introduction to Testing in JavaScript
+
+Testing ensures that JavaScript applications **work correctly** and **prevent regressions**.  
+This guide covers **unit testing, integration testing, and end-to-end (E2E) testing**.
+
+---
+
+## 🔹 1. Types of JavaScript Testing
+
+| Type | Description | Example Tools |
+|------|------------|--------------|
+| **Unit Testing** | Tests individual functions or components. | Jest, Mocha |
+| **Integration Testing** | Tests how different modules interact. | Jest, Cypress |
+| **End-to-End (E2E) Testing** | Simulates real user interactions. | Cypress, Playwright |
+
+✅ **Choosing the right type depends on your application's needs.**  
+
+---
+
+## 🔹 2. Unit Testing with Jest
+
+### **2.1 Install Jest**
+```bash
+npm install --save-dev jest
+```
+
+### **2.2 Writing a Simple Test**
+
+📌 **`math.js` (Function to Test)**
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = add;
+```
+
+📌 **`math.test.js` (Jest Test)**
+```javascript
+const add = require("./math");
+
+test("adds 2 + 3 to equal 5", () => {
+  expect(add(2, 3)).toBe(5);
+});
+```
+
+### **2.3 Running Tests**
+```bash
+npx jest
+```
+
+✅ **Jest automatically finds and runs tests in files ending with `.test.js`.**  
+
+---
+
+## 🔹 3. Integration Testing with Jest & Supertest
+
+### **3.1 Install Supertest for API Testing**
+```bash
+npm install --save-dev supertest express
+```
+
+### **3.2 Writing an Express API Test**
+
+📌 **`server.js` (Simple API)**
+```javascript
+const express = require("express");
+const app = express();
+
+app.get("/hello", (req, res) => res.json({ message: "Hello, World!" }));
+
+module.exports = app;
+```
+
+📌 **`server.test.js` (Integration Test)**
+```javascript
+const request = require("supertest");
+const app = require("./server");
+
+test("GET /hello should return message", async () => {
+  const res = await request(app).get("/hello");
+  expect(res.statusCode).toBe(200);
+  expect(res.body.message).toBe("Hello, World!");
+});
+```
+
+✅ **Integration tests check API responses without running the full app.**  
+
+---
+
+## 🔹 4. End-to-End (E2E) Testing with Cypress
+
+### **4.1 Install Cypress**
+```bash
+npm install --save-dev cypress
+```
+
+### **4.2 Writing an E2E Test**
+
+📌 **`cypress/integration/app.spec.js`**
+```javascript
+describe("My App", () => {
+  it("Loads the homepage", () => {
+    cy.visit("http://localhost:3000");
+    cy.contains("Welcome");
+  });
+});
+```
+
+### **4.3 Running Cypress**
+```bash
+npx cypress open
+```
+
+✅ **Cypress launches a test browser to simulate user interactions.**  
+
+---
+
+## 📌 Conclusion
+
+- **Unit tests** ensure functions work correctly.  
+- **Integration tests** validate API responses.  
+- **E2E tests** check user interactions in real browsers.  
+
+🚀 **Testing improves code quality and prevents regressions!**  
+
+---

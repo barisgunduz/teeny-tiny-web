@@ -1,0 +1,17 @@
+[
+	{
+		"slug": "frontend-developer",
+		"title": "Frontend Developer Roadmap",
+		"description": "A step-by-step guide to becoming a frontend developer."
+	},
+	{
+		"slug": "backend-developer",
+		"title": "Backend Developer Roadmap",
+		"description": "A guide for aspiring backend developers."
+	},
+	{
+		"slug": "devops-engineer",
+		"title": "DevOps Engineer Roadmap",
+		"description": "Learn DevOps concepts and best practices."
+	}
+]

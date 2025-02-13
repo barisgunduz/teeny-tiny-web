@@ -1,0 +1,189 @@
+---
+title: "Heap Data Structure & Priority Queues"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Heap Data Structure
+
+A **Heap** is a **complete binary tree** used for **efficiently retrieving the minimum or maximum element**.  
+The two main types are:
+
+| Heap Type | Description |
+|-----------|-------------|
+| **Min-Heap** | The smallest element is at the root. |
+| **Max-Heap** | The largest element is at the root. |
+
+✅ **Used in priority queues, scheduling, and pathfinding algorithms.**  
+
+---
+
+## 🔹 1. Implementing a Min-Heap in JavaScript
+
+### **1.1 Min-Heap Class Implementation**
+```javascript
+class MinHeap {
+  constructor() {
+    this.heap = [];
+  }
+
+  getParentIndex(i) { return Math.floor((i - 1) / 2); }
+  getLeftChildIndex(i) { return 2 * i + 1; }
+  getRightChildIndex(i) { return 2 * i + 2; }
+
+  swap(i, j) {
+    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+  }
+
+  insert(value) {
+    this.heap.push(value);
+    this.heapifyUp();
+  }
+
+  heapifyUp() {
+    let index = this.heap.length - 1;
+    while (index > 0 && this.heap[index] < this.heap[this.getParentIndex(index)]) {
+      this.swap(index, this.getParentIndex(index));
+      index = this.getParentIndex(index);
+    }
+  }
+
+  extractMin() {
+    if (this.heap.length === 0) return null;
+    if (this.heap.length === 1) return this.heap.pop();
+
+    const min = this.heap[0];
+    this.heap[0] = this.heap.pop();
+    this.heapifyDown();
+    return min;
+  }
+
+  heapifyDown() {
+    let index = 0;
+    while (this.getLeftChildIndex(index) < this.heap.length) {
+      let smallerChildIndex = this.getLeftChildIndex(index);
+      if (this.getRightChildIndex(index) < this.heap.length && 
+          this.heap[this.getRightChildIndex(index)] < this.heap[smallerChildIndex]) {
+        smallerChildIndex = this.getRightChildIndex(index);
+      }
+      if (this.heap[index] < this.heap[smallerChildIndex]) break;
+      this.swap(index, smallerChildIndex);
+      index = smallerChildIndex;
+    }
+  }
+}
+```
+
+✅ **Min-Heap ensures efficient retrieval of the smallest element.**  
+
+---
+
+## 🔹 2. Using the Min-Heap
+
+### **Example Usage**
+```javascript
+const minHeap = new MinHeap();
+
+minHeap.insert(5);
+minHeap.insert(2);
+minHeap.insert(8);
+minHeap.insert(1);
+
+console.log(minHeap.extractMin()); // 1
+console.log(minHeap.extractMin()); // 2
+console.log(minHeap.extractMin()); // 5
+```
+
+✅ **`extractMin()` runs in `O(log n)` time complexity.**  
+
+---
+
+## 🔹 3. Implementing a Priority Queue using a Heap
+
+A **Priority Queue** assigns priority to elements and retrieves the highest-priority element efficiently.
+
+### **3.1 Priority Queue Class**
+```javascript
+class PriorityQueue {
+  constructor() {
+    this.heap = [];
+  }
+
+  enqueue(value, priority) {
+    this.heap.push({ value, priority });
+    this.heapifyUp();
+  }
+
+  heapifyUp() {
+    let index = this.heap.length - 1;
+    while (index > 0 && this.heap[index].priority < this.heap[this.getParentIndex(index)].priority) {
+      this.swap(index, this.getParentIndex(index));
+      index = this.getParentIndex(index);
+    }
+  }
+
+  dequeue() {
+    if (this.heap.length === 0) return null;
+    if (this.heap.length === 1) return this.heap.pop().value;
+
+    const min = this.heap[0].value;
+    this.heap[0] = this.heap.pop();
+    this.heapifyDown();
+    return min;
+  }
+
+  heapifyDown() {
+    let index = 0;
+    while (this.getLeftChildIndex(index) < this.heap.length) {
+      let smallerChildIndex = this.getLeftChildIndex(index);
+      if (this.getRightChildIndex(index) < this.heap.length && 
+          this.heap[this.getRightChildIndex(index)].priority < this.heap[smallerChildIndex].priority) {
+        smallerChildIndex = this.getRightChildIndex(index);
+      }
+      if (this.heap[index].priority < this.heap[smallerChildIndex].priority) break;
+      this.swap(index, smallerChildIndex);
+      index = smallerChildIndex;
+    }
+  }
+
+  getParentIndex(i) { return Math.floor((i - 1) / 2); }
+  getLeftChildIndex(i) { return 2 * i + 1; }
+  getRightChildIndex(i) { return 2 * i + 2; }
+
+  swap(i, j) {
+    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
+  }
+}
+```
+
+### **3.2 Using the Priority Queue**
+```javascript
+const pq = new PriorityQueue();
+
+pq.enqueue("Task 1", 2);
+pq.enqueue("Task 2", 1);
+pq.enqueue("Task 3", 3);
+
+console.log(pq.dequeue()); // "Task 2" (Highest Priority)
+console.log(pq.dequeue()); // "Task 1"
+```
+
+✅ **Priority Queue efficiently manages task execution.**  
+
+---
+
+## 🔹 4. Applications of Heaps & Priority Queues
+
+| Application | Use Case |
+|------------|----------|
+| **Dijkstra’s Algorithm** | Shortest path in graphs |
+| **Task Scheduling** | Operating systems, CPU scheduling |
+| **Heap Sort** | Sorting large datasets |
+| **Data Streaming** | Finding top `k` elements in real-time |
+
+---
+
+## 📌 Conclusion
+
+Heaps and Priority Queues are **powerful data structures** used in **scheduling, search algorithms, and optimization problems**. 🚀  
+
+---

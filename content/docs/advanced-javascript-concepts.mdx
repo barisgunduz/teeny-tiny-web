@@ -1,0 +1,135 @@
+---
+title: "Advanced JavaScript Concepts"
+category: "Programming & Best Practices"
+---
+
+## 📌 Introduction to Advanced JavaScript Concepts
+
+JavaScript has many powerful features that improve **performance, readability, and scalability**. This guide covers **closures, prototypes, async/await, event loop, and memory management**.
+
+---
+
+## 🔹 1. Closures
+
+A **closure** allows a function to remember its scope even when executed outside its lexical scope.
+
+### **Example: Closure for Private Variables**
+```javascript
+function counter() {
+  let count = 0;
+  return {
+    increment: () => count++,
+    getCount: () => count,
+  };
+}
+
+const myCounter = counter();
+myCounter.increment();
+console.log(myCounter.getCount()); // 1
+```
+
+✅ **Closures help in encapsulating data and maintaining state.**  
+
+---
+
+## 🔹 2. Prototypes & Prototypal Inheritance
+
+In JavaScript, objects inherit properties from **prototypes**.
+
+### **Example: Adding Methods to Prototypes**
+```javascript
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function () {
+  return `Hello, my name is ${this.name}`;
+};
+
+const person1 = new Person("Alice");
+console.log(person1.sayHello()); // "Hello, my name is Alice"
+```
+
+✅ **Prototypes reduce memory usage by sharing methods among objects.**  
+
+---
+
+## 🔹 3. Event Loop & Call Stack
+
+JavaScript uses an **event loop** to handle asynchronous operations.
+
+### **Example: Event Loop Behavior**
+```javascript
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+```
+
+✅ **Output:**  
+```
+Start
+End
+Promise
+Timeout
+```
+
+- **Synchronous code** runs first.
+- **Microtasks (Promises)** run before the event loop executes **macrotasks (setTimeout)**.
+
+---
+
+## 🔹 4. Async/Await & Promises
+
+Async/Await simplifies handling asynchronous code.
+
+### **Example: Fetching Data with Async/Await**
+```javascript
+async function fetchData() {
+  try {
+    let response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+fetchData();
+```
+
+✅ **Async/Await makes asynchronous code cleaner and more readable.**  
+
+---
+
+## 🔹 5. JavaScript Memory Management
+
+JavaScript uses **Garbage Collection (GC)** to manage memory automatically.
+
+### **Avoid Memory Leaks**
+
+- **Unintentional Global Variables:**
+```javascript
+function example() {
+  myVar = "I'm a global variable"; // ❌ Avoid this (no `var`, `let`, or `const`)
+}
+```
+
+- **Clearing Unused References:**
+```javascript
+let user = { name: "Alice" };
+user = null; // ✅ Helps garbage collector free memory
+```
+
+✅ **Understanding memory management improves performance in large applications.**  
+
+---
+
+## 📌 Conclusion
+
+These **advanced JavaScript concepts** help in writing **efficient, scalable, and optimized** applications. 🚀  
+
+---

@@ -1,0 +1,158 @@
+[
+	{
+		"slug": "angular-developer",
+		"title": "Angular Developer",
+		"description": "Master Angular and build scalable web applications.",
+		"steps": [
+			"Learn TypeScript basics",
+			"Understand Angular CLI and Module System",
+			"Work with Components, Directives, and Pipes",
+			"Routing with Angular Router",
+			"State Management with NgRx",
+			"Dependency Injection in Angular",
+			"Unit and E2E Testing with Jasmine & Karma",
+			"Performance optimization techniques",
+			"Deploying Angular applications"
+		]
+	},
+	{
+		"slug": "backend-developer",
+		"title": "Backend Developer",
+		"description": "Learn backend development concepts including databases, APIs, authentication, and server management.",
+		"steps": [
+			"Choose a backend programming language (Node.js, Python, Java, etc.)",
+			"Learn how servers and databases work",
+			"Understand RESTful API development principles",
+			"Explore GraphQL as an alternative to REST APIs",
+			"Implement authentication & authorization (JWT, OAuth)",
+			"Master database management (SQL, NoSQL, PostgreSQL, MongoDB)",
+			"Implement caching strategies (Redis, Memcached)",
+			"Learn about Docker & containerization",
+			"Understand cloud deployment strategies (AWS, DigitalOcean, Heroku)",
+			"Explore backend testing (Unit, Integration, API testing)"
+		]
+	},
+	{
+		"slug": "csharp-developer",
+		"title": "C# Developer",
+		"description": "Master C# and .NET development.",
+		"steps": [
+			"Learn C# basics (Syntax, OOP, LINQ)",
+			"Work with ASP.NET Core for web applications",
+			"Use Entity Framework for database interactions",
+			"Understand dependency injection in .NET",
+			"Build RESTful APIs with ASP.NET",
+			"Optimize performance in C# applications",
+			"Deploying .NET applications"
+		]
+	},
+	{
+		"slug": "devops-engineer",
+		"title": "DevOps Engineer",
+		"description": "Learn CI/CD, cloud computing, and infrastructure automation.",
+		"steps": [
+			"Master Linux and shell scripting",
+			"Learn CI/CD pipelines (Jenkins, GitHub Actions, GitLab CI)",
+			"Work with Docker and Kubernetes",
+			"Implement Infrastructure as Code (Terraform, Ansible)",
+			"Understand monitoring tools (Prometheus, Grafana)",
+			"Deploy and scale applications on cloud platforms",
+			"Implement security best practices",
+			"Optimize system and application performance"
+		]
+	},
+	{
+		"slug": "frontend-developer",
+		"title": "Frontend Developer",
+		"description": "Learn the skills to become a frontend developer, including HTML, CSS, JavaScript, and modern frameworks.",
+		"steps": [
+			"Learn HTML, CSS, and JavaScript basics",
+			"Master advanced CSS concepts (Flexbox, Grid, Animations)",
+			"Understand CSS Preprocessors (SASS, LESS)",
+			"Learn Responsive Design and Media Queries",
+			"Master JavaScript ES6+ features and best practices",
+			"Explore JavaScript frameworks (React, Vue, or Angular)",
+			"Understand version control with Git & GitHub",
+			"Work with package managers (npm, yarn)",
+			"Learn how to optimize frontend performance",
+			"Explore testing frameworks (Jest, Cypress)"
+		]
+	},
+	{
+		"slug": "java-developer",
+		"title": "Java Developer",
+		"description": "Learn Java and backend development with Spring Boot.",
+		"steps": [
+			"Understand Java fundamentals (OOP, Collections, Streams)",
+			"Learn Java 8+ features (Lambdas, Streams API)",
+			"Work with Spring Boot for backend APIs",
+			"Handle databases with Hibernate & JPA",
+			"Understand dependency injection",
+			"Build RESTful APIs with Spring MVC",
+			"Implement authentication with Spring Security",
+			"Deploying Java applications"
+		]
+	},
+	{
+		"slug": "nodejs-developer",
+		"title": "Node.js Developer",
+		"description": "Become proficient in Node.js and backend API development.",
+		"steps": [
+			"Learn JavaScript and asynchronous programming",
+			"Understand Node.js event loop",
+			"Work with Express.js for REST APIs",
+			"Use databases (MongoDB, PostgreSQL) with Node.js",
+			"Implement authentication (JWT, OAuth)",
+			"Optimize Node.js applications for performance",
+			"Build and consume GraphQL APIs",
+			"Deploying Node.js applications"
+		]
+	},
+	{
+		"slug": "react-developer",
+		"title": "React Developer",
+		"description": "Master React and build modern frontend applications with component-based architecture.",
+		"steps": [
+			"Learn JavaScript ES6+ basics",
+			"Understand JSX and Virtual DOM",
+			"Learn React Functional and Class Components",
+			"State Management with Hooks (useState, useEffect, useReducer)",
+			"Routing with React Router",
+			"Manage global state (Redux, Zustand, Context API)",
+			"Optimize performance with React.memo and useCallback",
+			"Testing with Jest and React Testing Library",
+			"Deploying React apps (Vercel, Netlify)"
+		]
+	},
+	{
+		"slug": "system-engineer",
+		"title": "System Engineer",
+		"description": "Understand system architecture, networking, and hardware management.",
+		"steps": [
+			"Learn Linux and Windows administration",
+			"Understand networking fundamentals (TCP/IP, DNS, HTTP)",
+			"Manage cloud services (AWS, Azure, GCP)",
+			"Automate infrastructure with Ansible and Terraform",
+			"Implement security best practices",
+			"Optimize system performance",
+			"Monitor logs and system metrics",
+			"Handle incident response and troubleshooting"
+		]
+	},
+	{
+		"slug": "vue-developer",
+		"title": "Vue Developer",
+		"description": "Learn Vue.js and build interactive applications efficiently.",
+		"steps": [
+			"Learn Vue.js Basics (Directives, Computed Properties)",
+			"Understand Vue Components and Props",
+			"Manage state with Vuex or Pinia",
+			"Handle Routing with Vue Router",
+			"Learn Vue Lifecycle Hooks",
+			"Understand Vue Composition API",
+			"Optimize Vue performance (Lazy loading, Vue Suspense)",
+			"Unit testing with Jest",
+			"Deploying Vue applications"
+		]
+	}
+]

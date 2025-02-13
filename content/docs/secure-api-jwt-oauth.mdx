@@ -1,0 +1,134 @@
+---
+title: "Secure API Development with JWT & OAuth"
+category: "Security & Best Practices"
+---
+
+## 📌 Introduction to Secure API Development
+
+Secure APIs use **authentication** and **authorization** mechanisms to prevent **unauthorized access**.  
+The most common methods are **JWT (JSON Web Tokens)** and **OAuth 2.0**.
+
+---
+
+## 🔹 1. JWT (JSON Web Token) Authentication
+
+**JWT** is a stateless token-based authentication system.
+
+### **1.1 JWT Structure**
+
+A JWT consists of three parts:
+```text
+HEADER.PAYLOAD.SIGNATURE
+```
+
+| Part | Purpose |
+|------|---------|
+| **Header** | Specifies token type (`JWT`) & algorithm (`HS256`). |
+| **Payload** | Contains user claims (e.g., `id`, `role`, `email`). |
+| **Signature** | Used to verify token integrity. |
+
+### **1.2 Generating a JWT in Node.js**
+
+Install `jsonwebtoken`:
+```bash
+npm install jsonwebtoken
+```
+
+Create and sign a token:
+```javascript
+const jwt = require("jsonwebtoken");
+
+const payload = { id: 1, username: "admin" };
+const secret = "your_secret_key";
+
+const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+
+console.log(token);
+```
+
+✅ **Tokens are self-contained and reduce the need for database lookups.**  
+
+---
+
+## 🔹 2. Securing API Endpoints with JWT
+
+### **2.1 Middleware for Token Verification**
+
+```javascript
+const jwt = require("jsonwebtoken");
+
+function authenticateToken(req, res, next) {
+  const token = req.headers["authorization"]?.split(" ")[1];
+  if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+  jwt.verify(token, "your_secret_key", (err, user) => {
+    if (err) return res.status(403).json({ message: "Forbidden" });
+    req.user = user;
+    next();
+  });
+}
+```
+
+✅ **Use this middleware to protect API routes.**  
+
+---
+
+## 🔹 3. OAuth 2.0 for API Authorization
+
+**OAuth 2.0** is a secure authorization framework that grants limited access to resources.
+
+### **3.1 OAuth Flow for API Access**
+
+1️⃣ **User logs in & authorizes the app**  
+2️⃣ **App receives an Authorization Code**  
+3️⃣ **App exchanges code for an Access Token**  
+4️⃣ **App uses token to access API**  
+
+### **3.2 Obtaining an Access Token**
+
+```bash
+POST https://auth.example.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET&
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://yourapp.com/callback
+```
+
+✅ **OAuth 2.0 prevents direct password sharing between applications.**  
+
+---
+
+## 🔹 4. Comparing JWT & OAuth
+
+| Feature | JWT | OAuth 2.0 |
+|---------|-----|----------|
+| **Purpose** | Authentication | Authorization |
+| **Storage** | Token-based | Requires Authorization Server |
+| **Use Case** | API Authentication | Third-party API Access |
+
+✅ **Use JWT for API authentication & OAuth for third-party access.**  
+
+---
+
+## 🔹 5. Best Practices for API Security
+
+| Best Practice | Description |
+|--------------|-------------|
+| **Use HTTPS** | Encrypts API communication. |
+| **Expire Tokens** | Use short-lived tokens with refresh tokens. |
+| **Validate Inputs** | Prevents SQL Injection & XSS. |
+| **Rate Limiting** | Mitigates API abuse & DDoS. |
+| **Use Scopes & Permissions** | Restricts API access. |
+
+---
+
+## 📌 Conclusion
+
+- **JWT** provides **stateless API authentication**.  
+- **OAuth 2.0** enables **secure third-party API access**.  
+- **Follow best security practices** for robust API protection. 🚀  
+
+---

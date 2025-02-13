@@ -1,0 +1,117 @@
+---
+title: "WebSockets & Real-Time Communication"
+category: "Web Development"
+---
+
+## 📌 Introduction to WebSockets & Real-Time Communication
+
+WebSockets enable **real-time, bidirectional communication** between clients and servers.  
+Unlike traditional HTTP requests, WebSockets **maintain an open connection** for continuous data exchange.
+
+✅ **Goal:** Improve responsiveness for chat apps, notifications, live updates, and real-time collaboration.
+
+---
+
+## 🔹 1. WebSockets vs HTTP
+
+| Feature | WebSockets | HTTP |
+|---------|-----------|------|
+| **Connection** | Persistent | Request-Response |
+| **Data Flow** | Bidirectional | Unidirectional |
+| **Performance** | Faster for real-time data | Slower due to request overhead |
+| **Use Case** | Chats, notifications, gaming | Standard web pages, REST APIs |
+
+✅ **WebSockets eliminate the need for repeated polling, reducing latency.**  
+
+---
+
+## 🔹 2. Setting Up a WebSocket Server with Node.js
+
+### **2.1 Install WebSocket Library**
+```bash
+npm install ws
+```
+
+### **2.2 Create a WebSocket Server**
+```javascript
+const WebSocket = require("ws");
+
+const server = new WebSocket.Server({ port: 8080 });
+
+server.on("connection", (ws) => {
+    console.log("Client connected");
+
+    ws.on("message", (message) => {
+        console.log(`Received: ${message}`);
+        ws.send(`Echo: ${message}`);
+    });
+
+    ws.on("close", () => console.log("Client disconnected"));
+});
+```
+
+✅ **Listens for client connections and sends real-time responses.**  
+
+---
+
+## 🔹 3. WebSocket Client Example (Frontend)
+
+### **3.1 Connecting to the WebSocket Server**
+```javascript
+const socket = new WebSocket("ws://localhost:8080");
+
+socket.onopen = () => {
+    console.log("Connected to WebSocket server");
+    socket.send("Hello Server!");
+};
+
+socket.onmessage = (event) => {
+    console.log(`Message from server: ${event.data}`);
+};
+
+socket.onclose = () => console.log("Disconnected from server");
+```
+
+✅ **The client sends and receives real-time messages.**  
+
+---
+
+## 🔹 4. WebSockets in a Real-Time Chat Application
+
+### **4.1 Broadcasting Messages to All Clients**
+```javascript
+server.on("connection", (ws) => {
+    ws.on("message", (message) => {
+        server.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(`User: ${message}`);
+            }
+        });
+    });
+});
+```
+
+✅ **Ensures messages are broadcasted to all connected users.**  
+
+---
+
+## 🔹 5. WebSocket Security Best Practices
+
+| Best Practice | Description |
+|--------------|-------------|
+| **Use Secure WebSockets (WSS)** | Encrypt communication over `wss://` |
+| **Implement Authentication** | Token-based authentication (e.g., JWT) |
+| **Limit Message Size** | Prevents denial-of-service (DoS) attacks |
+| **Rate Limiting** | Avoids excessive requests from clients |
+
+✅ **Enhance security by using authentication and encrypted connections.**  
+
+---
+
+## 📌 Conclusion
+
+- **WebSockets enable real-time, low-latency communication.**  
+- **They are ideal for live updates, gaming, and chat applications.**  
+- **Security measures are essential for safe WebSocket implementation.** 🚀  
+
+---

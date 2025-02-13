@@ -1,0 +1,112 @@
+---
+title: "Trie Data Structure"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Trie Data Structure
+
+A **Trie** (pronounced as "try") is a **tree-like data structure** used for **storing and searching strings efficiently**. It is commonly used in **autocomplete, spell checking, and IP routing**.
+
+---
+
+## 🔹 1. Structure of a Trie
+
+Each node in a Trie consists of:
+
+- **Children**: A set of pointers to the next characters.
+- **End Marker**: A flag to indicate the end of a word.
+
+✅ **Efficient for prefix-based searching.**  
+
+---
+
+## 🔹 2. Implementing a Trie in JavaScript
+
+### **2.1 Creating a Trie Node**
+```javascript
+class TrieNode {
+  constructor() {
+    this.children = {};
+    this.isEndOfWord = false;
+  }
+}
+```
+
+### **2.2 Implementing the Trie Class**
+```javascript
+class Trie {
+  constructor() {
+    this.root = new TrieNode();
+  }
+
+  insert(word) {
+    let node = this.root;
+    for (let char of word) {
+      if (!node.children[char]) {
+        node.children[char] = new TrieNode();
+      }
+      node = node.children[char];
+    }
+    node.isEndOfWord = true;
+  }
+
+  search(word) {
+    let node = this.root;
+    for (let char of word) {
+      if (!node.children[char]) return false;
+      node = node.children[char];
+    }
+    return node.isEndOfWord;
+  }
+
+  startsWith(prefix) {
+    let node = this.root;
+    for (let char of prefix) {
+      if (!node.children[char]) return false;
+      node = node.children[char];
+    }
+    return true;
+  }
+}
+```
+
+✅ **This Trie supports insertion, searching, and prefix lookup.**  
+
+---
+
+## 🔹 3. Using the Trie
+
+### **Example Usage**
+```javascript
+const trie = new Trie();
+
+trie.insert("apple");
+console.log(trie.search("apple"));   // true
+console.log(trie.search("app"));     // false
+console.log(trie.startsWith("app")); // true
+
+trie.insert("app");
+console.log(trie.search("app"));     // true
+```
+
+✅ **Tries efficiently store and retrieve words.**  
+
+---
+
+## 🔹 4. Trie Applications
+
+| Application | Use Case |
+|------------|----------|
+| **Autocomplete** | Search engines, messaging apps |
+| **Spell Checking** | Word processors |
+| **IP Routing** | Network routing tables |
+| **DNA Sequencing** | Bioinformatics |
+| **Data Compression** | Efficient storage of words |
+
+---
+
+## 📌 Conclusion
+
+Tries provide **fast string searching** and are widely used in **text processing and networking**. 🚀  
+
+---

@@ -1,0 +1,142 @@
+---
+title: "Error Handling & Logging Best Practices"
+category: "Programming & Best Practices"
+---
+
+## 📌 Introduction to Error Handling & Logging
+
+Proper **error handling** and **logging** improve the **stability, debugging, and security** of applications. This guide covers **best practices for handling errors and logging effectively**.
+
+---
+
+## 🔹 1. Types of Errors in JavaScript
+
+| Error Type       | Description |
+|-----------------|-------------|
+| **Syntax Error** | Occurs due to incorrect syntax. |
+| **Reference Error** | Accessing an undefined variable. |
+| **Type Error** | Using an incorrect data type. |
+| **Range Error** | Passing values outside the allowed range. |
+| **Logical Error** | Bugs causing incorrect program logic. |
+
+✅ **Understanding these helps prevent common mistakes.**  
+
+---
+
+## 🔹 2. Error Handling with try...catch
+
+### **Example: Handling Errors with try...catch**
+```javascript
+function divide(a, b) {
+  try {
+    if (b === 0) throw new Error("Cannot divide by zero");
+    return a / b;
+  } catch (error) {
+    console.error("Error:", error.message);
+    return null;
+  }
+}
+
+console.log(divide(10, 2)); // 5
+console.log(divide(10, 0)); // "Error: Cannot divide by zero"
+```
+
+✅ **Use `try...catch` for controlled error handling.**  
+
+---
+
+## 🔹 3. Handling Asynchronous Errors
+
+### **Example: Handling Errors in Promises**
+```javascript
+fetch("https://jsonplaceholder.typicode.com/posts/1")
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error("Fetch Error:", error));
+```
+
+### **Example: Handling Errors in Async/Await**
+```javascript
+async function fetchData() {
+  try {
+    let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    let data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error("Fetch Error:", error);
+  }
+}
+
+fetchData();
+```
+
+✅ **Always handle errors in asynchronous code using `.catch()` or `try...catch`.**  
+
+---
+
+## 🔹 4. Creating Custom Error Classes
+
+### **Example: Custom Error Class for API Errors**
+```javascript
+class APIError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.name = "APIError";
+    this.statusCode = statusCode;
+  }
+}
+
+function fetchData() {
+  throw new APIError("API request failed", 500);
+}
+
+try {
+  fetchData();
+} catch (error) {
+  console.error(`${error.name}: ${error.message} (Status: ${error.statusCode})`);
+}
+```
+
+✅ **Custom error classes provide better debugging context.**  
+
+---
+
+## 🔹 5. Logging Best Practices
+
+| Best Practice | Description |
+|--------------|-------------|
+| **Use Logging Levels** | Categorize logs (info, warn, error, debug). |
+| **Log to a File** | Store logs for debugging (`fs` module in Node.js). |
+| **Use a Logging Library** | Tools like **Winston** or **Pino** improve logging. |
+| **Avoid Logging Sensitive Data** | Never log passwords or API keys. |
+
+### **Example: Using Winston for Structured Logging**
+```javascript
+const winston = require("winston");
+
+const logger = winston.createLogger({
+  level: "info",
+  format: winston.format.json(),
+  transports: [
+    new winston.transports.File({ filename: "error.log", level: "error" }),
+    new winston.transports.Console(),
+  ],
+});
+
+logger.info("Application started");
+logger.error("Something went wrong");
+```
+
+✅ **Logging helps diagnose issues in production environments.**  
+
+---
+
+## 📌 Conclusion
+
+- **Handle errors gracefully** using `try...catch`.  
+- **Use structured logging** for debugging and monitoring.  
+- **Always handle asynchronous errors** properly.  
+
+🚀 **Implement these best practices for reliable applications!**  
+
+---

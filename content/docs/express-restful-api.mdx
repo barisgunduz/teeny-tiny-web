@@ -1,0 +1,168 @@
+---
+title: "Building RESTful APIs with Express.js"
+category: "Backend Development"
+---
+
+## 📌 Introduction to RESTful APIs with Express.js
+
+Express.js is a **lightweight web framework** for Node.js, widely used for building **RESTful APIs**.  
+A **REST API** follows **CRUD (Create, Read, Update, Delete)** operations over HTTP methods.
+
+✅ **Goal:** Build scalable, maintainable REST APIs using Express.js.
+
+---
+
+## 🔹 1. Setting Up an Express.js Project
+
+### **1.1 Initialize a Node.js Project**
+```bash
+mkdir express-api && cd express-api
+npm init -y
+```
+
+### **1.2 Install Express**
+```bash
+npm install express
+```
+
+### **1.3 Create `server.js`**
+```javascript
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => res.send("Welcome to the API!"));
+
+app.listen(3000, () => console.log("Server running on port 3000"));
+```
+
+✅ **Run the server with `node server.js`**  
+
+---
+
+## 🔹 2. Building RESTful API Endpoints
+
+### **2.1 Express Middleware for JSON Handling**
+```javascript
+app.use(express.json());
+```
+
+### **2.2 Define Basic CRUD Routes**
+```javascript
+const users = [];
+
+// Create User
+app.post("/users", (req, res) => {
+    const user = req.body;
+    users.push(user);
+    res.status(201).json(user);
+});
+
+// Get All Users
+app.get("/users", (req, res) => {
+    res.json(users);
+});
+
+// Get Single User
+app.get("/users/:id", (req, res) => {
+    const user = users.find(u => u.id === req.params.id);
+    user ? res.json(user) : res.status(404).send("User not found");
+});
+
+// Update User
+app.put("/users/:id", (req, res) => {
+    const index = users.findIndex(u => u.id === req.params.id);
+    if (index !== -1) {
+        users[index] = { ...users[index], ...req.body };
+        res.json(users[index]);
+    } else {
+        res.status(404).send("User not found");
+    }
+});
+
+// Delete User
+app.delete("/users/:id", (req, res) => {
+    const index = users.findIndex(u => u.id === req.params.id);
+    if (index !== -1) {
+        users.splice(index, 1);
+        res.status(204).send();
+    } else {
+        res.status(404).send("User not found");
+    }
+});
+```
+
+✅ **Implements full CRUD operations for user management.**  
+
+---
+
+## 🔹 3. Using Middleware for Error Handling & Logging
+
+### **3.1 Custom Error Handling Middleware**
+```javascript
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: "Internal Server Error" });
+});
+```
+
+### **3.2 Logging Requests with Morgan**
+```bash
+npm install morgan
+```
+
+```javascript
+const morgan = require("morgan");
+app.use(morgan("dev"));
+```
+
+✅ **Middleware improves debugging and logging.**  
+
+---
+
+## 🔹 4. Connecting to MongoDB with Mongoose
+
+### **4.1 Install Mongoose**
+```bash
+npm install mongoose
+```
+
+### **4.2 Connect to MongoDB**
+```javascript
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/api", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log("MongoDB Connected"));
+```
+
+✅ **Mongoose simplifies MongoDB operations.**  
+
+---
+
+## 🔹 5. Deploying the API
+
+### **5.1 Using Nodemon for Auto Restart**
+```bash
+npm install -g nodemon
+nodemon server.js
+```
+
+### **5.2 Deploying on Heroku**
+```bash
+heroku login
+heroku create express-api
+git push heroku main
+```
+
+✅ **Use cloud platforms like Heroku or Vercel for API hosting.**  
+
+---
+
+## 📌 Conclusion
+
+- **Express.js** provides a simple way to build REST APIs.  
+- **Middleware** enhances logging, error handling, and security.  
+- **Use MongoDB** for scalable data storage. 🚀  
+
+---

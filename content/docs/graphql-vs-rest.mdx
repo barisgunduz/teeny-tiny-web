@@ -1,0 +1,87 @@
+---
+title: "GraphQL vs REST Performance Comparison"
+category: "Web Development"
+---
+
+## 📌 Introduction to GraphQL & REST
+
+GraphQL and REST are both popular **API architectures**, but they differ in performance, flexibility, and efficiency.
+
+✅ **GraphQL** = Fetches exactly what’s requested (single endpoint).  
+✅ **REST** = Uses multiple endpoints with fixed responses.  
+
+---
+
+## 🔹 1. Key Differences Between GraphQL & REST
+
+| Feature | GraphQL | REST |
+|---------|---------|------|
+| **Request Format** | Single flexible query | Fixed endpoint responses |
+| **Overfetching** | ❌ No (only requested data) | ✅ Yes (extra unused data) |
+| **Underfetching** | ❌ No (single request) | ✅ Yes (may require multiple requests) |
+| **Performance** | ✅ Efficient for complex queries | ❌ Can be slower due to multiple requests |
+| **Caching** | ❌ More difficult (custom logic) | ✅ Built-in with HTTP caching |
+| **Versioning** | ✅ Not required (schema evolution) | ❌ Versioning needed (`/v1`, `/v2` etc.) |
+| **Real-time Support** | ✅ Built-in with Subscriptions | ❌ Requires WebSockets manually |
+
+✅ **GraphQL is best for flexibility; REST is better for caching and simple APIs.**  
+
+---
+
+## 🔹 2. Performance Comparison: GraphQL vs REST
+
+### **2.1 REST API Example**
+```bash
+GET /users/1
+GET /users/1/posts
+GET /users/1/followers
+```
+✅ **Multiple requests needed for related data.**  
+
+### **2.2 GraphQL Query Example**
+```graphql
+query {
+  user(id: 1) {
+    name
+    posts { title }
+    followers { name }
+  }
+}
+```
+✅ **Single request fetches all related data.**  
+
+---
+
+## 🔹 3. GraphQL Performance Considerations
+
+| Challenge | Solution |
+|-----------|----------|
+| **Complex Queries** | Use query depth limiting |
+| **Caching Issues** | Implement server-side caching |
+| **Performance Bottlenecks** | Use persisted queries |
+
+✅ **GraphQL needs optimizations for large-scale applications.**  
+
+---
+
+## 🔹 4. When to Use GraphQL vs REST?
+
+| Use Case | Best Choice |
+|----------|-------------|
+| **Flexible APIs** | ✅ GraphQL |
+| **Simple CRUD APIs** | ✅ REST |
+| **Mobile Apps** | ✅ GraphQL |
+| **Microservices** | ✅ REST |
+| **Real-Time Data** | ✅ GraphQL |
+
+✅ **GraphQL is ideal for modern web and mobile applications.**  
+
+---
+
+## 📌 Conclusion
+
+- **GraphQL** is more efficient for **complex queries** but requires extra caching.  
+- **REST** is **easier to cache** and better suited for **traditional APIs**.  
+- **Choose based on project needs** for optimal performance. 🚀  
+
+---

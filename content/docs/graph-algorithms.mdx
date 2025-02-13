@@ -1,0 +1,181 @@
+---
+title: "Graph Algorithms"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Graph Algorithms
+
+Graphs are data structures consisting of **nodes (vertices)** and **edges** connecting them.  
+Graph algorithms help solve problems in **networking, AI, and pathfinding**.
+
+---
+
+## 🔹 1. Graph Representation
+
+| Representation Type | Description |
+|--------------------|-------------|
+| **Adjacency List** | Stores a list of neighbors for each node. |
+| **Adjacency Matrix** | A 2D matrix where `1` represents an edge. |
+
+### **Example: Adjacency List Representation**
+```javascript
+const graph = {
+  A: ["B", "C"],
+  B: ["A", "D", "E"],
+  C: ["A", "F"],
+  D: ["B"],
+  E: ["B", "F"],
+  F: ["C", "E"]
+};
+```
+
+✅ **Adjacency lists are memory-efficient for sparse graphs.**  
+
+---
+
+## 🔹 2. Depth-First Search (DFS)
+
+DFS explores a graph **recursively** or **using a stack**, visiting each node **deeply** before backtracking.
+
+### **Example: Recursive DFS**
+```javascript
+function dfs(graph, node, visited = new Set()) {
+  if (visited.has(node)) return;
+  
+  console.log(node); // Process node
+  visited.add(node);
+  
+  for (let neighbor of graph[node]) {
+    dfs(graph, neighbor, visited);
+  }
+}
+
+dfs(graph, "A");
+```
+
+✅ **DFS is useful for cycle detection and pathfinding.**  
+
+---
+
+## 🔹 3. Breadth-First Search (BFS)
+
+BFS explores a graph **level by level** using a **queue**.
+
+### **Example: BFS Implementation**
+```javascript
+function bfs(graph, start) {
+  let queue = [start];
+  let visited = new Set(queue);
+
+  while (queue.length) {
+    let node = queue.shift();
+    console.log(node); // Process node
+
+    for (let neighbor of graph[node]) {
+      if (!visited.has(neighbor)) {
+        queue.push(neighbor);
+        visited.add(neighbor);
+      }
+    }
+  }
+}
+
+bfs(graph, "A");
+```
+
+✅ **BFS is used for shortest path and connectivity checks.**  
+
+---
+
+## 🔹 4. Dijkstra’s Algorithm (Shortest Path)
+
+Dijkstra’s Algorithm finds the **shortest path from a source node** in a weighted graph.
+
+### **Example: Dijkstra’s Algorithm**
+```javascript
+function dijkstra(graph, start) {
+  let distances = {};
+  let visited = new Set();
+  let pq = [[start, 0]];
+
+  for (let node in graph) distances[node] = Infinity;
+  distances[start] = 0;
+
+  while (pq.length) {
+    pq.sort((a, b) => a[1] - b[1]); // Sort by distance
+    let [node, dist] = pq.shift();
+
+    if (visited.has(node)) continue;
+    visited.add(node);
+
+    for (let [neighbor, weight] of Object.entries(graph[node])) {
+      let newDist = dist + weight;
+      if (newDist < distances[neighbor]) {
+        distances[neighbor] = newDist;
+        pq.push([neighbor, newDist]);
+      }
+    }
+  }
+
+  return distances;
+}
+
+const weightedGraph = {
+  A: { B: 4, C: 2 },
+  B: { A: 4, C: 5, D: 10 },
+  C: { A: 2, B: 5, D: 3 },
+  D: { B: 10, C: 3 }
+};
+
+console.log(dijkstra(weightedGraph, "A"));
+```
+
+✅ **Dijkstra’s algorithm is widely used in GPS navigation and network routing.**  
+
+---
+
+## 🔹 5. Topological Sorting (DAGs)
+
+Topological sorting orders a **Directed Acyclic Graph (DAG)** linearly.
+
+### **Example: Topological Sort**
+```javascript
+function topologicalSort(graph) {
+  let visited = new Set();
+  let stack = [];
+
+  function dfs(node) {
+    if (visited.has(node)) return;
+    visited.add(node);
+
+    for (let neighbor of graph[node]) dfs(neighbor);
+    
+    stack.push(node);
+  }
+
+  for (let node in graph) dfs(node);
+  
+  return stack.reverse();
+}
+
+const dag = {
+  A: ["C"],
+  B: ["C", "D"],
+  C: ["E"],
+  D: ["F"],
+  E: ["F"],
+  F: []
+};
+
+console.log(topologicalSort(dag));
+```
+
+✅ **Topological sorting is used in task scheduling and dependency resolution.**  
+
+---
+
+## 📌 Conclusion
+
+Graph algorithms solve **complex real-world problems** in **pathfinding, networks, and AI**. 🚀  
+
+---

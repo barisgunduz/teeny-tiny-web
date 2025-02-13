@@ -1,0 +1,13 @@
+{
+	"title": "Teeny Tiny Web",
+	"description": "A collection of small, useful web development projects and resources.",
+	"github": {
+		"projects": "https://github.com/barisgunduz/teeny-tiny-web-projects",
+		"site": "https://github.com/Gunduz-Medya/teeny-tiny-web"
+	},
+	"socials": [
+		{ "name": "GitHub", "link": "www.example.com" },
+		{ "name": "Twitter", "link": "www.example.com" },
+		{ "name": "LinkedIn", "link": "www.example.com" }
+	]
+}

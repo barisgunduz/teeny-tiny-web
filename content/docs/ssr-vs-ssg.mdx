@@ -1,0 +1,109 @@
+---
+title: "Server-Side Rendering (SSR) vs Static Site Generation (SSG)"
+category: "Web Development"
+---
+
+## 📌 Introduction to SSR & SSG
+
+In modern web development, **SSR (Server-Side Rendering)** and **SSG (Static Site Generation)**  
+are two key approaches for delivering content efficiently.
+
+✅ **SSR** = Render pages on request at runtime.  
+✅ **SSG** = Pre-generate pages at build time.  
+
+---
+
+## 🔹 1. What is Server-Side Rendering (SSR)?
+
+With **SSR**, pages are generated **dynamically** on each request.
+
+| Feature | Description |
+|---------|-------------|
+| **Rendering** | Happens on the server at request time. |
+| **Performance** | Slower since pages are built on-demand. |
+| **SEO** | Excellent, as pages are rendered before sending to the client. |
+| **Use Case** | Dynamic content (e.g., dashboards, user-specific data). |
+
+### **Example: SSR in Next.js**
+```javascript
+export async function getServerSideProps() {
+  const res = await fetch("https://api.example.com/data");
+  const data = await res.json();
+
+  return { props: { data } };
+}
+
+export default function Page({ data }) {
+  return <div>{data.title}</div>;
+}
+```
+
+✅ **SSR is best for pages that need up-to-date dynamic content.**  
+
+---
+
+## 🔹 2. What is Static Site Generation (SSG)?
+
+With **SSG**, pages are **pre-built** at build time and served statically.
+
+| Feature | Description |
+|---------|-------------|
+| **Rendering** | Happens at build time (before deployment). |
+| **Performance** | Fast, as pre-rendered pages are served from CDN. |
+| **SEO** | Excellent, as HTML is generated in advance. |
+| **Use Case** | Blogs, marketing sites, documentation. |
+
+### **Example: SSG in Next.js**
+```javascript
+export async function getStaticProps() {
+  const res = await fetch("https://api.example.com/data");
+  const data = await res.json();
+
+  return { props: { data } };
+}
+
+export default function Page({ data }) {
+  return <div>{data.title}</div>;
+}
+```
+
+✅ **SSG is best for content that doesn’t change often.**  
+
+---
+
+## 🔹 3. Key Differences Between SSR & SSG
+
+| Feature | SSR (Server-Side Rendering) | SSG (Static Site Generation) |
+|---------|-----------------------------|-----------------------------|
+| **Rendering Time** | On request (real-time) | At build time (pre-rendered) |
+| **Performance** | Slower (depends on server) | Faster (CDN cached) |
+| **SEO** | Excellent | Excellent |
+| **Use Case** | Dynamic content (e.g., user dashboards) | Static content (e.g., blogs, landing pages) |
+| **Server Dependency** | Requires a running server | No server needed (static hosting) |
+
+✅ **SSR is for dynamic pages, while SSG is for pre-built static pages.**  
+
+---
+
+## 🔹 4. When to Use SSR vs SSG?
+
+| Scenario | Best Approach |
+|----------|--------------|
+| **Personalized Content** | ✅ SSR |
+| **E-commerce (Live Prices & Stock)** | ✅ SSR |
+| **Blogs & Documentation** | ✅ SSG |
+| **Landing Pages & Marketing Sites** | ✅ SSG |
+| **Real-Time Data (Dashboards, User Feeds)** | ✅ SSR |
+| **SEO-Optimized Pages** | ✅ SSG or SSR |
+
+✅ **Choose SSR for dynamic updates, SSG for performance.**  
+
+---
+
+## 📌 Conclusion
+
+- **SSR** is best for dynamic pages that change frequently.  
+- **SSG** is best for static content that doesn’t need real-time updates.  
+- **Hybrid Approaches** (ISR - Incremental Static Regeneration) can combine both. 🚀  
+
+---

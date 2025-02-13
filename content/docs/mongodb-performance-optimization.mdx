@@ -1,0 +1,105 @@
+---
+title: "MongoDB Performance Optimization"
+category: "Database Optimization"
+---
+
+## 📌 Introduction to MongoDB Performance Optimization
+
+MongoDB is a **NoSQL document-based database** that provides high performance for scalable applications.  
+Optimizing queries, indexing, and schema design **significantly improves database efficiency**.
+
+✅ **Goal:** Reduce query time, optimize storage, and scale efficiently.
+
+---
+
+## 🔹 1. Indexing for Faster Queries
+
+Indexes improve query performance by reducing the number of scanned documents.
+
+### **1.1 Creating an Index**
+```javascript
+db.users.createIndex({ email: 1 });
+```
+
+### **1.2 Checking Existing Indexes**
+```javascript
+db.users.getIndexes();
+```
+
+✅ **Indexes speed up lookups but increase write overhead.**  
+
+---
+
+## 🔹 2. Query Optimization
+
+### **2.1 Use Projection to Return Only Required Fields**
+```javascript
+db.users.find({ age: { $gte: 18 } }, { name: 1, email: 1, _id: 0 });
+```
+
+✅ **Reduces network transfer and improves performance.**  
+
+### **2.2 Avoid Scanning Large Collections**
+Use **covered queries** where the index contains all needed fields.
+```javascript
+db.users.createIndex({ email: 1, name: 1 });
+db.users.find({ email: "user@example.com" }, { name: 1, _id: 0 });
+```
+
+✅ **Covered queries avoid scanning documents, improving speed.**  
+
+---
+
+## 🔹 3. Aggregation Pipeline for Data Processing
+
+### **3.1 Example: Grouping Users by Age**
+```javascript
+db.users.aggregate([
+  { $group: { _id: "$age", count: { $sum: 1 } } },
+  { $sort: { count: -1 } }
+]);
+```
+
+✅ **Aggregation reduces load by processing data within MongoDB.**  
+
+---
+
+## 🔹 4. Sharding for Horizontal Scaling
+
+Sharding distributes data across multiple servers.
+
+### **4.1 Enabling Sharding**
+```javascript
+sh.enableSharding("myDatabase");
+db.myCollection.createIndex({ userId: "hashed" });
+sh.shardCollection("myDatabase.myCollection", { userId: "hashed" });
+```
+
+✅ **Sharding improves scalability for large datasets.**  
+
+---
+
+## 🔹 5. Connection Pooling for Efficient Requests
+
+### **5.1 Using Connection Pooling in Node.js**
+```javascript
+const { MongoClient } = require("mongodb");
+
+const client = new MongoClient("mongodb://localhost:27017", {
+  maxPoolSize: 50
+});
+await client.connect();
+```
+
+✅ **Reduces overhead by reusing database connections.**  
+
+---
+
+## 📌 Conclusion
+
+- **Use indexing** to optimize read performance.  
+- **Optimize queries** by selecting only necessary fields.  
+- **Leverage aggregation** for efficient data processing.  
+- **Implement sharding** for scalability. 🚀  
+
+---

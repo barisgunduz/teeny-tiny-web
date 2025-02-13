@@ -1,0 +1,103 @@
+---
+title: "Rate Limiting & API Security"
+category: "Security & Best Practices"
+---
+
+## 📌 Introduction to Rate Limiting & API Security
+
+Rate limiting is a crucial **API security measure** that prevents **abuse, bot attacks, and excessive requests**.  
+By limiting requests, APIs ensure **fair usage, prevent denial-of-service (DoS), and enhance performance**.
+
+✅ **Goal:** Protect APIs from excessive usage and enhance security.  
+
+---
+
+## 🔹 1. Why Rate Limiting is Important?
+
+| Benefit | Description |
+|---------|-------------|
+| **Prevents API Abuse** | Stops excessive requests from users or bots. |
+| **Protects from DoS Attacks** | Limits requests to avoid overwhelming the server. |
+| **Ensures Fair Usage** | Distributes API resources among users fairly. |
+| **Improves Performance** | Prevents excessive load from affecting other users. |
+
+✅ **Rate limiting ensures API stability and security.**  
+
+---
+
+## 🔹 2. Implementing Rate Limiting in Express.js
+
+### **2.1 Install Rate Limiting Middleware**
+```bash
+npm install express-rate-limit
+```
+
+### **2.2 Apply Rate Limiting to API Routes**
+```javascript
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: "Too many requests, please try again later.",
+});
+
+app.use("/api", limiter);
+```
+
+✅ **Prevents excessive API requests from users.**  
+
+---
+
+## 🔹 3. API Authentication & Authorization
+
+| Security Measure | Purpose |
+|-----------------|---------|
+| **API Keys** | Identifies users accessing the API. |
+| **JWT Tokens** | Secure authentication for API users. |
+| **OAuth 2.0** | Provides delegated access using authorization. |
+| **HMAC Signing** | Ensures request integrity with secret keys. |
+
+### **3.1 Implementing JWT Authentication in Express.js**
+```javascript
+const jwt = require("jsonwebtoken");
+
+app.post("/login", (req, res) => {
+  const token = jwt.sign({ userId: req.body.userId }, "secretKey", { expiresIn: "1h" });
+  res.json({ token });
+});
+
+app.get("/protected", (req, res) => {
+  const token = req.headers["authorization"];
+  jwt.verify(token, "secretKey", (err, user) => {
+    if (err) return res.sendStatus(403);
+    res.json({ message: "Protected data", user });
+  });
+});
+```
+
+✅ **JWT secures API access with token-based authentication.**  
+
+---
+
+## 🔹 4. Protecting APIs from Attacks
+
+| Threat | Protection |
+|--------|------------|
+| **Brute Force Attacks** | Rate limiting & CAPTCHA |
+| **SQL Injection** | Use parameterized queries |
+| **Cross-Site Request Forgery (CSRF)** | CSRF tokens |
+| **Cross-Site Scripting (XSS)** | Validate & sanitize inputs |
+| **Man-in-the-Middle Attacks** | Use HTTPS encryption |
+
+✅ **Implement security measures to prevent common API attacks.**  
+
+---
+
+## 📌 Conclusion
+
+- **Rate limiting prevents excessive API usage & abuse.**  
+- **Authentication & authorization secure API endpoints.**  
+- **Use security best practices** to protect APIs from attacks. 🚀  
+
+---

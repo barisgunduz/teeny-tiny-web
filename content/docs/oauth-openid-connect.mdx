@@ -1,0 +1,131 @@
+---
+title: "OAuth 2.0 & OpenID Connect"
+category: "Security & Best Practices"
+---
+
+## 📌 Introduction to OAuth 2.0 & OpenID Connect
+
+- **OAuth 2.0** is an authorization framework that allows third-party applications to access user data without exposing credentials.
+- **OpenID Connect (OIDC)** is an identity layer on top of OAuth 2.0 for user authentication.
+
+✅ **OAuth 2.0 = Authorization**  
+✅ **OpenID Connect = Authentication + Authorization**  
+
+---
+
+## 🔹 1. OAuth 2.0 Grant Types
+
+| Grant Type | Use Case |
+|------------|----------|
+| **Authorization Code** | Secure user authentication via redirection (Web & Mobile Apps). |
+| **Implicit** | Used for browser-based apps (deprecated due to security concerns). |
+| **Client Credentials** | Used for machine-to-machine (M2M) authentication. |
+| **Password Credentials** | Direct username/password exchange (not recommended). |
+| **Device Flow** | Used for devices without a browser (e.g., smart TVs). |
+
+✅ **Most secure approach: Authorization Code with PKCE.**  
+
+---
+
+## 🔹 2. OAuth 2.0 Authorization Code Flow
+
+### **Step 1: Redirect User to Authorization Server**
+```text
+GET https://auth.example.com/oauth/authorize?
+    client_id=YOUR_CLIENT_ID&
+    response_type=code&
+    redirect_uri=https://yourapp.com/callback&
+    scope=openid profile email
+```
+
+### **Step 2: User Grants Permission**
+- User logs in and approves access.
+
+### **Step 3: Exchange Authorization Code for Token**
+```bash
+POST https://auth.example.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET&
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://yourapp.com/callback
+```
+
+✅ **Response:**
+```json
+{
+  "access_token": "ACCESS_TOKEN",
+  "id_token": "ID_TOKEN",
+  "token_type": "Bearer",
+  "expires_in": 3600
+}
+```
+
+✅ **Access Token:** Used to access APIs.  
+✅ **ID Token:** Contains user identity details (only in OpenID Connect).  
+
+---
+
+## 🔹 3. OpenID Connect (OIDC)
+
+OIDC extends OAuth 2.0 with user authentication using **ID Tokens**.
+
+| Component | Purpose |
+|-----------|---------|
+| **ID Token** | JWT containing user identity details (name, email, etc.). |
+| **UserInfo Endpoint** | API to retrieve user profile details. |
+| **Scopes** | `openid profile email` define access levels. |
+
+### **Example Decoded ID Token (JWT)**
+```json
+{
+  "sub": "123456789",
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "iat": 1616191200,
+  "exp": 1616194800
+}
+```
+
+✅ **OIDC ensures authentication while OAuth 2.0 handles authorization.**  
+
+---
+
+## 🔹 4. Refresh Tokens
+
+To get a new Access Token without logging in again:
+```bash
+POST https://auth.example.com/oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=YOUR_CLIENT_ID&
+client_secret=YOUR_CLIENT_SECRET&
+grant_type=refresh_token&
+refresh_token=YOUR_REFRESH_TOKEN
+```
+
+✅ **Refresh tokens prevent frequent logins.**  
+
+---
+
+## 🔹 5. Best Practices for OAuth & OIDC
+
+| Best Practice | Description |
+|--------------|-------------|
+| **Use Authorization Code with PKCE** | Prevents code interception attacks. |
+| **Store tokens securely** | Never expose tokens in frontend JavaScript. |
+| **Set token expiration** | Use short-lived access tokens with refresh tokens. |
+| **Use HTTPS** | Prevents man-in-the-middle attacks. |
+| **Limit scopes** | Grant minimal permissions needed. |
+
+---
+
+## 📌 Conclusion
+
+- **OAuth 2.0** manages secure authorization.  
+- **OIDC** ensures user authentication with identity tokens.  
+- **Best practices** improve security in API-based authentication. 🚀  
+
+---

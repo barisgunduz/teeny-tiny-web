@@ -1,0 +1,121 @@
+---
+title: "Using Redis for Caching & Real-Time Applications"
+category: "Database Optimization"
+---
+
+## 📌 Introduction to Redis
+
+Redis is a **fast, in-memory data store** used for **caching, real-time applications, and message queuing**.  
+It provides **low latency** and **high throughput**.
+
+✅ **Goal:** Reduce database load, improve response times, and enable real-time updates.
+
+---
+
+## 🔹 1. Installing Redis
+
+### **1.1 Install Redis on Linux**
+```bash
+sudo apt update
+sudo apt install redis-server -y
+```
+
+### **1.2 Start & Enable Redis**
+```bash
+sudo systemctl start redis
+sudo systemctl enable redis
+```
+
+✅ **Verify installation with `redis-cli ping` (should return PONG).**  
+
+---
+
+## 🔹 2. Using Redis for Caching
+
+### **2.1 Setting a Key-Value Pair**
+```bash
+SET user:1 "John Doe"
+```
+
+### **2.2 Retrieving Cached Data**
+```bash
+GET user:1
+```
+
+### **2.3 Setting Expiry for Cached Data**
+```bash
+SET user:2 "Jane Doe" EX 3600  # Expires in 1 hour
+```
+
+✅ **Caches frequently accessed data to reduce database queries.**  
+
+---
+
+## 🔹 3. Using Redis in Node.js
+
+### **3.1 Install Redis Package**
+```bash
+npm install redis
+```
+
+### **3.2 Connecting to Redis in Node.js**
+```javascript
+const redis = require("redis");
+const client = redis.createClient();
+
+client.on("connect", () => console.log("Connected to Redis"));
+client.set("user:1", "John Doe", redis.print);
+client.get("user:1", (err, reply) => console.log(reply));
+```
+
+✅ **Integrates seamlessly with backend applications.**  
+
+---
+
+## 🔹 4. Using Redis for Real-Time Messaging
+
+### **4.1 Publish-Subscribe (Pub/Sub) Example**
+
+**Publisher:**
+```javascript
+const pub = redis.createClient();
+pub.publish("updates", "New blog post published!");
+```
+
+**Subscriber:**
+```javascript
+const sub = redis.createClient();
+sub.subscribe("updates");
+sub.on("message", (channel, message) => console.log(`Received: ${message}`));
+```
+
+✅ **Ideal for notifications, chat applications, and live updates.**  
+
+---
+
+## 🔹 5. Redis as a Session Store
+
+### **5.1 Storing Sessions in Redis (Express.js)**
+```javascript
+const session = require("express-session");
+const RedisStore = require("connect-redis")(session);
+
+app.use(session({
+    store: new RedisStore({ client }),
+    secret: "supersecret",
+    resave: false,
+    saveUninitialized: false
+}));
+```
+
+✅ **Redis stores user sessions for scalable authentication.**  
+
+---
+
+## 📌 Conclusion
+
+- **Use Redis for caching** to improve API response times.  
+- **Leverage Redis Pub/Sub** for real-time messaging.  
+- **Store user sessions** efficiently for authentication. 🚀  
+
+---

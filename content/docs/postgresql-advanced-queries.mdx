@@ -1,0 +1,96 @@
+---
+title: "PostgreSQL Advanced Queries & Indexing"
+category: "Database Optimization"
+---
+
+## 📌 Introduction to PostgreSQL Advanced Queries & Indexing
+
+PostgreSQL is a **powerful relational database** that supports **advanced queries and indexing techniques**  
+to optimize performance and handle complex data structures efficiently.
+
+✅ **Goal:** Improve query performance and efficiency.
+
+---
+
+## 🔹 1. Common Table Expressions (CTE)
+
+CTEs improve query readability and performance.
+
+### **Example: Using CTE to Get Active Users**
+```sql
+WITH active_users AS (
+    SELECT id, name FROM users WHERE status = 'active'
+)
+SELECT * FROM active_users;
+```
+
+✅ **CTEs prevent redundant subqueries and improve query execution.**  
+
+---
+
+## 🔹 2. Window Functions
+
+Window functions perform calculations across query rows.
+
+### **Example: Rank Users by Score**
+```sql
+SELECT name, score,
+       RANK() OVER (ORDER BY score DESC) AS rank
+FROM users;
+```
+
+✅ **Useful for ranking, running totals, and analytics.**  
+
+---
+
+## 🔹 3. JSONB Handling in PostgreSQL
+
+PostgreSQL supports **JSONB** for storing semi-structured data.
+
+### **Example: Querying JSONB Data**
+```sql
+SELECT data->>'name' AS name FROM users WHERE data->>'role' = 'admin';
+```
+
+✅ **Efficiently stores and queries JSON-like data structures.**  
+
+---
+
+## 🔹 4. Indexing Strategies for Performance Optimization
+
+| Index Type | Use Case |
+|------------|----------|
+| **B-Tree Index** | Default, good for equality & range queries. |
+| **GIN Index** | Optimized for full-text search & JSONB. |
+| **BRIN Index** | Efficient for large, sequential datasets. |
+| **Hash Index** | Speeds up equality comparisons. |
+
+### **Example: Creating a B-Tree Index**
+```sql
+CREATE INDEX idx_users_email ON users(email);
+```
+
+✅ **Indexes significantly speed up queries but add overhead on inserts/updates.**  
+
+---
+
+## 🔹 5. Full-Text Search in PostgreSQL
+
+PostgreSQL has built-in **full-text search capabilities**.
+
+### **Example: Full-Text Search on Articles**
+```sql
+SELECT * FROM articles WHERE to_tsvector(content) @@ to_tsquery('postgresql');
+```
+
+✅ **Faster and more powerful than `LIKE '%text%'` queries.**  
+
+---
+
+## 📌 Conclusion
+
+- **Use CTEs & Window Functions** for complex queries.  
+- **Leverage JSONB** for semi-structured data storage.  
+- **Apply indexing strategies** to optimize performance. 🚀  
+
+---

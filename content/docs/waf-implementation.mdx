@@ -1,0 +1,90 @@
+---
+title: "Web Application Firewall (WAF) Implementation"
+category: "Security & Best Practices"
+---
+
+## 📌 Introduction to Web Application Firewall (WAF)
+
+A **Web Application Firewall (WAF)** protects web applications by filtering and monitoring HTTP traffic.  
+It helps **prevent attacks** like **SQL Injection, XSS, CSRF, and DDoS**.
+
+---
+
+## 🔹 1. How WAF Works
+
+| Feature | Description |
+|---------|-------------|
+| **Blacklist Filtering** | Blocks known malicious IPs and patterns. |
+| **Whitelist Filtering** | Allows only specific trusted traffic. |
+| **Signature-Based Detection** | Matches traffic against known attack signatures. |
+| **Anomaly Detection** | Detects unusual behavior based on heuristics. |
+
+✅ **WAF operates at Layer 7 (Application Layer) of the OSI model.**  
+
+---
+
+## 🔹 2. Implementing WAF using Nginx & ModSecurity
+
+### **2.1 Install Nginx & ModSecurity**
+```bash
+sudo apt update
+sudo apt install nginx libnginx-mod-security2 -y
+```
+
+### **2.2 Enable ModSecurity in Nginx**
+
+Edit **`/etc/nginx/nginx.conf`**:
+```nginx
+http {
+    modsecurity on;
+    modsecurity_rules_file /etc/nginx/modsec/main.conf;
+}
+```
+
+### **2.3 Enable OWASP ModSecurity Core Rules**
+```bash
+git clone https://github.com/coreruleset/coreruleset.git /etc/nginx/modsec/
+cp /etc/nginx/modsec/crs-setup.conf.example /etc/nginx/modsec/crs-setup.conf
+```
+
+### **2.4 Restart Nginx**
+```bash
+sudo systemctl restart nginx
+```
+
+✅ **Nginx WAF is now active!**  
+
+---
+
+## 🔹 3. Cloud-Based WAF Solutions
+
+| WAF Provider | Features |
+|-------------|----------|
+| **Cloudflare WAF** | Free DDoS protection, bot mitigation |
+| **AWS WAF** | Integrated with AWS services |
+| **Azure WAF** | Protects Azure web apps |
+| **Imperva WAF** | Enterprise-grade security |
+
+✅ **Cloud WAFs require no on-premise setup.**  
+
+---
+
+## 🔹 4. Best Practices for WAF Configuration
+
+| Best Practice | Description |
+|--------------|-------------|
+| **Enable OWASP CRS** | Protects against top security risks. |
+| **Monitor Logs Regularly** | Detects new attack patterns. |
+| **Whitelist Trusted IPs** | Reduces false positives. |
+| **Use Rate Limiting** | Prevents DDoS attacks. |
+| **Keep Rules Updated** | Protects against new vulnerabilities. |
+
+---
+
+## 📌 Conclusion
+
+- **WAFs protect web apps from cyber threats.**  
+- **Use Nginx WAF for self-hosted protection.**  
+- **Cloud WAFs simplify security management.** 🚀  
+
+---

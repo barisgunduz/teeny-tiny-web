@@ -1,0 +1,146 @@
+---
+title: "Bit Manipulation Tricks"
+category: "Algorithms & Data Structures"
+---
+
+## 📌 Introduction to Bit Manipulation
+
+**Bit manipulation** involves using bitwise operators to perform fast calculations.  
+It is commonly used in **optimization, cryptography, and competitive programming**.
+
+---
+
+## 🔹 1. Common Bitwise Operators
+
+| Operator | Symbol | Example (5 & 3) | Result |
+|----------|--------|----------------|--------|
+| AND      | `&`    | `5 & 3`         | `1`    |
+| OR       | `|`    | `5 | 3`         | `7`    |
+| XOR      | `^`    | `5 ^ 3`         | `6`    |
+| NOT      | `~`    | `~5`            | `-6`   |
+| Left Shift  | `<<` | `5 << 1`       | `10`   |
+| Right Shift | `>>` | `5 >> 1`       | `2`    |
+
+✅ **Bitwise operations are much faster than arithmetic operations.**  
+
+---
+
+## 🔹 2. Checking if a Number is Even or Odd
+
+```javascript
+function isEven(n) {
+  return (n & 1) === 0;
+}
+
+console.log(isEven(4)); // true
+console.log(isEven(7)); // false
+```
+
+✅ **Uses `n & 1` to check the least significant bit.**  
+
+---
+
+## 🔹 3. Swapping Two Numbers Without a Temporary Variable
+
+```javascript
+let a = 5, b = 3;
+
+a = a ^ b;
+b = a ^ b;
+a = a ^ b;
+
+console.log(a, b); // 3, 5
+```
+
+✅ **Uses XOR to swap numbers in constant time.**  
+
+---
+
+## 🔹 4. Checking if a Number is a Power of Two
+
+```javascript
+function isPowerOfTwo(n) {
+  return n > 0 && (n & (n - 1)) === 0;
+}
+
+console.log(isPowerOfTwo(8));  // true
+console.log(isPowerOfTwo(10)); // false
+```
+
+✅ **A power of two has only one `1` bit in binary.**  
+
+---
+
+## 🔹 5. Counting Set Bits (Hamming Weight)
+
+```javascript
+function countSetBits(n) {
+  let count = 0;
+  while (n > 0) {
+    count += n & 1;
+    n >>= 1;
+  }
+  return count;
+}
+
+console.log(countSetBits(9)); // 2 (1001)
+```
+
+✅ **Counts the number of `1` bits in a number.**  
+
+---
+
+## 🔹 6. Finding the Only Non-Duplicate Number
+
+Given an array where every number appears twice except for **one**, find that number.
+
+```javascript
+function findUnique(arr) {
+  return arr.reduce((acc, num) => acc ^ num, 0);
+}
+
+console.log(findUnique([2, 3, 2, 4, 4])); // 3
+```
+
+✅ **Uses XOR properties (`x ^ x = 0`) to isolate the unique number.**  
+
+---
+
+## 🔹 7. Reversing Bits
+
+```javascript
+function reverseBits(n) {
+  let result = 0;
+  for (let i = 0; i < 32; i++) {
+    result = (result << 1) | (n & 1);
+    n >>= 1;
+  }
+  return result >>> 0;
+}
+
+console.log(reverseBits(43261596)); // 964176192
+```
+
+✅ **Shifts bits and reconstructs the reversed number.**  
+
+---
+
+## 🔹 8. Finding the Rightmost Set Bit
+
+```javascript
+function rightmostSetBit(n) {
+  return n & -n;
+}
+
+console.log(rightmostSetBit(10)); // 2 (1010)
+```
+
+✅ **`n & -n` isolates the rightmost `1` bit.**  
+
+---
+
+## 📌 Conclusion
+
+Bit manipulation is **extremely efficient** and used in **cryptography, networking, and competitive programming**. 🚀  
+
+---

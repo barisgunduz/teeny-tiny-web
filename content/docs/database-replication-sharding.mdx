@@ -1,0 +1,89 @@
+---
+title: "Database Replication & Sharding"
+category: "Database Optimization"
+---
+
+## 📌 Introduction to Database Replication & Sharding
+
+Database **replication** and **sharding** are essential techniques for **scalability, high availability, and fault tolerance**.  
+They help distribute data efficiently across multiple servers.
+
+✅ **Replication** = Duplicates data across multiple servers.  
+✅ **Sharding** = Splits data across multiple servers to distribute load.  
+
+---
+
+## 🔹 1. Database Replication
+
+Replication **ensures data redundancy** and improves **read scalability**.
+
+| Replication Type | Description |
+|------------------|-------------|
+| **Master-Slave Replication** | Writes go to the master, reads are replicated to slaves. |
+| **Master-Master Replication** | Multiple masters handle both reads & writes. |
+| **Replica Sets (MongoDB)** | Automatic failover between primary and secondary nodes. |
+
+### **1.1 Setting Up Replication in MySQL**
+```sql
+CHANGE MASTER TO MASTER_HOST='192.168.1.1', MASTER_USER='replica', MASTER_PASSWORD='password';
+START SLAVE;
+```
+
+### **1.2 Setting Up MongoDB Replica Set**
+```javascript
+rs.initiate({
+  _id: "rs0",
+  members: [
+    { _id: 0, host: "mongo1:27017" },
+    { _id: 1, host: "mongo2:27017" },
+    { _id: 2, host: "mongo3:27017" }
+  ]
+});
+```
+
+✅ **Replication provides failover and read scalability.**  
+
+---
+
+## 🔹 2. Database Sharding
+
+Sharding **distributes large datasets across multiple servers** for better performance.
+
+| Sharding Type | Description |
+|--------------|-------------|
+| **Horizontal Sharding** | Splits rows across multiple databases (scales out). |
+| **Vertical Sharding** | Splits tables across multiple databases (data separation). |
+| **Hash-Based Sharding** | Distributes data based on a hashed key. |
+| **Range-Based Sharding** | Distributes data based on a range of values. |
+
+### **2.1 Enabling Sharding in MongoDB**
+```javascript
+sh.enableSharding("myDatabase");
+db.myCollection.createIndex({ userId: "hashed" });
+sh.shardCollection("myDatabase.myCollection", { userId: "hashed" });
+```
+
+✅ **Sharding is essential for handling large-scale applications.**  
+
+---
+
+## 🔹 3. When to Use Replication vs Sharding?
+
+| Scenario | Best Choice |
+|----------|-------------|
+| **High Availability & Backup** | ✅ Replication |
+| **Scalability for Read Operations** | ✅ Replication |
+| **Handling Large Data Volumes** | ✅ Sharding |
+| **Distributed Systems** | ✅ Sharding |
+
+✅ **Use replication for availability, and sharding for scalability.**  
+
+---
+
+## 📌 Conclusion
+
+- **Replication ensures data availability & fault tolerance.**  
+- **Sharding improves performance by distributing large datasets.**  
+- **Combining both** strategies provides the best scalability and reliability. 🚀  
+
+---

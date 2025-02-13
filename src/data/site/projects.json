@@ -1,0 +1,14 @@
+[
+	{
+		"slug": "breakout-game",
+		"title": "Breakout Game",
+		"description": "A simple breakout game built with JavaScript.",
+		"github": "https://github.com/barisgunduz/teeny-tiny-web-projects/tree/master/breakout-game"
+	},
+	{
+		"slug": "expense-tracker",
+		"title": "Expense Tracker",
+		"description": "Track your expenses with this JavaScript project.",
+		"github": "https://github.com/barisgunduz/teeny-tiny-web-projects/tree/master/expense-tracker"
+	}
+]
