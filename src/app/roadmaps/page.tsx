@@ -3,8 +3,11 @@ import Link from "next/link";
 import roadmapsData from "@/data/roadmaps.json";
 import { useState, useEffect } from "react";
 
+// Define the correct type for progress tracking
+type ProgressType = Record<string, string[]>;
+
 export default function RoadmapsPage() {
-	const [progress, setProgress] = useState({});
+	const [progress, setProgress] = useState<ProgressType>({});
 
 	useEffect(() => {
 		const savedProgress = localStorage.getItem("roadmap-progress");

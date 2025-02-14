@@ -3,6 +3,13 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
+type Doc = {
+  category: string;
+  title: string;
+  slug: string;
+  content: string;
+};
+
 export default function DocsPage() {
   const [docs, setDocs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,14 +23,14 @@ export default function DocsPage() {
   }, []);
 
   // ** Kategorilere Göre Gruplama **
-  const groupedDocs = docs.reduce((acc, doc) => {
+  const groupedDocs: Record<string, Doc[]> = docs.reduce((acc, doc: Doc) => {
     if (!acc[doc.category]) acc[doc.category] = [];
     acc[doc.category].push(doc);
     return acc;
-  }, {} as Record<string, typeof docs>);
+  }, {} as Record<string, Doc[]>);
 
   // ** Arama Özelliği **
-  const filteredDocs = docs.filter((doc) =>
+  const filteredDocs: Doc[] = docs.filter((doc: Doc) =>
     doc.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
