@@ -6,39 +6,42 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default function DocPage({ params }: { params: { slug: string } }) {
-	if (!params || !params.slug) {
-		notFound();
-	}
-
+// 🔥 **Yeni Fonksiyon: Belirtilen `slug` için içeriği al**
+async function getDocContent(slug: string) {
 	const docsDirectory = path.join(process.cwd(), "content/docs");
-	const filePath = path.join(docsDirectory, `${params.slug}.mdx`);
+	const filePath = path.join(docsDirectory, `${slug}.mdx`);
 
 	if (!fs.existsSync(filePath)) {
-		return (
-			<main className="p-10">
-				<h1 className="text-3xl font-bold">404 - Document Not Found</h1>
-				<p className="text-gray-600">
-					The documentation you are looking for does not exist.
-				</p>
-				<Link href="/docs" className="text-blue-500 hover:underline">
-					← Back to Docs
-				</Link>
-			</main>
-		);
+		return null;
 	}
 
 	const fileContents = fs.readFileSync(filePath, "utf8");
 	const { content, data } = matter(fileContents);
+	return { content, title: data.title || "Documentation" };
+}
+
+export default async function DocPage({
+	params,
+}: {
+	params: { slug: string };
+}) {
+	// 🔥 **params.async olarak işlendi**
+	if (!params?.slug) {
+		notFound();
+	}
+
+	const docData = await getDocContent(params.slug);
+
+	if (!docData) {
+		notFound();
+	}
 
 	return (
 		<main className="p-10">
-			<h1 className="text-3xl font-bold">
-				{data.title || "Documentation"}
-			</h1>
+			<h1 className="text-3xl font-bold">{docData.title}</h1>
 			<div className="mt-6 prose prose-lg text-gray-700">
 				<MDXRemote
-					source={content}
+					source={docData.content}
 					options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
 				/>
 			</div>
