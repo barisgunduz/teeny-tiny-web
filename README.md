@@ -41,5 +41,7 @@ This project is licensed under the **MIT License** – feel free to use and modi
 - **Live Demo:** [Teeny Tiny Web](https://www.teenytinyweb.com)
 - **GitHub Repository:** [Teeny Tiny Web Repo](https://github.com/Gunduz-Medya/teeny-tiny-web)
 - **Project-Based Repository:** [Project Collection](https://github.com/barisgunduz/teeny-tiny-web-projects)
+- [Next.js DigitalOcean Deployment Guide](docs/Nextjs_DigitalOcean_Deployment_Guide.md)
+
 
 🚀 Happy coding! Feel free to contribute and explore! 😊
