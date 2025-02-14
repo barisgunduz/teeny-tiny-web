@@ -6,6 +6,7 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import Image from "next/image";
 import { ComponentProps } from "react";
+import { notFound } from "next/navigation";
 
 const components = {
 	img: (props: ComponentProps<typeof Image>) => (
@@ -19,31 +20,22 @@ const components = {
 	),
 };
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
+// 🔥 **Fix:** `params.slug` önce kontrol ediliyor
+export default function ProjectPage({ params }: { params: { slug?: string } }) {
+	if (!params?.slug) {
+		notFound();
+	}
+
 	const projectsDirectory = path.join(process.cwd(), "content/projects");
 	const filePath = path.join(projectsDirectory, `${params.slug}.mdx`);
 
 	if (!fs.existsSync(filePath)) {
-		return (
-			<main className="p-10">
-				<h1 className="text-3xl font-bold">404 - Project Not Found</h1>
-				<p className="text-gray-600">
-					The project you are looking for does not exist.
-				</p>
-				<Link
-					href="/projects"
-					className="text-blue-500 hover:underline"
-				>
-					← Back to Projects
-				</Link>
-			</main>
-		);
+		notFound();
 	}
 
 	const fileContents = fs.readFileSync(filePath, "utf8");
 	const { content } = matter(fileContents);
 
-	// Otomatik GitHub linki oluştur
 	const githubLink = `https://github.com/barisgunduz/teeny-tiny-web-projects/tree/master/${params.slug}`;
 
 	return (
@@ -57,7 +49,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 				GitHub Repo →
 			</a>
 
-			{/* MDX içeriği */}
+			{/* MDX İçeriği */}
 			<div className="mt-6 prose prose-lg text-gray-700">
 				<MDXRemote
 					source={content}
