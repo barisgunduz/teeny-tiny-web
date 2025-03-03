@@ -6,16 +6,31 @@ import roadmapsData from "@/data/roadmaps.json";
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 
+// Define correct types
+type Roadmap = {
+	slug: string;
+	title: string;
+	description: string;
+	steps: string[];
+};
+
+type ProgressType = Record<string, number[]>;
+
 export default function RoadmapDetailPage() {
-	const { slug } = useParams();
-	const roadmap = roadmapsData.find((r) => r.slug === slug);
-	const [progress, setProgress] = useState({});
-	const [completedSteps, setCompletedSteps] = useState([]);
+	const params = useParams();
+	const slug = Array.isArray(params.slug)
+		? params.slug[0]
+		: params.slug || "";
+	const roadmap: Roadmap | undefined = roadmapsData.find(
+		(r) => r.slug === slug
+	);
+	const [progress, setProgress] = useState<ProgressType>({});
+	const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
 	useEffect(() => {
 		const savedProgress = localStorage.getItem("roadmap-progress");
 		if (savedProgress) {
-			const parsedProgress = JSON.parse(savedProgress);
+			const parsedProgress: ProgressType = JSON.parse(savedProgress);
 			setProgress(parsedProgress);
 			if (parsedProgress[slug]) {
 				setCompletedSteps(parsedProgress[slug]);
@@ -23,12 +38,15 @@ export default function RoadmapDetailPage() {
 		}
 	}, [slug]);
 
-	const toggleStep = (index) => {
-		setCompletedSteps((prev) => {
+	const toggleStep = (index: number) => {
+		setCompletedSteps((prev: number[]) => {
 			const updatedSteps = prev.includes(index)
 				? prev.filter((i) => i !== index)
 				: [...prev, index];
-			const updatedProgress = { ...progress, [slug]: updatedSteps };
+			const updatedProgress: ProgressType = {
+				...progress,
+				[slug]: updatedSteps,
+			};
 			setProgress(updatedProgress);
 			localStorage.setItem(
 				"roadmap-progress",
@@ -39,6 +57,7 @@ export default function RoadmapDetailPage() {
 	};
 
 	const downloadPDF = () => {
+		if (!roadmap) return;
 		const doc = new jsPDF();
 		doc.text(roadmap.title, 20, 10);
 		autoTable(doc, {

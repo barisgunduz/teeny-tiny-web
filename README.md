@@ -41,5 +41,9 @@ This project is licensed under the **MIT License** – feel free to use and modi
 - **Live Demo:** [Teeny Tiny Web](https://www.teenytinyweb.com)
 - **GitHub Repository:** [Teeny Tiny Web Repo](https://github.com/Gunduz-Medya/teeny-tiny-web)
 - **Project-Based Repository:** [Project Collection](https://github.com/barisgunduz/teeny-tiny-web-projects)
+- [Next.js DigitalOcean Deployment Guide](docs/Nextjs_DigitalOcean_Deployment_Guide.md)
+
+## 🤝 Referral & Sponsorships
+[![Powered by DigitalOcean](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%203.svg)](https://www.digitalocean.com/?refcode=525051e9e7a7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
 
 🚀 Happy coding! Feel free to contribute and explore! 😊
