@@ -1,114 +1,91 @@
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
+"use client";
+
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import CountUp from "react-countup";
+import { FaGithub, FaTwitter, FaLinkedin, FaRocket, FaUsers } from "react-icons/fa";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { MdOutlineCategory } from "react-icons/md";
+import siteData from "@/data/site/site.json";
+import projectsData from "@/data/site/projects.json";
+import roadmapsData from "@/data/roadmaps.json";
+import docsData from "@/data/site/docs.json";
 
 export default function HomePage() {
+	const [projectsCount, setProjectsCount] = useState(0);
+	const [roadmapsCount, setRoadmapsCount] = useState(0);
+	const [docsCount, setDocsCount] = useState(0);
+
+	useEffect(() => {
+		setProjectsCount(projectsData.length);
+		setRoadmapsCount(roadmapsData.length);
+		setDocsCount(docsData.length);
+	}, []);
+
 	return (
-		<main className="p-10 mx-auto">
-			<h1 className="text-4xl font-bold mb-6">Teeny Tiny Web</h1>
-
-			<p className="text-lg text-gray-700 mb-6">
-				A lightweight documentation-style website featuring guides, projects, roadmaps, and free resources.
-			</p>
-
-			<section className="mb-8">
-				<h2 className="text-2xl font-semibold mb-3">🚀 Technologies Used</h2>
-				<ul className="list-disc list-inside text-gray-700">
-					<li>Next.js (App Router)</li>
-					<li>TypeScript</li>
-					<li>Tailwind CSS</li>
-					<li>MDX for documentation</li>
-					<li>Deployed on DigitalOcean</li>
-				</ul>
+		<div className="min-h-screen bg-gray-100 text-gray-900">
+			{/* Hero Section */}
+			<section className="text-center py-20 bg-gradient-to-r from-blue-500 to-indigo-600 text-white">
+				<h1 className="text-5xl font-bold">Teeny Tiny Web</h1>
+				<p className="mt-4 text-lg">Small but Mighty Dev Resources 🚀</p>
+				<div className="mt-6 flex justify-center space-x-4">
+					<Link href="/docs" className="bg-white text-blue-600 px-6 py-2 rounded-lg shadow-lg hover:bg-gray-200">
+						Explore Docs
+					</Link>
+					<Link href="/projects" className="bg-white text-blue-600 px-6 py-2 rounded-lg shadow-lg hover:bg-gray-200">
+						Browse Projects
+					</Link>
+				</div>
 			</section>
 
-			<section className="mb-8">
-				<h2 className="text-2xl font-semibold mb-3">🔧 Development</h2>
-				<p className="text-gray-700">
-					This project was built using Next.js, Tailwind CSS, and TypeScript, following a modular and scalable approach.
-					All content is stored in MDX format for easy documentation and extendability.
-				</p>
-			</section>
-
-			<section className="mb-8">
-				<h2 className="text-2xl font-semibold mb-3">📌 Explore</h2>
-				<ul className="list-disc list-inside text-blue-600">
-					<li><a href="/docs" className="hover:underline">Docs</a> - Quick guides & tutorials</li>
-					<li><a href="/projects" className="hover:underline">Projects</a> - Open-source projects</li>
-					<li><a href="/roadmaps" className="hover:underline">Roadmaps</a> - Structured learning paths</li>
-					<li><a href="/freebie" className="hover:underline">Freebies</a> - Free resources & PDFs</li>
-				</ul>
-			</section>
-
-			<section className="mb-8">
-				<h2 className="text-2xl font-semibold mb-3">📅 Future Plans</h2>
-
-				{/* IT Tools Collection */}
-				<div className="mb-4">
-					<h3 className="text-xl font-semibold mb-2">🛠️ IT Tools Collection</h3>
-					<p className="text-gray-700">
-						- Token Generator (JWT, API Key, UUID)<br />
-						- Hash Text (MD5, SHA-256, bcrypt)<br />
-						- Date-Time Converter (Unix, ISO, Local Format)<br />
-						- XML to JSON, JSON to XML<br />
-						- Markdown to HTML<br />
-						- Base64 Encode / Decode
+			{/* Stats Section */}
+			<section className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center py-12 px-6">
+				<div className="bg-white p-6 rounded-lg shadow-md">
+					<MdOutlineCategory className="text-4xl text-blue-500 mx-auto" />
+					<h3 className="text-xl font-semibold mt-2">Roadmaps</h3>
+					<p className="text-gray-600">
+						<CountUp end={roadmapsCount} duration={2} /> available
 					</p>
 				</div>
-
-				{/* Interactive Roadmaps & Progress Tracking */}
-				<div className="mb-4">
-					<h3 className="text-xl font-semibold mb-2">📊 Interactive Roadmaps & Progress Tracking</h3>
-					<p className="text-gray-700">
-						- Allow users to save roadmap progress<br />
-						- Detailed explanations & recommended resources<br />
-						- Step-by-step guides and interactive tasks
+				<div className="bg-white p-6 rounded-lg shadow-md">
+					<IoDocumentTextOutline className="text-4xl text-blue-500 mx-auto" />
+					<h3 className="text-xl font-semibold mt-2">Documentation</h3>
+					<p className="text-gray-600">
+						<CountUp end={docsCount} duration={2} /> guides
 					</p>
 				</div>
-
-				{/* Enhanced Documentation Experience */}
-				<div className="mb-4">
-					<h3 className="text-xl font-semibold mb-2">📖 Enhanced Documentation Experience</h3>
-					<p className="text-gray-700">
-						- Expand technical guides and tutorials<br />
-						- Advanced search and filtering features<br />
-						- Personal documentation where users can add notes
-					</p>
-				</div>
-
-				{/* Open Source Community Contributions */}
-				<div className="mb-4">
-					<h3 className="text-xl font-semibold mb-2">🤝 Open Source Community Contributions</h3>
-					<p className="text-gray-700">
-						- Open source projects for community contributions<br />
-						- New mini projects & feature request board<br />
-						- More GitHub integrations
+				<div className="bg-white p-6 rounded-lg shadow-md">
+					<FaRocket className="text-4xl text-blue-500 mx-auto" />
+					<h3 className="text-xl font-semibold mt-2">Projects</h3>
+					<p className="text-gray-600">
+						<CountUp end={projectsCount} duration={2} /> tools & apps
 					</p>
 				</div>
 			</section>
 
-
-			<footer className="mt-10 border-t pt-6 text-center">
-
-				<section className="text-center mt-6">
-					<p className="text-gray-600">🌐 Connect with us:</p>
-					<div className="flex justify-center gap-6 mt-3">
-						<a href="https://github.com/Gunduz-Medya/" target="_blank" rel="noopener noreferrer" className="text-gray-700 hover:text-gray-900 transition">
-							<FaGithub className="w-6 h-6" />
-						</a>
-						<a href="https://www.instagram.com/gunduz_medya" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition">
-							<FaInstagram className="w-6 h-6" />
-						</a>
-						<a href="https://www.linkedin.com/company/gunduzmedya/" target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900 transition">
-							<FaLinkedin className="w-6 h-6" />
-						</a>
-					</div>
-				</section>
-
-				<div className="mt-6">
-					<a href="https://www.digitalocean.com/?refcode=525051e9e7a7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
-						<img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%203.svg" alt="Powered by DigitalOcean" className="mx-auto mt-2" />
+			{/* Footer */}
+			<footer className="text-center py-6 bg-gray-900 text-gray-300">
+				<h3 className="text-lg font-semibold">🚀 Powered by</h3>
+				<a href="https://www.digitalocean.com/?refcode=525051e9e7a7&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
+					<img
+						src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%203.svg"
+						alt="Powered by DigitalOcean"
+						className="mx-auto mt-2"
+					/>
+				</a>
+				<p className="mt-4">Connect with us:</p>
+				<div className="flex justify-center space-x-4 mt-2">
+					<a href="https://github.com/Gunduz-Medya/teeny-tiny-web" className="text-gray-400 hover:text-white">
+						<FaGithub className="text-2xl" />
+					</a>
+					<a href="https://x.com/gunduzmedya_" className="text-gray-400 hover:text-white">
+						<FaTwitter className="text-2xl" />
+					</a>
+					<a href="https://www.linkedin.com/company/gunduzmedya/" className="text-gray-400 hover:text-white">
+						<FaLinkedin className="text-2xl" />
 					</a>
 				</div>
 			</footer>
-		</main>
+		</div>
 	);
 }

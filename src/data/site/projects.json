@@ -1,14 +1,122 @@
 [
-	{
-		"slug": "breakout-game",
-		"title": "Breakout Game",
-		"description": "A simple breakout game built with JavaScript.",
-		"github": "https://github.com/barisgunduz/teeny-tiny-web-projects/tree/master/breakout-game"
-	},
-	{
-		"slug": "expense-tracker",
-		"title": "Expense Tracker",
-		"description": "Track your expenses with this JavaScript project.",
-		"github": "https://github.com/barisgunduz/teeny-tiny-web-projects/tree/master/expense-tracker"
-	}
+  {
+    "slug": "breakout-game",
+    "title": "breakout-game",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "custom-video-player",
+    "title": "custom-video-player",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "dom-array-methods",
+    "title": "dom-array-methods",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "exchange-rate-calculator",
+    "title": "exchange-rate-calculator",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "expense-tracker",
+    "title": "expense-tracker",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "form-validator",
+    "title": "form-validator",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "hangman",
+    "title": "hangman",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "infinite-scroll-blog",
+    "title": "infinite-scroll-blog",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "lyrics-search",
+    "title": "lyrics-search",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "meal-finder",
+    "title": "meal-finder",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "memory-cards",
+    "title": "memory-cards",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "modal-menu-slider",
+    "title": "modal-menu-slider",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "movie-seat-booking",
+    "title": "movie-seat-booking",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "music-player",
+    "title": "music-player",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "new-year-countdown",
+    "title": "new-year-countdown",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "product-filtering",
+    "title": "product-filtering",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "relaxer-app",
+    "title": "relaxer-app",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "speak-number-guess",
+    "title": "speak-number-guess",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "speech-text-reader",
+    "title": "speech-text-reader",
+    "description": "No description available.",
+    "category": "General"
+  },
+  {
+    "slug": "typing-game",
+    "title": "typing-game",
+    "description": "No description available.",
+    "category": "General"
+  }
 ]

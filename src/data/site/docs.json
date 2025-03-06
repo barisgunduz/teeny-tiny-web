@@ -1,12 +1,368 @@
 [
-	{
-		"slug": "terminal-commands",
-		"title": "Essential Terminal Commands",
-		"description": "A list of important terminal commands for developers."
-	},
-	{
-		"slug": "react-basics",
-		"title": "React Basics",
-		"description": "A beginner's guide to getting started with React."
-	}
+  {
+    "slug": "advanced-javascript-concepts",
+    "title": "Advanced JavaScript Concepts",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "advanced-react-patterns",
+    "title": "Advanced React Patterns",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "advanced-typescript-react",
+    "title": "Advanced TypeScript for React Developers",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "ai-powered-development",
+    "title": "AI-Powered Development",
+    "description": "No description available.",
+    "category": "Software Engineering"
+  },
+  {
+    "slug": "aws-basics-ec2-s3-lambda-api-gateway",
+    "title": "AWS Basics: EC2, S3, Lambda, API Gateway",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "backend-performance-optimization",
+    "title": "Backend Performance Optimization",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "big-o-notation-complexity",
+    "title": "Big O Notation & Complexity",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "bit-manipulation-tricks",
+    "title": "Bit Manipulation Tricks",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "ci-cd-jenkins",
+    "title": "CI/CD Pipelines with Jenkins",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "clean-code-principles",
+    "title": "Clean Code Principles",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "common-sorting-algorithms",
+    "title": "Common Sorting Algorithms",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "csrf-xss-sql-injection-prevention",
+    "title": "CSRF, XSS & SQL Injection Prevention",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "data-structures-overview",
+    "title": "Data Structures Overview",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "database-replication-sharding",
+    "title": "Database Replication & Sharding",
+    "description": "No description available.",
+    "category": "Database Optimization"
+  },
+  {
+    "slug": "design-patterns-javascript",
+    "title": "Design Patterns in JavaScript",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "digitalocean-droplet-setup",
+    "title": "DigitalOcean Droplet Setup",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "docker-basics",
+    "title": "Docker Basics",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "docker-networking-volumes",
+    "title": "Docker Networking & Volumes",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "dynamic-programming",
+    "title": "Dynamic Programming",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "error-handling-logging",
+    "title": "Error Handling & Logging Best Practices",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "express-restful-api",
+    "title": "Building RESTful APIs with Express.js",
+    "description": "No description available.",
+    "category": "Backend Development"
+  },
+  {
+    "slug": "firebase-backend",
+    "title": "Working with Firebase for Scalable Backend Solutions",
+    "description": "No description available.",
+    "category": "Backend Development"
+  },
+  {
+    "slug": "frontend-performance-optimization",
+    "title": "Frontend Performance Optimization",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "fullstack-nextjs-express",
+    "title": "Building Full-Stack Apps with Next.js & Express",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "git-commands",
+    "title": "Essential Git Commands",
+    "description": "No description available.",
+    "category": "Terminal"
+  },
+  {
+    "slug": "github-actions-cicd",
+    "title": "GitHub Actions CI/CD",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "graph-algorithms",
+    "title": "Graph Algorithms",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "graphql-vs-rest-pros-cons",
+    "title": "GraphQL vs REST: Pros & Cons",
+    "description": "No description available.",
+    "category": "API Development"
+  },
+  {
+    "slug": "graphql-vs-rest",
+    "title": "GraphQL vs REST Performance Comparison",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "heap-priority-queue",
+    "title": "Heap Data Structure & Priority Queues",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "how-to-write-good-documentation",
+    "title": "How to Write Good Documentation",
+    "description": "No description available.",
+    "category": "Best Practices"
+  },
+  {
+    "slug": "javascript-es6-features",
+    "title": "JavaScript ES6+ Features",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "kubernetes-basics",
+    "title": "Kubernetes Basics",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "mongodb-performance-optimization",
+    "title": "MongoDB Performance Optimization",
+    "description": "No description available.",
+    "category": "Database Optimization"
+  },
+  {
+    "slug": "monitoring-prometheus-grafana",
+    "title": "Monitoring with Prometheus & Grafana",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "nextjs-essentials",
+    "title": "Next.js Essentials",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "nextjs-performance-optimization",
+    "title": "Next.js Performance Optimization",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "nginx-load-balancing-reverse-proxy",
+    "title": "Nginx Load Balancing & Reverse Proxy",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "nginx-setup-for-hosting",
+    "title": "Nginx Setup for Hosting",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "nodejs-express-api-guide",
+    "title": "Node.js & Express API Guide",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "nosql-vs-sql",
+    "title": "NoSQL vs SQL: Which One to Choose?",
+    "description": "No description available.",
+    "category": "Database Design"
+  },
+  {
+    "slug": "oauth-openid-connect",
+    "title": "OAuth 2.0 & OpenID Connect",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "owasp-top10-security-risks",
+    "title": "OWASP Top 10 Security Risks",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "password-hashing-authentication",
+    "title": "Password Hashing & Authentication",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "postgresql-advanced-queries",
+    "title": "PostgreSQL Advanced Queries & Indexing",
+    "description": "No description available.",
+    "category": "Database Optimization"
+  },
+  {
+    "slug": "rate-limiting-api-security",
+    "title": "Rate Limiting & API Security",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "react-basics",
+    "title": "React Basics",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "redis-caching-realtime",
+    "title": "Using Redis for Caching & Real-Time Applications",
+    "description": "No description available.",
+    "category": "Database Optimization"
+  },
+  {
+    "slug": "scalability-design-patterns",
+    "title": "Scalability Design Patterns",
+    "description": "No description available.",
+    "category": "Software Architecture"
+  },
+  {
+    "slug": "secure-api-jwt-oauth",
+    "title": "Secure API Development with JWT & OAuth",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "solid-principles-javascript",
+    "title": "SOLID Principles in JavaScript",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "ssr-vs-ssg",
+    "title": "Server-Side Rendering (SSR) vs Static Site Generation (SSG)",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "state-management-redux-zustand",
+    "title": "State Management with Redux & Zustand",
+    "description": "No description available.",
+    "category": "Web Development"
+  },
+  {
+    "slug": "terminal-commands",
+    "title": "Essential Terminal Commands",
+    "description": "No description available.",
+    "category": "Terminal"
+  },
+  {
+    "slug": "terraform-infrastructure-as-code",
+    "title": "Terraform for Infrastructure as Code (IaC)",
+    "description": "No description available.",
+    "category": "DevOps & Cloud"
+  },
+  {
+    "slug": "testing-javascript",
+    "title": "Testing in JavaScript",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "trie-data-structure",
+    "title": "Trie Data Structure",
+    "description": "No description available.",
+    "category": "Algorithms & Data Structures"
+  },
+  {
+    "slug": "typescript-for-beginners",
+    "title": "TypeScript for Beginners",
+    "description": "No description available.",
+    "category": "Programming & Best Practices"
+  },
+  {
+    "slug": "vscode-tips-productivity",
+    "title": "VS Code Tips & Extensions for Maximum Productivity",
+    "description": "No description available.",
+    "category": "Developer Tools"
+  },
+  {
+    "slug": "waf-implementation",
+    "title": "Web Application Firewall (WAF) Implementation",
+    "description": "No description available.",
+    "category": "Security & Best Practices"
+  },
+  {
+    "slug": "websockets-realtime",
+    "title": "WebSockets & Real-Time Communication",
+    "description": "No description available.",
+    "category": "Web Development"
+  }
 ]

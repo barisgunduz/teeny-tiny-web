@@ -80,7 +80,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				</aside>
 
 				{/* SAĞ: İçerik Alanı */}
-				<main className="w-full md:w-3/4 p-6 md:ml-[25%] h-screen overflow-y-auto">
+				<main className="w-full md:w-3/4 md:ml-[25%] h-screen overflow-y-auto">
 					{children}
 				</main>
 			</body>
