@@ -24,6 +24,12 @@
         "icon": "MdFingerprint"
     },
     {
+        "title": "HTML Encoder/Decoder",
+        "description": "Encode and decode HTML entities.",
+        "slug": "html-encoder-decoder",
+        "icon": "MdLanguage"
+    },
+    {
         "title": "Hash Generator",
         "description": "Generate MD5, SHA256, and SHA512 hashes.",
         "slug": "hash-generator",
@@ -70,5 +76,5 @@
         "description": "Generate dummy text for designs.",
         "slug": "lorem-ipsum-generator",
         "icon": "MdTextFields"
-    }
+    }   
 ]

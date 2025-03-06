@@ -7,12 +7,28 @@ import Base64Encoder from "./components/Base64Encoder";
 import TimestampConverter from "./components/TimestampConverter";
 import Link from "next/link";
 import { JSX } from "react";
+import UuidGenerator from "./components/UuidGenerator";
+import UrlEncoderDecoder from "./components/UrlEncoderDecoder";
+import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
+import HashGenerator from "./components/HashGenerator";
+import IPLookup from "./components/IPLookup";
+import JWTDecoder from "./components/JWTDecoder";
+import ColorConverter from "./components/ColorConverter";
+import MacLookup from "./components/MacLookup";
 
 // Tool bileşenlerini belirleyen nesne
 const toolsMap: Record<string, JSX.Element> = {
     "json-formatter": <JsonFormatter />,
     "base64-encoder": <Base64Encoder />,
     "timestamp-converter": <TimestampConverter />,
+    "uuid-generator": <UuidGenerator />,
+    "url-encoder-decoder": <UrlEncoderDecoder />,
+    "html-encoder-decoder": <HtmlEncoderDecoder />,
+    "hash-generator": <HashGenerator />,
+    "ip-lookup": <IPLookup />,
+    "jwt-decoder": <JWTDecoder />,
+    "color-converter": <ColorConverter />,
+    "mac-lookup": <MacLookup />
 };
 
 export default function ToolPage() {
