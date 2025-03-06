@@ -8,6 +8,7 @@ import {
 	RocketLaunchIcon,
 	MapIcon,
 	GiftIcon,
+	WrenchIcon
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -21,11 +22,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${
-					isReady
+				className={`${isReady
 						? "flex flex-col md:flex-row bg-background text-textPrimary min-h-screen"
 						: ""
-				}`}
+					}`}
 			>
 				{/* SOL: Menü */}
 				<aside
@@ -68,6 +68,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 						>
 							<MapIcon className="h-5 w-5 mr-2" />
 							<span>Roadmaps</span>
+						</Link>
+						<Link href="/tools" className="flex items-center text-textPrimary hover:text-accent">
+							<WrenchIcon className="h-5 w-5 mr-2" />
+							<span>Tools</span>
 						</Link>
 						<Link
 							href="/freebie"

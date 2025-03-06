@@ -1,0 +1,74 @@
+[
+    {
+        "title": "JSON Formatter",
+        "description": "Format and validate JSON data.",
+        "slug": "json-formatter",
+        "icon": "MdCode"
+    },
+    {
+        "title": "Base64 Encoder/Decoder",
+        "description": "Convert text to Base64 and vice versa.",
+        "slug": "base64-encoder",
+        "icon": "MdLock"
+    },
+    {
+        "title": "Timestamp Converter",
+        "description": "Convert timestamps to human-readable format.",
+        "slug": "timestamp-converter",
+        "icon": "MdAccessTime"
+    },
+    {
+        "title": "UUID Generator",
+        "description": "Generate a random UUID.",
+        "slug": "uuid-generator",
+        "icon": "MdFingerprint"
+    },
+    {
+        "title": "Hash Generator",
+        "description": "Generate MD5, SHA256, and SHA512 hashes.",
+        "slug": "hash-generator",
+        "icon": "MdSecurity"
+    },
+    {
+        "title": "IP Lookup",
+        "description": "Get location and ISP info from an IP address.",
+        "slug": "ip-lookup",
+        "icon": "MdPublic"
+    },
+    {
+        "title": "JWT Decoder",
+        "description": "Decode and inspect JWT tokens.",
+        "slug": "jwt-decoder",
+        "icon": "MdVpnKey"
+    },
+    {
+        "title": "URL Encoder/Decoder",
+        "description": "Encode or decode URLs.",
+        "slug": "url-encoder-decoder",
+        "icon": "MdLink"
+    },
+    {
+        "title": "Color Converter",
+        "description": "Convert HEX and RGB colors.",
+        "slug": "color-converter",
+        "icon": "MdPalette"
+    },
+    {
+        "title": "MAC Lookup",
+        "description": "Find vendor info from a MAC address.",
+        "slug": "mac-lookup",
+        "icon": "MdDevices"
+    },
+    {
+        "title": "Regex Tester",
+        "description": "Test regular expressions.",
+        "slug": "regex-tester",
+        "icon": "MdRegex"
+    },
+    {
+        "title": "Lorem Ipsum Generator",
+        "description": "Generate dummy text for designs.",
+        "slug": "lorem-ipsum-generator",
+        "icon": "MdTextFields"
+    }
+]
