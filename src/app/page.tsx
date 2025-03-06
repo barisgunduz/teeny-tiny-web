@@ -5,21 +5,25 @@ import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { FaGithub, FaTwitter, FaLinkedin, FaRocket, FaUsers } from "react-icons/fa";
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { MdOutlineCategory } from "react-icons/md";
+import { MdOutlineCategory, MdBuild } from "react-icons/md";
+
 import siteData from "@/data/site/site.json";
 import projectsData from "@/data/site/projects.json";
 import roadmapsData from "@/data/roadmaps.json";
 import docsData from "@/data/site/docs.json";
+import toolsData from "@/data/site/tools.json";
 
 export default function HomePage() {
 	const [projectsCount, setProjectsCount] = useState(0);
 	const [roadmapsCount, setRoadmapsCount] = useState(0);
 	const [docsCount, setDocsCount] = useState(0);
+	const [toolsCount, setToolsCount] = useState(0);
 
 	useEffect(() => {
 		setProjectsCount(projectsData.length);
 		setRoadmapsCount(roadmapsData.length);
 		setDocsCount(docsData.length);
+		setToolsCount(toolsData.length);
 	}, []);
 
 	return (
@@ -59,6 +63,13 @@ export default function HomePage() {
 					<h3 className="text-xl font-semibold mt-2">Projects</h3>
 					<p className="text-gray-600">
 						<CountUp end={projectsCount} duration={2} /> tools & apps
+					</p>
+				</div>
+				<div className="bg-white p-6 rounded-lg shadow-md">
+					<MdBuild className="text-4xl text-blue-500 mx-auto" />
+					<h3 className="text-xl font-semibold mt-2">Tools</h3>
+					<p className="text-gray-600">
+						<CountUp end={toolsCount} duration={2} /> available
 					</p>
 				</div>
 			</section>
