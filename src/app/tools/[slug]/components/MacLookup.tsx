@@ -1,5 +1,5 @@
 "use client";
-import vendorsData from "@/data/site/vendors.json"; // JSON'u import et
+import vendorsData from "@/data/site/vendors.json";
 import { useState } from "react";
 
 export default function MacLookup() {
@@ -8,27 +8,19 @@ export default function MacLookup() {
 
     const lookupMac = () => {
         const formattedMac = mac
-          .trim()
-          .toUpperCase()
-          .slice(0, 8)
-          .replace(/-/g, ":")
-          .replace(/\./g, ":"); // Eğer nokta ile ayrılmışsa düzelt
-      
-        console.log("🚀 ~ lookupMac ~ formattedMac:", formattedMac);
-      
-        // JSON'un her ihtimale karşı string-key olarak kullanımı
+            .trim()
+            .toUpperCase()
+            .slice(0, 8)
+            .replace(/-/g, ":")
+            .replace(/\./g, ":");
         const vendorMap: Record<string, string> = vendorsData as Record<string, string>;
-      
-        console.log("🚀 ~ lookupMac ~ vendorsData[formattedMac]:", vendorMap[formattedMac]);
-      
-        if (vendorMap.hasOwnProperty(formattedMac)) {
-          setVendor(vendorMap[formattedMac]);
-        } else {
-          setVendor("Unknown Vendor");
-        }
-      };
-      
 
+        if (vendorMap.hasOwnProperty(formattedMac)) {
+            setVendor(vendorMap[formattedMac]);
+        } else {
+            setVendor("Unknown Vendor");
+        }
+    };
 
     return (
         <div className="p-6 bg-white shadow-lg rounded-lg">

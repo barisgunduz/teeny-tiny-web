@@ -6,12 +6,10 @@ import { MdOutlineFingerprint } from "react-icons/md";
 export default function UuidGenerator() {
     const [uuid, setUuid] = useState<string>(uuidv4());
 
-    // Yeni UUID üretme
     const generateUuid = () => {
         setUuid(uuidv4());
     };
 
-    // Panoya kopyala
     const copyToClipboard = () => {
         navigator.clipboard.writeText(uuid);
     };
@@ -26,7 +24,6 @@ export default function UuidGenerator() {
                 Generate unique UUIDs instantly.
             </p>
 
-            {/* UUID Görüntüleme */}
             <div className="mt-6 bg-gray-100 p-4 rounded-lg flex items-center justify-between">
                 <span className="text-gray-800 font-mono break-all">{uuid}</span>
                 <button
@@ -37,7 +34,6 @@ export default function UuidGenerator() {
                 </button>
             </div>
 
-            {/* Yeni UUID Üret */}
             <button
                 onClick={generateUuid}
                 className="mt-4 w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"

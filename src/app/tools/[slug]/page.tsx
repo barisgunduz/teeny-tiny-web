@@ -1,22 +1,21 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import toolsData from "@/data/site/tools.json"; // ✅ Doğru dosya yolu
-import JsonFormatter from "./components/JsonFormatter";
-import Base64Encoder from "./components/Base64Encoder";
-import TimestampConverter from "./components/TimestampConverter";
+import toolsData from "@/data/site/tools.json";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { JSX } from "react";
-import UuidGenerator from "./components/UuidGenerator";
-import UrlEncoderDecoder from "./components/UrlEncoderDecoder";
-import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
-import HashGenerator from "./components/HashGenerator";
-import IPLookup from "./components/IPLookup";
-import JWTDecoder from "./components/JWTDecoder";
+import Base64Encoder from "./components/Base64Encoder";
 import ColorConverter from "./components/ColorConverter";
+import HashGenerator from "./components/HashGenerator";
+import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
+import IPLookup from "./components/IPLookup";
+import JsonFormatter from "./components/JsonFormatter";
+import JWTDecoder from "./components/JWTDecoder";
 import MacLookup from "./components/MacLookup";
+import TimestampConverter from "./components/TimestampConverter";
+import UrlEncoderDecoder from "./components/UrlEncoderDecoder";
+import UuidGenerator from "./components/UuidGenerator";
 
-// Tool bileşenlerini belirleyen nesne
 const toolsMap: Record<string, JSX.Element> = {
     "json-formatter": <JsonFormatter />,
     "base64-encoder": <Base64Encoder />,
@@ -33,9 +32,9 @@ const toolsMap: Record<string, JSX.Element> = {
 
 export default function ToolPage() {
     const params = useParams();
-    const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug; // 🛠 Slug'ı string olarak zorunlu kıl
+    const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
 
-    const tool = toolsData.find((t) => t.slug === slug); // JSON'dan ilgili tool'u çek
+    const tool = toolsData.find((t) => t.slug === slug);
 
     if (!tool || !slug || !toolsMap[slug]) {
         return (
@@ -55,16 +54,14 @@ export default function ToolPage() {
 
     return (
         <div className="mx-auto p-6">
-            {/* Tool Başlığı ve Açıklaması */}
+
             <div className="mb-6 text-center">
                 <h1 className="text-3xl font-bold text-gray-900">{tool.title}</h1>
                 <p className="text-gray-600 mt-2">{tool.description}</p>
             </div>
 
-            {/* Tool İçeriği */}
             {toolsMap[slug]}
 
-            {/* Tools Sayfasına Dön Linki */}
             <div className="mt-6 text-center">
                 <Link href="/tools" className="text-blue-600 hover:underline">
                     ← Back to Tools

@@ -29,7 +29,7 @@ export default function IPLookup() {
                     throw new Error(`Failed to fetch from ${service.name}`);
                 }
                 const result = await response.json();
-                setData({ ...result, source: service.name }); // Kaynak servisi de gösterelim
+                setData({ ...result, source: service.name });
                 return;
             } catch (err) {
                 console.error(`Error fetching from ${service.name}:`, err);

@@ -2,32 +2,28 @@ const fs = require("fs");
 const path = require("path");
 const matter = require("gray-matter");
 
-// İçerik dizinleri
 const contentDirs = {
 	docs: path.join(__dirname, "../content/docs"),
 	projects: path.join(__dirname, "../content/projects"),
 };
 
-// JSON dosyalarının yolu
 const outputFiles = {
 	docs: path.join(__dirname, "../src/data/site/docs.json"),
 	projects: path.join(__dirname, "../src/data/site/projects.json"),
 };
 
-// Markdown dosyalarından metadata çıkarma
 function extractMetadata(filePath, filename) {
 	const fileContents = fs.readFileSync(filePath, "utf8");
 	const { data } = matter(fileContents);
 
 	return {
-		slug: filename.replace(".mdx", ""), // Dosya adını slug olarak kullan
-		title: data.title || filename.replace(".mdx", ""), // Başlık
-		description: data.description || "No description available.", // Açıklama
-		category: data.category || "General", // Kategori varsa al, yoksa "General"
+		slug: filename.replace(".mdx", ""),
+		title: data.title || filename.replace(".mdx", ""),
+		description: data.description || "No description available.",
+		category: data.category || "General",
 	};
 }
 
-// JSON dosyalarını güncelle
 function updateJsonFiles() {
 	Object.keys(contentDirs).forEach((key) => {
 		const dirPath = contentDirs[key];
@@ -50,5 +46,4 @@ function updateJsonFiles() {
 	});
 }
 
-// Scripti çalıştır
 updateJsonFiles();

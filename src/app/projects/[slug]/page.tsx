@@ -20,7 +20,6 @@ const components = {
 	),
 };
 
-// 🔥 **Fix:** `params.slug` önce kontrol ediliyor
 export default function ProjectPage({ params }: { params: { slug?: string } }) {
 	if (!params?.slug) {
 		notFound();
@@ -40,7 +39,6 @@ export default function ProjectPage({ params }: { params: { slug?: string } }) {
 
 	return (
 		<main className="p-10">
-			{/* GitHub Repo Linki */}
 			<a
 				href={githubLink}
 				target="_blank"
@@ -49,7 +47,6 @@ export default function ProjectPage({ params }: { params: { slug?: string } }) {
 				GitHub Repo →
 			</a>
 
-			{/* MDX İçeriği */}
 			<div className="mt-6 prose prose-lg text-gray-700">
 				<MDXRemote
 					source={content}
@@ -58,7 +55,6 @@ export default function ProjectPage({ params }: { params: { slug?: string } }) {
 				/>
 			</div>
 
-			{/* Back to Projects Linki */}
 			<div className="mt-10">
 				<Link
 					href="/projects"

@@ -1,16 +1,18 @@
 "use client";
 
-import "../app/globals.css";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+
 import {
-	HomeIcon,
 	BookOpenIcon,
-	RocketLaunchIcon,
-	MapIcon,
 	GiftIcon,
+	HomeIcon,
+	MapIcon,
+	RocketLaunchIcon,
 	WrenchIcon
 } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import "../app/globals.css";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const [isReady, setIsReady] = useState(false);
@@ -23,11 +25,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 		<html lang="en">
 			<body
 				className={`${isReady
-						? "flex flex-col md:flex-row bg-background text-textPrimary min-h-screen"
-						: ""
+					? "flex flex-col md:flex-row bg-background text-textPrimary min-h-screen"
+					: ""
 					}`}
 			>
-				{/* SOL: Menü */}
+				{/* Left Menu */}
 				<aside
 					className={`w-full md:w-1/4 h-auto md:h-screen bg-foreground shadow-md p-6 flex md:flex-col md:fixed border-r border-borderColor`}
 				>
@@ -39,7 +41,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 						</h1>
 					</div>
 
-					{/* Menü */}
+					{/* Menu */}
 					<nav className="flex flex-row md:flex-col space-x-4 md:space-x-0 md:space-y-4 w-full">
 						<Link
 							href="/"
@@ -83,7 +85,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 					</nav>
 				</aside>
 
-				{/* SAĞ: İçerik Alanı */}
+				{/* Content Area */}
 				<main className="w-full md:w-3/4 md:ml-[25%] h-screen overflow-y-auto">
 					{children}
 				</main>

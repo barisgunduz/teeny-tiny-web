@@ -11,9 +11,9 @@ export default function Base64Encoder() {
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const text = e.target.value;
         setInput(text);
-        setEncoded(btoa(text)); // Encode işlemi
+        setEncoded(btoa(text));
         try {
-            setDecoded(atob(text)); // Decode işlemi
+            setDecoded(atob(text));
         } catch {
             setDecoded("❌ Invalid Base64");
         }
@@ -29,7 +29,7 @@ export default function Base64Encoder() {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Input Text Alanı */}
+
             <div>
                 <h3 className="text-lg font-semibold mb-2">Enter Text</h3>
                 <textarea
@@ -40,7 +40,6 @@ export default function Base64Encoder() {
                 />
             </div>
 
-            {/* Encoded & Decoded Alanı */}
             <div>
                 <h3 className="text-lg font-semibold mb-2 flex justify-between">
                     <span>Encoded (Base64)</span>

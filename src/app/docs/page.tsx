@@ -14,7 +14,6 @@ export default function DocsPage() {
   const [docs, setDocs] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Server'dan doküman verilerini çekme
   useEffect(() => {
     fetch("/api/docs")
       .then((res) => res.json())
@@ -22,14 +21,12 @@ export default function DocsPage() {
       .catch((error) => console.error("Failed to fetch docs:", error));
   }, []);
 
-  // ** Kategorilere Göre Gruplama **
   const groupedDocs: Record<string, Doc[]> = docs.reduce((acc, doc: Doc) => {
     if (!acc[doc.category]) acc[doc.category] = [];
     acc[doc.category].push(doc);
     return acc;
   }, {} as Record<string, Doc[]>);
 
-  // ** Arama Özelliği **
   const filteredDocs: Doc[] = docs.filter((doc: Doc) =>
     doc.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -38,7 +35,6 @@ export default function DocsPage() {
     <main className="p-10">
       <h1 className="text-3xl font-bold">📚 Documentation</h1>
 
-      {/* Arama Çubuğu */}
       <input
         type="text"
         placeholder="Search Docs..."
@@ -47,7 +43,6 @@ export default function DocsPage() {
         className="mt-4 p-2 border rounded w-full"
       />
 
-      {/* Kategorilere Göre Gösterim */}
       {searchTerm === "" ? (
         Object.keys(groupedDocs).map((category) => (
           <section key={category} className="mt-6">
@@ -64,7 +59,6 @@ export default function DocsPage() {
           </section>
         ))
       ) : (
-        // Arama Sonuçları
         <ul className="mt-6 space-y-4">
           {filteredDocs.length > 0 ? (
             filteredDocs.map((doc) => (

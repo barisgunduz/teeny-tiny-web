@@ -21,14 +21,13 @@ export default function JsonFormatter() {
             navigator.clipboard.writeText(formattedJson);
             setCopySuccess(true);
 
-            // "Copied!" mesajını 2 saniye sonra eski haline döndür
             setTimeout(() => setCopySuccess(false), 2000);
         }
     };
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* JSON Input Alanı */}
+
             <div>
                 <h3 className="text-lg font-semibold mb-2">Input JSON</h3>
                 <textarea
@@ -45,7 +44,6 @@ export default function JsonFormatter() {
                 </button>
             </div>
 
-            {/* JSON Output Alanı */}
             <div>
                 <h3 className="text-lg font-semibold mb-2 flex justify-between">
                     <span>Formatted JSON</span>

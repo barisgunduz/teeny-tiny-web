@@ -6,7 +6,6 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// 🔥 **Yeni Fonksiyon: Belirtilen `slug` için içeriği al**
 async function getDocContent(slug: string) {
 	const docsDirectory = path.join(process.cwd(), "content/docs");
 	const filePath = path.join(docsDirectory, `${slug}.mdx`);
@@ -25,7 +24,6 @@ export default async function DocPage({
 }: {
 	params: { slug: string };
 }) {
-	// 🔥 **params.async olarak işlendi**
 	if (!params?.slug) {
 		notFound();
 	}

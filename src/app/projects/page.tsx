@@ -14,7 +14,6 @@ export default function ProjectsPage() {
                     <p className="text-gray-600">No projects found.</p>
                 </main>
             </>
-
         );
     }
 
@@ -24,24 +23,22 @@ export default function ProjectsPage() {
         const fileContents = fs.readFileSync(filePath, "utf8");
         const { data, content } = matter(fileContents);
 
-        // 🔥 Markdown içeriğini parçalayarak title ve description oluşturuyoruz
-        const lines = content.split("\n").filter((line) => line.trim() !== ""); // Boş satırları temizle
-        const markdownTitleIndex = lines.findIndex((line) => line.startsWith("##")); // İlk '##' başlığını bul
-        const markdownTitle = markdownTitleIndex !== -1 ? lines[markdownTitleIndex].replace("##", "").trim() : filename.replace(".mdx", ""); // Title belirle
+        const lines = content.split("\n").filter((line) => line.trim() !== "");
+        const markdownTitleIndex = lines.findIndex((line) => line.startsWith("##"));
+        const markdownTitle = markdownTitleIndex !== -1 ? lines[markdownTitleIndex].replace("##", "").trim() : filename.replace(".mdx", "");
 
-        // '##' başlığından sonraki ilk düz metni description olarak al
         let markdownDescription = "No description available.";
         if (markdownTitleIndex !== -1) {
-            const descriptionIndex = lines.findIndex((line, index) => index > markdownTitleIndex && !line.startsWith("#")); // İlk düz metni bul
+            const descriptionIndex = lines.findIndex((line, index) => index > markdownTitleIndex && !line.startsWith("#"));
             if (descriptionIndex !== -1) {
                 markdownDescription = lines[descriptionIndex].trim();
             }
         }
 
         return {
-            slug: filename.replace(".mdx", ""), // URL için slug
-            title: data.title || markdownTitle, // Önce frontmatter title, yoksa Markdown içindeki '##'
-            description: data.description || markdownDescription, // Önce frontmatter description, yoksa Markdown içindeki ilk düz metin
+            slug: filename.replace(".mdx", ""),
+            title: data.title || markdownTitle,
+            description: data.description || markdownDescription,
         };
     });
 

@@ -6,8 +6,17 @@
 		"site": "https://github.com/Gunduz-Medya/teeny-tiny-web"
 	},
 	"socials": [
-		{ "name": "GitHub", "link": "https://github.com/Gunduz-Medya/" },
-		{ "name": "X", "link": "www.example.com" },
-		{ "name": "LinkedIn", "link": "www.example.com" }
+		{
+			"name": "GitHub",
+			"link": "https://github.com/Gunduz-Medya/"
+		},
+		{
+			"name": "X",
+			"link": "https://x.com/gunduzmedya_"
+		},
+		{
+			"name": "LinkedIn",
+			"link": "https://www.linkedin.com/company/gunduzmedya/"
+		}
 	]
 }

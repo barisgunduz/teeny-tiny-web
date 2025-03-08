@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import * as MdIcons from "react-icons/md";
 import toolsData from "@/data/site/tools.json";
+import Link from "next/link";
 import { ComponentType } from "react";
+import * as MdIcons from "react-icons/md";
 
 export default function ToolsPage() {
     return (
@@ -17,7 +17,6 @@ export default function ToolsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {toolsData.map((tool) => {
-                    // TypeScript'in tip hatasını önlemek için güvenli bir şekilde ikon belirleme
                     const IconComponent =
                         (MdIcons as Record<string, ComponentType<{ className?: string }>>)[
                         tool.icon

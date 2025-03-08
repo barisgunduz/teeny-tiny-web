@@ -7,7 +7,6 @@ export default function ColorConverter() {
     const [rgb, setRgb] = useState("rgb(255, 87, 51)");
     const [error, setError] = useState("");
 
-    // HEX → RGB Dönüşümü
     const hexToRgb = (hex: string) => {
         setError("");
         if (!/^#?[0-9A-Fa-f]{6}$/.test(hex)) {
@@ -21,7 +20,6 @@ export default function ColorConverter() {
         return `rgb(${r}, ${g}, ${b})`;
     };
 
-    // RGB → HEX Dönüşümü
     const rgbToHex = (rgb: string) => {
         setError("");
         const match = rgb.match(/^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/);
