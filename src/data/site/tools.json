@@ -76,5 +76,17 @@
         "description": "Generate dummy text for designs.",
         "slug": "lorem-ipsum-generator",
         "icon": "MdTextFields"
-    }   
+    },
+    {
+        "title": "JSON ↔ XML Converter",
+        "description": "Convert JSON to XML and XML to JSON.",
+        "slug": "json-xml-converter",
+        "icon": "MdTransform"
+    },
+    {
+        "title": "SQL Formatter",
+        "description": "Beautify and format SQL queries.",
+        "slug": "sql-formatter",
+        "icon": "MdStorage"
+    }
 ]

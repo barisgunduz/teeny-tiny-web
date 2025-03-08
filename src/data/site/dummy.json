@@ -1,0 +1,1221 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "johndoe@example.com",
+            "phone": "+1 123-456-7890",
+            "address": "123 Main St, New York, NY",
+            "company": "Tech Solutions",
+            "website": "johndoe.com"
+        },
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "email": "janesmith@example.com",
+            "phone": "+1 987-654-3210",
+            "address": "456 Park Ave, San Francisco, CA",
+            "company": "Innovate Inc.",
+            "website": "janesmith.dev"
+        },
+        {
+            "id": 3,
+            "name": "Michael Johnson",
+            "email": "michaelj@example.com",
+            "phone": "+44 20 7946 0958",
+            "address": "78 Oxford St, London, UK",
+            "company": "AI Labs",
+            "website": "michaeljohnson.ai"
+        },
+        {
+            "id": 4,
+            "name": "Emily Davis",
+            "email": "emilyd@example.com",
+            "phone": "+33 1 23 45 67 89",
+            "address": "12 Rue de Paris, Paris, FR",
+            "company": "Code Factory",
+            "website": "emilydevs.fr"
+        },
+        {
+            "id": 5,
+            "name": "Robert Brown",
+            "email": "robertb@example.com",
+            "phone": "+49 30 12345678",
+            "address": "Karlstr 45, Berlin, DE",
+            "company": "CyberTech",
+            "website": "robertbrown.io"
+        },
+        {
+            "id": 6,
+            "name": "Sarah Wilson",
+            "email": "sarahw@example.com",
+            "phone": "+61 7 1234 5678",
+            "address": "Queensland, AU",
+            "company": "Future AI",
+            "website": "sarahwilson.ai"
+        },
+        {
+            "id": 7,
+            "name": "James Miller",
+            "email": "jamesm@example.com",
+            "phone": "+1 555-987-6543",
+            "address": "Los Angeles, CA",
+            "company": "CloudNet",
+            "website": "cloudnet.com"
+        },
+        {
+            "id": 8,
+            "name": "Olivia Garcia",
+            "email": "oliviag@example.com",
+            "phone": "+55 11 98765-4321",
+            "address": "São Paulo, BR",
+            "company": "DevOps Hub",
+            "website": "oliviadevops.com"
+        },
+        {
+            "id": 9,
+            "name": "Daniel Martinez",
+            "email": "danielm@example.com",
+            "phone": "+34 91 123 4567",
+            "address": "Madrid, ES",
+            "company": "Big Data Solutions",
+            "website": "danielmartinez.io"
+        },
+        {
+            "id": 10,
+            "name": "Sophia Lee",
+            "email": "sophial@example.com",
+            "phone": "+82 2 1234 5678",
+            "address": "Seoul, KR",
+            "company": "AI Robotics",
+            "website": "sophiaai.com"
+        }
+    ],
+    "products": [
+        {
+            "id": 101,
+            "name": "Wireless Keyboard",
+            "price": 49.99,
+            "category": "Electronics",
+            "stock": 120,
+            "brand": "Logitech"
+        },
+        {
+            "id": 102,
+            "name": "Gaming Chair",
+            "price": 199.99,
+            "category": "Furniture",
+            "stock": 35,
+            "brand": "Secretlab"
+        },
+        {
+            "id": 103,
+            "name": "Noise Cancelling Headphones",
+            "price": 299.99,
+            "category": "Electronics",
+            "stock": 50,
+            "brand": "Sony"
+        },
+        {
+            "id": 104,
+            "name": "Mechanical Keyboard",
+            "price": 89.99,
+            "category": "Electronics",
+            "stock": 75,
+            "brand": "Keychron"
+        },
+        {
+            "id": 105,
+            "name": "Curved Monitor",
+            "price": 349.99,
+            "category": "Electronics",
+            "stock": 30,
+            "brand": "Samsung"
+        },
+        {
+            "id": 106,
+            "name": "Smartphone Stand",
+            "price": 15.99,
+            "category": "Accessories",
+            "stock": 200,
+            "brand": "Anker"
+        },
+        {
+            "id": 107,
+            "name": "USB-C Docking Station",
+            "price": 129.99,
+            "category": "Accessories",
+            "stock": 40,
+            "brand": "Belkin"
+        },
+        {
+            "id": 108,
+            "name": "4K Webcam",
+            "price": 159.99,
+            "category": "Electronics",
+            "stock": 20,
+            "brand": "Logitech"
+        },
+        {
+            "id": 109,
+            "name": "Ergonomic Mouse",
+            "price": 69.99,
+            "category": "Electronics",
+            "stock": 100,
+            "brand": "Razer"
+        },
+        {
+            "id": 110,
+            "name": "Portable SSD 1TB",
+            "price": 189.99,
+            "category": "Storage",
+            "stock": 60,
+            "brand": "SanDisk"
+        }
+    ],
+    "weather": [
+        {
+            "id": 501,
+            "city": "New York",
+            "temperature": 22,
+            "condition": "Sunny",
+            "humidity": 55
+        },
+        {
+            "id": 502,
+            "city": "San Francisco",
+            "temperature": 18,
+            "condition": "Cloudy",
+            "humidity": 72
+        },
+        {
+            "id": 503,
+            "city": "London",
+            "temperature": 15,
+            "condition": "Rainy",
+            "humidity": 85
+        },
+        {
+            "id": 504,
+            "city": "Tokyo",
+            "temperature": 25,
+            "condition": "Clear",
+            "humidity": 60
+        },
+        {
+            "id": 505,
+            "city": "Berlin",
+            "temperature": 19,
+            "condition": "Partly Cloudy",
+            "humidity": 50
+        },
+        {
+            "id": 506,
+            "city": "Sydney",
+            "temperature": 27,
+            "condition": "Sunny",
+            "humidity": 65
+        },
+        {
+            "id": 507,
+            "city": "Moscow",
+            "temperature": 12,
+            "condition": "Snowy",
+            "humidity": 90
+        },
+        {
+            "id": 508,
+            "city": "Dubai",
+            "temperature": 35,
+            "condition": "Hot",
+            "humidity": 20
+        },
+        {
+            "id": 509,
+            "city": "Mumbai",
+            "temperature": 30,
+            "condition": "Humid",
+            "humidity": 80
+        },
+        {
+            "id": 510,
+            "city": "Cape Town",
+            "temperature": 22,
+            "condition": "Windy",
+            "humidity": 40
+        }
+    ],
+    "loremIpsum": [
+        {
+            "id": 601,
+            "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, felis eget aliquam dignissim..."
+        },
+        {
+            "id": 602,
+            "paragraph": "Curabitur tristique orci at leo gravida, et ultricies sapien suscipit. Donec ullamcorper risus..."
+        },
+        {
+            "id": 603,
+            "paragraph": "Fusce dictum quam id erat gravida, eget viverra arcu accumsan. Nulla sit amet elit vitae turpis..."
+        },
+        {
+            "id": 604,
+            "paragraph": "Proin malesuada enim at diam facilisis, at convallis metus efficitur. Integer eget lacus euismod..."
+        },
+        {
+            "id": 605,
+            "paragraph": "Aenean eleifend turpis eget lorem viverra, at facilisis ex lobortis. Praesent non orci risus..."
+        },
+        {
+            "id": 606,
+            "paragraph": "Maecenas scelerisque ligula nec dolor volutpat, eget imperdiet urna hendrerit. Suspendisse potenti..."
+        },
+        {
+            "id": 607,
+            "paragraph": "Donec consectetur, turpis sed aliquet accumsan, nisl felis eleifend justo, et efficitur nulla erat..."
+        },
+        {
+            "id": 608,
+            "paragraph": "Suspendisse tincidunt velit at sem ultricies, eu hendrerit quam vulputate. Pellentesque at varius..."
+        },
+        {
+            "id": 609,
+            "paragraph": "Nam vitae urna id urna laoreet tincidunt. Cras porttitor nibh sed lorem cursus..."
+        },
+        {
+            "id": 610,
+            "paragraph": "Sed volutpat, mauris ac efficitur aliquet, nunc ligula luctus felis, eu suscipit est lorem ut..."
+        }
+    ],
+    "posts": [
+        {
+            "id": 201,
+            "title": "The Future of AI",
+            "author": "John Doe",
+            "published_at": "2024-01-15",
+            "content": "AI is evolving at an unprecedented rate, transforming industries across the board."
+        },
+        {
+            "id": 202,
+            "title": "Why TypeScript?",
+            "author": "Jane Smith",
+            "published_at": "2024-01-20",
+            "content": "TypeScript offers strong typing and better tooling, making JavaScript development safer and more efficient."
+        },
+        {
+            "id": 203,
+            "title": "10 Productivity Hacks for Developers",
+            "author": "Michael Johnson",
+            "published_at": "2024-02-05",
+            "content": "Boost your efficiency with these 10 essential productivity tips for coders."
+        },
+        {
+            "id": 204,
+            "title": "Web3: The Internet Revolution",
+            "author": "Emily Davis",
+            "published_at": "2024-02-10",
+            "content": "Web3 is changing the way we interact with the internet, bringing decentralization to the forefront."
+        },
+        {
+            "id": 205,
+            "title": "How to Master React",
+            "author": "Robert Brown",
+            "published_at": "2024-02-18",
+            "content": "A step-by-step guide to becoming a React expert, from hooks to performance optimization."
+        },
+        {
+            "id": 206,
+            "title": "The Rise of Serverless Computing",
+            "author": "Sarah Wilson",
+            "published_at": "2024-02-25",
+            "content": "Serverless computing eliminates infrastructure management, allowing developers to focus on code."
+        },
+        {
+            "id": 207,
+            "title": "Cybersecurity in 2024",
+            "author": "James Miller",
+            "published_at": "2024-03-05",
+            "content": "With rising cyber threats, securing applications has never been more crucial."
+        },
+        {
+            "id": 208,
+            "title": "Top 5 JavaScript Frameworks",
+            "author": "Olivia Garcia",
+            "published_at": "2024-03-12",
+            "content": "A breakdown of the most popular JavaScript frameworks and their strengths."
+        },
+        {
+            "id": 209,
+            "title": "Mastering CSS Grid",
+            "author": "Daniel Martinez",
+            "published_at": "2024-03-18",
+            "content": "CSS Grid makes layout design flexible and powerful. Here's how you can master it."
+        },
+        {
+            "id": 210,
+            "title": "DevOps Best Practices",
+            "author": "Sophia Lee",
+            "published_at": "2024-03-25",
+            "content": "CI/CD, automation, and infrastructure as code—key principles for effective DevOps."
+        }
+    ],
+    "comments": [
+        {
+            "id": 301,
+            "post_id": 201,
+            "author": "Alice",
+            "content": "AI is fascinating! Can't wait to see where it goes."
+        },
+        {
+            "id": 302,
+            "post_id": 202,
+            "author": "Bob",
+            "content": "TypeScript has saved me from countless bugs. Great article!"
+        },
+        {
+            "id": 303,
+            "post_id": 203,
+            "author": "Charlie",
+            "content": "These productivity hacks are game-changers!"
+        },
+        {
+            "id": 304,
+            "post_id": 204,
+            "author": "David",
+            "content": "Web3 is the future, but security remains a big challenge."
+        },
+        {
+            "id": 305,
+            "post_id": 205,
+            "author": "Emma",
+            "content": "React hooks confused me at first, but now I love them!"
+        },
+        {
+            "id": 306,
+            "post_id": 206,
+            "author": "Frank",
+            "content": "Serverless computing is the best thing to happen to devs!"
+        },
+        {
+            "id": 307,
+            "post_id": 207,
+            "author": "Grace",
+            "content": "Cybersecurity threats are real! Thanks for covering this topic."
+        },
+        {
+            "id": 308,
+            "post_id": 208,
+            "author": "Henry",
+            "content": "Vue.js is my favorite, but React is solid too!"
+        },
+        {
+            "id": 309,
+            "post_id": 209,
+            "author": "Isabel",
+            "content": "CSS Grid made my life so much easier!"
+        },
+        {
+            "id": 310,
+            "post_id": 210,
+            "author": "Jack",
+            "content": "DevOps is the future. Great insights!"
+        }
+    ],
+    "invoices": [
+        {
+            "id": 401,
+            "customer": "John Doe",
+            "amount": 150.75,
+            "status": "Paid",
+            "due_date": "2024-02-10"
+        },
+        {
+            "id": 402,
+            "customer": "Jane Smith",
+            "amount": 220.00,
+            "status": "Pending",
+            "due_date": "2024-02-15"
+        },
+        {
+            "id": 403,
+            "customer": "Michael Johnson",
+            "amount": 75.50,
+            "status": "Overdue",
+            "due_date": "2024-02-05"
+        },
+        {
+            "id": 404,
+            "customer": "Emily Davis",
+            "amount": 350.00,
+            "status": "Paid",
+            "due_date": "2024-03-01"
+        },
+        {
+            "id": 405,
+            "customer": "Robert Brown",
+            "amount": 190.25,
+            "status": "Pending",
+            "due_date": "2024-03-10"
+        },
+        {
+            "id": 406,
+            "customer": "Sarah Wilson",
+            "amount": 450.00,
+            "status": "Overdue",
+            "due_date": "2024-02-28"
+        },
+        {
+            "id": 407,
+            "customer": "James Miller",
+            "amount": 300.00,
+            "status": "Paid",
+            "due_date": "2024-03-05"
+        },
+        {
+            "id": 408,
+            "customer": "Olivia Garcia",
+            "amount": 125.75,
+            "status": "Pending",
+            "due_date": "2024-03-15"
+        },
+        {
+            "id": 409,
+            "customer": "Daniel Martinez",
+            "amount": 275.00,
+            "status": "Overdue",
+            "due_date": "2024-02-20"
+        },
+        {
+            "id": 410,
+            "customer": "Sophia Lee",
+            "amount": 500.00,
+            "status": "Paid",
+            "due_date": "2024-03-20"
+        }
+    ],
+    "transactions": [
+        {
+            "id": 1,
+            "amount": 125.75,
+            "currency": "USD",
+            "type": "Credit Card Payment",
+            "status": "Completed",
+            "date": "2024-03-05"
+        },
+        {
+            "id": 2,
+            "amount": 59.99,
+            "currency": "EUR",
+            "type": "Online Purchase",
+            "status": "Pending",
+            "date": "2024-03-04"
+        },
+        {
+            "id": 3,
+            "amount": 3000.00,
+            "currency": "GBP",
+            "type": "Wire Transfer",
+            "status": "Completed",
+            "date": "2024-03-03"
+        },
+        {
+            "id": 4,
+            "amount": 20.00,
+            "currency": "USD",
+            "type": "Cash Withdrawal",
+            "status": "Failed",
+            "date": "2024-03-02"
+        },
+        {
+            "id": 5,
+            "amount": 500.00,
+            "currency": "USD",
+            "type": "Salary Deposit",
+            "status": "Completed",
+            "date": "2024-03-01"
+        },
+        {
+            "id": 6,
+            "amount": 15.49,
+            "currency": "USD",
+            "type": "Online Subscription",
+            "status": "Completed",
+            "date": "2024-02-28"
+        },
+        {
+            "id": 7,
+            "amount": 120.00,
+            "currency": "CAD",
+            "type": "Bill Payment",
+            "status": "Pending",
+            "date": "2024-02-27"
+        },
+        {
+            "id": 8,
+            "amount": 250.00,
+            "currency": "JPY",
+            "type": "International Transfer",
+            "status": "Completed",
+            "date": "2024-02-26"
+        },
+        {
+            "id": 9,
+            "amount": 75.00,
+            "currency": "USD",
+            "type": "Refund",
+            "status": "Completed",
+            "date": "2024-02-25"
+        },
+        {
+            "id": 10,
+            "amount": 40.00,
+            "currency": "USD",
+            "type": "Dining Expense",
+            "status": "Completed",
+            "date": "2024-02-24"
+        }
+    ],
+    "stocks": [
+        {
+            "symbol": "AAPL",
+            "company": "Apple Inc.",
+            "price": 180.23,
+            "change": -1.2,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "TSLA",
+            "company": "Tesla Inc.",
+            "price": 650.99,
+            "change": 5.5,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "GOOGL",
+            "company": "Alphabet Inc.",
+            "price": 2750.00,
+            "change": 0.3,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "AMZN",
+            "company": "Amazon.com Inc.",
+            "price": 3205.00,
+            "change": -2.3,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "MSFT",
+            "company": "Microsoft Corporation",
+            "price": 299.75,
+            "change": 1.2,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "NFLX",
+            "company": "Netflix Inc.",
+            "price": 450.20,
+            "change": -3.4,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "FB",
+            "company": "Meta Platforms",
+            "price": 235.40,
+            "change": 2.1,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "NVDA",
+            "company": "NVIDIA Corporation",
+            "price": 800.60,
+            "change": -0.5,
+            "market": "NASDAQ"
+        },
+        {
+            "symbol": "BABA",
+            "company": "Alibaba Group",
+            "price": 120.30,
+            "change": 4.8,
+            "market": "NYSE"
+        },
+        {
+            "symbol": "V",
+            "company": "Visa Inc.",
+            "price": 205.40,
+            "change": 0.6,
+            "market": "NYSE"
+        }
+    ],
+    "crypto": [
+        {
+            "symbol": "BTC",
+            "name": "Bitcoin",
+            "price": 65000.45,
+            "change": -2.5,
+            "marketCap": "1.2T"
+        },
+        {
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "price": 4200.33,
+            "change": 3.2,
+            "marketCap": "500B"
+        },
+        {
+            "symbol": "BNB",
+            "name": "Binance Coin",
+            "price": 315.10,
+            "change": -1.1,
+            "marketCap": "50B"
+        },
+        {
+            "symbol": "ADA",
+            "name": "Cardano",
+            "price": 1.20,
+            "change": 5.6,
+            "marketCap": "40B"
+        },
+        {
+            "symbol": "XRP",
+            "name": "XRP",
+            "price": 0.80,
+            "change": 2.4,
+            "marketCap": "30B"
+        },
+        {
+            "symbol": "SOL",
+            "name": "Solana",
+            "price": 110.25,
+            "change": -3.5,
+            "marketCap": "35B"
+        },
+        {
+            "symbol": "DOGE",
+            "name": "Dogecoin",
+            "price": 0.25,
+            "change": 4.1,
+            "marketCap": "15B"
+        },
+        {
+            "symbol": "DOT",
+            "name": "Polkadot",
+            "price": 25.50,
+            "change": -0.9,
+            "marketCap": "20B"
+        },
+        {
+            "symbol": "MATIC",
+            "name": "Polygon",
+            "price": 2.20,
+            "change": 3.7,
+            "marketCap": "10B"
+        },
+        {
+            "symbol": "AVAX",
+            "name": "Avalanche",
+            "price": 85.30,
+            "change": 1.9,
+            "marketCap": "18B"
+        }
+    ],
+    "orders": [
+        {
+            "id": 1,
+            "product": "Wireless Headphones",
+            "customer": "John Doe",
+            "status": "Shipped",
+            "total": 120.99
+        },
+        {
+            "id": 2,
+            "product": "Smartphone",
+            "customer": "Jane Smith",
+            "status": "Pending",
+            "total": 850.75
+        },
+        {
+            "id": 3,
+            "product": "Gaming Laptop",
+            "customer": "Mark Wilson",
+            "status": "Processing",
+            "total": 2300.00
+        },
+        {
+            "id": 4,
+            "product": "Smartwatch",
+            "customer": "Emily Davis",
+            "status": "Delivered",
+            "total": 199.99
+        },
+        {
+            "id": 5,
+            "product": "Bluetooth Speaker",
+            "customer": "Daniel Brown",
+            "status": "Canceled",
+            "total": 45.50
+        },
+        {
+            "id": 6,
+            "product": "Mechanical Keyboard",
+            "customer": "Sarah Johnson",
+            "status": "Shipped",
+            "total": 80.25
+        },
+        {
+            "id": 7,
+            "product": "Curved Monitor",
+            "customer": "Tom Lee",
+            "status": "Pending",
+            "total": 499.99
+        },
+        {
+            "id": 8,
+            "product": "Fitness Tracker",
+            "customer": "Sophia Miller",
+            "status": "Processing",
+            "total": 69.99
+        },
+        {
+            "id": 9,
+            "product": "4K TV",
+            "customer": "Michael Clark",
+            "status": "Delivered",
+            "total": 899.00
+        },
+        {
+            "id": 10,
+            "product": "VR Headset",
+            "customer": "Olivia White",
+            "status": "Canceled",
+            "total": 299.99
+        }
+    ],
+    "creditCards": [
+        {
+            "cardNumber": "4111-1111-1111-1111",
+            "expiry": "12/26",
+            "cvv": "123",
+            "type": "Visa"
+        },
+        {
+            "cardNumber": "5500-0000-0000-0004",
+            "expiry": "11/27",
+            "cvv": "456",
+            "type": "MasterCard"
+        },
+        {
+            "cardNumber": "3400-000000-00009",
+            "expiry": "10/25",
+            "cvv": "789",
+            "type": "American Express"
+        },
+        {
+            "cardNumber": "6011-0000-0000-0004",
+            "expiry": "09/24",
+            "cvv": "321",
+            "type": "Discover"
+        },
+        {
+            "cardNumber": "3528-0000-0000-0007",
+            "expiry": "08/28",
+            "cvv": "654",
+            "type": "JCB"
+        },
+        {
+            "cardNumber": "5018-0000-0000-0009",
+            "expiry": "07/26",
+            "cvv": "987",
+            "type": "Maestro"
+        },
+        {
+            "cardNumber": "6759-0000-0000-0006",
+            "expiry": "06/29",
+            "cvv": "741",
+            "type": "Diners Club"
+        },
+        {
+            "cardNumber": "2221-0000-0000-0005",
+            "expiry": "05/30",
+            "cvv": "852",
+            "type": "MasterCard"
+        },
+        {
+            "cardNumber": "3056-0000-0000-0008",
+            "expiry": "04/31",
+            "cvv": "963",
+            "type": "Diners Club"
+        },
+        {
+            "cardNumber": "3622-0000-0000-0002",
+            "expiry": "03/27",
+            "cvv": "159",
+            "type": "UnionPay"
+        }
+    ],
+    "news": [
+        {
+            "id": 1,
+            "title": "Tech Industry Boom Continues",
+            "source": "Tech Times",
+            "date": "2024-03-01"
+        },
+        {
+            "id": 2,
+            "title": "Stock Markets Reach All-Time High",
+            "source": "Business Daily",
+            "date": "2024-02-28"
+        },
+        {
+            "id": 3,
+            "title": "Climate Change Effects Worsen",
+            "source": "Green News",
+            "date": "2024-02-27"
+        },
+        {
+            "id": 4,
+            "title": "AI Becomes Smarter Than Humans?",
+            "source": "Future AI",
+            "date": "2024-02-26"
+        },
+        {
+            "id": 5,
+            "title": "SpaceX Plans Mars Colonization",
+            "source": "Space Explorer",
+            "date": "2024-02-25"
+        },
+        {
+            "id": 6,
+            "title": "Cryptocurrency Regulations Tighten",
+            "source": "Crypto Watch",
+            "date": "2024-02-24"
+        },
+        {
+            "id": 7,
+            "title": "Elections 2024: What to Expect",
+            "source": "Political Insight",
+            "date": "2024-02-23"
+        },
+        {
+            "id": 8,
+            "title": "New COVID Variant Detected",
+            "source": "Health First",
+            "date": "2024-02-22"
+        },
+        {
+            "id": 9,
+            "title": "Self-Driving Cars Now Legal",
+            "source": "Auto News",
+            "date": "2024-02-21"
+        },
+        {
+            "id": 10,
+            "title": "Quantum Computing Breakthrough",
+            "source": "Science Today",
+            "date": "2024-02-20"
+        }
+    ],
+    "reviews": [
+        {
+            "id": 1,
+            "product": "iPhone 14 Pro",
+            "rating": 4.8,
+            "review": "Best iPhone so far!"
+        },
+        {
+            "id": 2,
+            "product": "Samsung Galaxy S23",
+            "rating": 4.5,
+            "review": "Great display and camera."
+        },
+        {
+            "id": 3,
+            "product": "MacBook Pro M2",
+            "rating": 4.7,
+            "review": "Insanely fast, but expensive."
+        },
+        {
+            "id": 4,
+            "product": "Sony WH-1000XM5",
+            "rating": 4.6,
+            "review": "Noise cancellation is unreal."
+        },
+        {
+            "id": 5,
+            "product": "PlayStation 5",
+            "rating": 4.9,
+            "review": "Gaming at its peak."
+        },
+        {
+            "id": 6,
+            "product": "RTX 4090 GPU",
+            "rating": 4.8,
+            "review": "Ultimate performance for gaming."
+        },
+        {
+            "id": 7,
+            "product": "Tesla Model 3",
+            "rating": 4.7,
+            "review": "Autopilot is a game-changer."
+        },
+        {
+            "id": 8,
+            "product": "Google Pixel 7",
+            "rating": 4.3,
+            "review": "Stock Android experience."
+        },
+        {
+            "id": 9,
+            "product": "Amazon Kindle Oasis",
+            "rating": 4.6,
+            "review": "Best e-reader ever."
+        },
+        {
+            "id": 10,
+            "product": "DJI Mini 3 Pro",
+            "rating": 4.8,
+            "review": "Perfect compact drone."
+        }
+    ],
+    "apiResponses": [
+        {
+            "status": 200,
+            "message": "Success",
+            "data": {
+                "user": "John Doe"
+            }
+        },
+        {
+            "status": 400,
+            "message": "Bad Request",
+            "error": "Invalid parameter"
+        },
+        {
+            "status": 401,
+            "message": "Unauthorized",
+            "error": "Invalid API key"
+        },
+        {
+            "status": 403,
+            "message": "Forbidden",
+            "error": "Access denied"
+        },
+        {
+            "status": 404,
+            "message": "Not Found",
+            "error": "Resource missing"
+        },
+        {
+            "status": 500,
+            "message": "Internal Server Error",
+            "error": "Unexpected server issue"
+        },
+        {
+            "status": 503,
+            "message": "Service Unavailable",
+            "error": "Server under maintenance"
+        },
+        {
+            "status": 429,
+            "message": "Too Many Requests",
+            "error": "Rate limit exceeded"
+        },
+        {
+            "status": 201,
+            "message": "Created",
+            "data": {
+                "id": "new_user_123"
+            }
+        },
+        {
+            "status": 204,
+            "message": "No Content"
+        }
+    ],
+    "flights": [
+        {
+            "flightNumber": "AA123",
+            "airline": "American Airlines",
+            "destination": "New York",
+            "status": "On Time"
+        },
+        {
+            "flightNumber": "BA456",
+            "airline": "British Airways",
+            "destination": "London",
+            "status": "Delayed"
+        },
+        {
+            "flightNumber": "LH789",
+            "airline": "Lufthansa",
+            "destination": "Berlin",
+            "status": "On Time"
+        },
+        {
+            "flightNumber": "AF987",
+            "airline": "Air France",
+            "destination": "Paris",
+            "status": "Cancelled"
+        },
+        {
+            "flightNumber": "SQ101",
+            "airline": "Singapore Airlines",
+            "destination": "Singapore",
+            "status": "On Time"
+        },
+        {
+            "flightNumber": "EK202",
+            "airline": "Emirates",
+            "destination": "Dubai",
+            "status": "Boarding"
+        },
+        {
+            "flightNumber": "QF303",
+            "airline": "Qantas",
+            "destination": "Sydney",
+            "status": "On Time"
+        },
+        {
+            "flightNumber": "JL404",
+            "airline": "Japan Airlines",
+            "destination": "Tokyo",
+            "status": "Delayed"
+        },
+        {
+            "flightNumber": "CX505",
+            "airline": "Cathay Pacific",
+            "destination": "Hong Kong",
+            "status": "Landed"
+        },
+        {
+            "flightNumber": "UA606",
+            "airline": "United Airlines",
+            "destination": "San Francisco",
+            "status": "Boarding"
+        }
+    ],
+    "movies": [
+        {
+            "title": "Inception",
+            "year": 2010,
+            "genre": "Sci-Fi",
+            "rating": 8.8
+        },
+        {
+            "title": "Breaking Bad",
+            "year": 2008,
+            "genre": "Drama",
+            "rating": 9.5
+        },
+        {
+            "title": "The Matrix",
+            "year": 1999,
+            "genre": "Sci-Fi",
+            "rating": 8.7
+        },
+        {
+            "title": "Interstellar",
+            "year": 2014,
+            "genre": "Sci-Fi",
+            "rating": 8.6
+        },
+        {
+            "title": "Game of Thrones",
+            "year": 2011,
+            "genre": "Fantasy",
+            "rating": 9.3
+        },
+        {
+            "title": "Stranger Things",
+            "year": 2016,
+            "genre": "Sci-Fi",
+            "rating": 8.7
+        },
+        {
+            "title": "The Dark Knight",
+            "year": 2008,
+            "genre": "Action",
+            "rating": 9.0
+        },
+        {
+            "title": "The Godfather",
+            "year": 1972,
+            "genre": "Crime",
+            "rating": 9.2
+        },
+        {
+            "title": "Friends",
+            "year": 1994,
+            "genre": "Comedy",
+            "rating": 8.9
+        },
+        {
+            "title": "Avengers: Endgame",
+            "year": 2019,
+            "genre": "Superhero",
+            "rating": 8.4
+        }
+    ],
+    "foods": [
+        {
+            "name": "Pizza Margherita",
+            "type": "Italian",
+            "calories": 250,
+            "vegetarian": true
+        },
+        {
+            "name": "Sushi",
+            "type": "Japanese",
+            "calories": 200,
+            "vegetarian": false
+        },
+        {
+            "name": "Burger",
+            "type": "American",
+            "calories": 350,
+            "vegetarian": false
+        },
+        {
+            "name": "Pasta Carbonara",
+            "type": "Italian",
+            "calories": 400,
+            "vegetarian": false
+        },
+        {
+            "name": "Tacos",
+            "type": "Mexican",
+            "calories": 220,
+            "vegetarian": false
+        },
+        {
+            "name": "Falafel",
+            "type": "Middle Eastern",
+            "calories": 270,
+            "vegetarian": true
+        },
+        {
+            "name": "Ramen",
+            "type": "Japanese",
+            "calories": 450,
+            "vegetarian": false
+        },
+        {
+            "name": "Croissant",
+            "type": "French",
+            "calories": 180,
+            "vegetarian": true
+        },
+        {
+            "name": "Pad Thai",
+            "type": "Thai",
+            "calories": 400,
+            "vegetarian": false
+        },
+        {
+            "name": "Greek Salad",
+            "type": "Mediterranean",
+            "calories": 150,
+            "vegetarian": true
+        }
+    ]
+}

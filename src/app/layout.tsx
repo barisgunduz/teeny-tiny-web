@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import {
 	BookOpenIcon,
+	ChartBarIcon,
 	GiftIcon,
 	HomeIcon,
 	MapIcon,
@@ -74,6 +75,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 						<Link href="/tools" className="flex items-center text-textPrimary hover:text-accent">
 							<WrenchIcon className="h-5 w-5 mr-2" />
 							<span>Tools</span>
+						</Link>
+						<Link href="/dummy" className="flex items-center text-textPrimary hover:text-accent">
+							<ChartBarIcon className="h-5 w-5 mr-2" />
+							<span>Dummy Data</span>
 						</Link>
 						<Link
 							href="/freebie"

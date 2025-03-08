@@ -10,10 +10,12 @@ import HashGenerator from "./components/HashGenerator";
 import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
 import IPLookup from "./components/IPLookup";
 import JsonFormatter from "./components/JsonFormatter";
+import JsonXmlConverter from "./components/JsonXmlConverter";
 import JWTDecoder from "./components/JWTDecoder";
 import LoremIpsumGenerator from "./components/LoremIpsumGenerator";
 import MacLookup from "./components/MacLookup";
 import RegexTester from "./components/RegexTester";
+import SQLFormatter from "./components/SQLFormatter";
 import TimestampConverter from "./components/TimestampConverter";
 import UrlEncoderDecoder from "./components/UrlEncoderDecoder";
 import UuidGenerator from "./components/UuidGenerator";
@@ -31,7 +33,9 @@ const toolsMap: Record<string, JSX.Element> = {
     "color-converter": <ColorConverter />,
     "mac-lookup": <MacLookup />,
     "regex-tester": <RegexTester />,
-    "lorem-ipsum-generator": <LoremIpsumGenerator />
+    "lorem-ipsum-generator": <LoremIpsumGenerator />,
+    "json-xml-converter": <JsonXmlConverter />,
+    "sql-formatter": <SQLFormatter />
 };
 
 export default function ToolPage() {
