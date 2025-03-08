@@ -11,7 +11,9 @@ import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
 import IPLookup from "./components/IPLookup";
 import JsonFormatter from "./components/JsonFormatter";
 import JWTDecoder from "./components/JWTDecoder";
+import LoremIpsumGenerator from "./components/LoremIpsumGenerator";
 import MacLookup from "./components/MacLookup";
+import RegexTester from "./components/RegexTester";
 import TimestampConverter from "./components/TimestampConverter";
 import UrlEncoderDecoder from "./components/UrlEncoderDecoder";
 import UuidGenerator from "./components/UuidGenerator";
@@ -27,7 +29,9 @@ const toolsMap: Record<string, JSX.Element> = {
     "ip-lookup": <IPLookup />,
     "jwt-decoder": <JWTDecoder />,
     "color-converter": <ColorConverter />,
-    "mac-lookup": <MacLookup />
+    "mac-lookup": <MacLookup />,
+    "regex-tester": <RegexTester />,
+    "lorem-ipsum-generator": <LoremIpsumGenerator />
 };
 
 export default function ToolPage() {
