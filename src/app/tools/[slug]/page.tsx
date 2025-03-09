@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import { JSX } from "react";
 import Base64Encoder from "./components/Base64Encoder";
 import ColorConverter from "./components/ColorConverter";
+import CronGenerator from "./components/CronGenerator";
+import DnsLookup from "./components/DnsLookup";
 import HashGenerator from "./components/HashGenerator";
 import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
 import IPLookup from "./components/IPLookup";
@@ -14,11 +16,17 @@ import JsonXmlConverter from "./components/JsonXmlConverter";
 import JWTDecoder from "./components/JWTDecoder";
 import LoremIpsumGenerator from "./components/LoremIpsumGenerator";
 import MacLookup from "./components/MacLookup";
+import PingTester from "./components/PingTester";
 import RegexTester from "./components/RegexTester";
 import SQLFormatter from "./components/SQLFormatter";
+import TextDiffChecker from "./components/TextDiffChecker";
 import TimestampConverter from "./components/TimestampConverter";
+import TimeZoneConverter from "./components/TimeZoneConverter";
 import UrlEncoderDecoder from "./components/UrlEncoderDecoder";
 import UuidGenerator from "./components/UuidGenerator";
+import WordCounter from "./components/WordCounter";
+import BarcodeGenerator from "./components/BarcodeGenerator";
+import QRCodeGenerator from "./components/QRCodeGenerator";
 
 const toolsMap: Record<string, JSX.Element> = {
     "json-formatter": <JsonFormatter />,
@@ -35,7 +43,15 @@ const toolsMap: Record<string, JSX.Element> = {
     "regex-tester": <RegexTester />,
     "lorem-ipsum-generator": <LoremIpsumGenerator />,
     "json-xml-converter": <JsonXmlConverter />,
-    "sql-formatter": <SQLFormatter />
+    "sql-formatter": <SQLFormatter />,
+    "dns-lookup": <DnsLookup />,
+    "time-zone-converter": <TimeZoneConverter />,
+    "ping-tester": <PingTester />,
+    "cron-generator": <CronGenerator />,
+    "text-diff-checker": <TextDiffChecker />,
+    "word-counter": <WordCounter />,
+    "barcode-generator": <BarcodeGenerator />,
+    "qr-code-generator": <QRCodeGenerator />
 };
 
 export default function ToolPage() {

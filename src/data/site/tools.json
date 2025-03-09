@@ -88,5 +88,54 @@
         "description": "Beautify and format SQL queries.",
         "slug": "sql-formatter",
         "icon": "MdStorage"
+    },
+    {
+        "title": "DNS Lookup",
+        "description": "Fetch DNS records for any domain.",
+        "slug": "dns-lookup",
+        "icon": "MdPublic"
+    },
+    {
+        "title": "Time Zone Converter",
+        "description": "Convert time across different time zones.",
+        "slug": "time-zone-converter",
+        "icon": "MdAccessTime"
+    },
+    {
+        "title": "Ping & Latency Tester",
+        "description": "Measure response time for domains and IP addresses.",
+        "slug": "ping-tester",
+        "icon": "MdWifi"
+    },
+    {
+        "title": "Cron Expression Generator",
+        "description": "Create cron expressions for scheduling tasks.",
+        "slug": "cron-generator",
+        "icon": "MdTimer"
+    },
+    {
+        "title": "Text Diff Checker",
+        "description": "Compare two texts and highlight the differences.",
+        "slug": "text-diff-checker",
+        "icon": "MdCompare"
+    },
+    {
+        "title": "Word Counter & Analyzer",
+        "description": "Count words, characters, sentences, and paragraphs.",
+        "slug": "word-counter",
+        "icon": "MdFormatSize"
+    },
+    {
+        "title": "Barcode Generator",
+        "description": "Generate barcodes for any text or number.",
+        "slug": "barcode-generator",
+        "icon": "MdBarcodeScanner"
+    },
+    {
+        "title": "QR Code Generator",
+        "description": "Generate a QR Code from text or URL.",
+        "slug": "qr-code-generator",
+        "icon": "MdQrCode"
     }
+    
 ]
