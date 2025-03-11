@@ -8,10 +8,13 @@ import BarcodeGenerator from "./components/BarcodeGenerator";
 import Base64Encoder from "./components/Base64Encoder";
 import ColorConverter from "./components/ColorConverter";
 import CronGenerator from "./components/CronGenerator";
+import CssFormatter from "./components/CssFormatter";
 import DnsLookup from "./components/DnsLookup";
 import HashGenerator from "./components/HashGenerator";
 import HtmlEncoderDecoder from "./components/HtmlEncoderDecoder";
+import HtmlFormatter from "./components/HtmlFormatter";
 import IPLookup from "./components/IPLookup";
+import JsFormatter from "./components/JsFormatter";
 import JsonFormatter from "./components/JsonFormatter";
 import JsonXmlConverter from "./components/JsonXmlConverter";
 import JWTDecoder from "./components/JWTDecoder";
@@ -51,7 +54,10 @@ const toolsMap: Record<string, JSX.Element> = {
     "text-diff-checker": <TextDiffChecker />,
     "word-counter": <WordCounter />,
     "barcode-generator": <BarcodeGenerator />,
-    "qr-code-generator": <QRCodeGenerator />
+    "qr-code-generator": <QRCodeGenerator />,
+    "html-formatter": <HtmlFormatter />,
+    "css-formatter": <CssFormatter />,
+    "js-formatter": <JsFormatter />
 };
 
 export default function ToolPage() {

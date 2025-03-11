@@ -2,13 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
 	eslint: {
-		ignoreDuringBuilds: true, // ❌ Build sırasında ESLint hatalarını yoksay
+		ignoreDuringBuilds: true,
 	},
 	typescript: {
-		ignoreBuildErrors: true, // ❌ Build sırasında TypeScript hatalarını yoksay
+		ignoreBuildErrors: true,
 	},
 	generateBuildId: async () => {
-		return `${Date.now()}`; // 🚀 Her build'de farklı ID oluştur
+		return `${Date.now()}`;
 	},
 };
 

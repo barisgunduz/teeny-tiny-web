@@ -136,6 +136,23 @@
         "description": "Generate a QR Code from text or URL.",
         "slug": "qr-code-generator",
         "icon": "MdQrCode"
-    }   
-    
+    },
+    {
+        "title": "HTML Formatter",
+        "description": "Format and beautify your HTML code.",
+        "slug": "html-formatter",
+        "icon": "MdCode"
+    },
+    {
+        "title": "CSS Formatter",
+        "description": "Format and beautify CSS code.",
+        "slug": "css-formatter",
+        "icon": "MdFormatPaint"
+    },
+    {
+        "title": "JavaScript Formatter",
+        "description": "Format and beautify JavaScript code.",
+        "slug": "js-formatter",
+        "icon": "MdCode"
+    }
 ]
