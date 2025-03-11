@@ -136,6 +136,13 @@
         "description": "Generate a QR Code from text or URL.",
         "slug": "qr-code-generator",
         "icon": "MdQrCode"
+    },
+    {
+        "title": "Markdown to Word Converter",
+        "description": "Convert Markdown files to Word format.",
+        "slug": "markdown-to-word",
+        "icon": "MdDescription"
     }
+    
     
 ]

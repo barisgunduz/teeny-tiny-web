@@ -27,6 +27,7 @@ import UuidGenerator from "./components/UuidGenerator";
 import WordCounter from "./components/WordCounter";
 import BarcodeGenerator from "./components/BarcodeGenerator";
 import QRCodeGenerator from "./components/QRCodeGenerator";
+import MarkdownToWord from "./components/MarkdownToWord";
 
 const toolsMap: Record<string, JSX.Element> = {
     "json-formatter": <JsonFormatter />,
@@ -51,7 +52,8 @@ const toolsMap: Record<string, JSX.Element> = {
     "text-diff-checker": <TextDiffChecker />,
     "word-counter": <WordCounter />,
     "barcode-generator": <BarcodeGenerator />,
-    "qr-code-generator": <QRCodeGenerator />
+    "qr-code-generator": <QRCodeGenerator />,
+    "markdown-to-word": <MarkdownToWord />
 };
 
 export default function ToolPage() {
