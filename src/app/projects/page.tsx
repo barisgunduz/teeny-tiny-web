@@ -9,10 +9,12 @@ export default function ProjectsPage() {
     if (!fs.existsSync(projectsDirectory)) {
         return (
             <>
-                <h1 className="text-3xl font-bold">🚀 Projects</h1>
-                <main className="p-10">
-                    <p className="text-gray-600">No projects found.</p>
-                </main>
+                <div className="p-8 min-h-screen bg-gray-50">
+                    <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">🚀 Projects</h1>
+                    <main className="p-10">
+                        <p className="text-gray-600">No projects found.</p>
+                    </main>
+                </div>
             </>
         );
     }
@@ -43,9 +45,12 @@ export default function ProjectsPage() {
     });
 
     return (
-        <>
-            <h1 className="text-3xl font-bold">🚀 Projects</h1>
-            <main className="p-10">
+        <div className="p-8 min-h-screen bg-gray-50">
+            <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">🚀 Projects</h1>
+            <p className="text-lg text-gray-600 text-center mb-8">
+                Discover a collection of small yet powerful JavaScript projects, ready to explore and use as demos.
+            </p>
+            <main>
                 <ul className="mt-6 space-y-4">
                     {projects.length > 0 ? (
                         projects.map((project) => (
@@ -62,7 +67,7 @@ export default function ProjectsPage() {
                     )}
                 </ul>
             </main>
-        </>
+        </div>
 
     );
 }

@@ -1,99 +1,83 @@
 "use client";
 
-import Link from "next/link";
-
 import {
+	Bars3Icon,
 	BookOpenIcon,
 	ChartBarIcon,
 	GiftIcon,
 	HomeIcon,
 	MapIcon,
 	RocketLaunchIcon,
-	WrenchIcon
+	WrenchIcon,
+	XMarkIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import "../app/globals.css";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const [isReady, setIsReady] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
 		setIsReady(true);
 	}, []);
 
+	// Close menu after clicking a link
+	const handleNavClick = () => {
+		setIsOpen(false);
+	};
+
 	return (
 		<html lang="en">
-			<body
-				className={`${isReady
-					? "flex flex-col md:flex-row bg-background text-textPrimary min-h-screen"
-					: ""
-					}`}
-			>
-				{/* Left Menu */}
-				<aside
-					className={`w-full md:w-1/4 h-auto md:h-screen bg-foreground shadow-md p-6 flex md:flex-col md:fixed border-r border-borderColor`}
-				>
-					{/* Logo */}
-					<div className="flex items-center mb-4 md:mb-6">
-						<HomeIcon className="h-8 w-8 text-textPrimary mr-2" />
-						<h1 className="text-2xl font-bold text-textPrimary">
-							Teeny Tiny Web
-						</h1>
-					</div>
+			<body className={`bg-background text-textPrimary min-h-screen ${isReady ? "grid md:grid-cols-[250px_1fr]" : ""}`}>
+				{/* Mobile Menu Button */}
+				<div className="md:hidden flex justify-between items-center px-6 py-4 bg-foreground shadow-md">
+					<button onClick={() => setIsOpen(!isOpen)} className="text-textPrimary hover:text-accent">
+						{isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
+					</button>
+					<span className="font-semibold text-lg">Teeny Tiny Web</span>
+				</div>
 
-					{/* Menu */}
-					<nav className="flex flex-row md:flex-col space-x-4 md:space-x-0 md:space-y-4 w-full">
-						<Link
-							href="/"
-							className="flex items-center text-textPrimary hover:text-accent"
-						>
+				{/* Sidebar Navigation */}
+				<aside
+					className={`fixed md:static top-0 left-0 w-64 md:w-64 h-screen bg-foreground shadow-md p-6 border-r border-borderColor transform ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-300 ease-in-out z-50`}
+				>
+					<nav className="flex flex-col space-y-4">
+						<Link href="/" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<HomeIcon className="h-5 w-5 mr-2" />
 							<span>Home</span>
 						</Link>
-						<Link
-							href="/docs"
-							className="flex items-center text-textPrimary hover:text-accent"
-						>
+						<Link href="/docs" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<BookOpenIcon className="h-5 w-5 mr-2" />
-							<span>Docs</span>
+							<span>Tiny Docs</span>
 						</Link>
-						<Link
-							href="/projects"
-							className="flex items-center text-textPrimary hover:text-accent"
-						>
+						<Link href="/projects" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<RocketLaunchIcon className="h-5 w-5 mr-2" />
-							<span>Projects</span>
+							<span>Sample Projects</span>
 						</Link>
-						<Link
-							href="/roadmaps"
-							className="flex items-center text-textPrimary hover:text-accent"
-						>
+						<Link href="/roadmaps" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<MapIcon className="h-5 w-5 mr-2" />
-							<span>Roadmaps</span>
+							<span>Dev Roadmaps</span>
 						</Link>
-						<Link href="/tools" className="flex items-center text-textPrimary hover:text-accent">
+						<Link href="/tools" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<WrenchIcon className="h-5 w-5 mr-2" />
-							<span>Tools</span>
+							<span>IT Tools</span>
 						</Link>
-						<Link href="/dummy" className="flex items-center text-textPrimary hover:text-accent">
+						<Link href="/dummy" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<ChartBarIcon className="h-5 w-5 mr-2" />
 							<span>Dummy Data</span>
 						</Link>
-						<Link
-							href="/freebie"
-							className="flex items-center text-textPrimary hover:text-accent"
-						>
+						<Link href="/freebie" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<GiftIcon className="h-5 w-5 mr-2" />
 							<span>Freebie</span>
 						</Link>
 					</nav>
 				</aside>
 
-				{/* Content Area */}
-				<main className="w-full md:w-3/4 md:ml-[25%] h-screen overflow-y-auto">
-					{children}
-				</main>
+				{/* Main Content Area */}
+				<main className="w-full h-screen overflow-y-auto">{children}</main>
 			</body>
 		</html>
 	);
