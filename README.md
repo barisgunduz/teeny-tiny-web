@@ -28,8 +28,6 @@ This project is built using:
 ## 🎯 New Features
 - ✅ **Developer Tools Section** with 20+ online utilities.
 - ✅ **Dummy Data Generator** (Users, Products, Transactions, Weather Data, etc.).
-- ✅ **SEO Optimizations** using structured metadata for all pages.
-- ✅ **Google Analytics** integration for tracking user interactions.
 - ✅ **Responsive Sidebar Navigation** with improved mobile UX.
 - ✅ **Copy-to-Clipboard Component** for consistent copy functionality across the project.
 
