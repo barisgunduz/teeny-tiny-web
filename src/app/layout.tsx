@@ -13,6 +13,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Script from "next/script"; // EKLENDİ
 
 import "../app/globals.css";
 
@@ -31,6 +32,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 	return (
 		<html lang="en">
+			<head>
+				<Script
+					async
+					src="https://www.googletagmanager.com/gtag/js?id=G-XFCNN13F5Q"
+				/>
+				<Script id="google-analytics">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-XFCNN13F5Q');
+					`}
+				</Script>
+			</head>
 			<body className={`bg-background text-textPrimary min-h-screen ${isReady ? "grid md:grid-cols-[250px_1fr]" : ""}`}>
 				{/* Mobile Menu Button */}
 				<div className="md:hidden flex justify-between items-center px-6 py-4 bg-foreground shadow-md">

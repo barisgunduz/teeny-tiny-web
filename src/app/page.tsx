@@ -26,8 +26,7 @@ export const metadata = {
 		description: "Discover minimal, ready-to-use starter projects and utilities for web development. Fast, clean, and practical examples powered by modern tech.",
 		creator: "@teenytinyweb",
 		images: ["/og-image.jpg"],
-	},
-	themeColor: "#ffffff",
+	}
 };
 
 export default function Home() {
