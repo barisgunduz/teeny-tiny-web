@@ -3,20 +3,20 @@
 	"description": "A collection of small, useful web development projects and resources.",
 	"github": {
 		"projects": "https://github.com/barisgunduz/teeny-tiny-web-projects",
-		"site": "https://github.com/Gunduz-Medya/teeny-tiny-web"
+		"site": "https://github.com/barisgunduz/teeny-tiny-web"
 	},
 	"socials": [
 		{
 			"name": "GitHub",
-			"link": "https://github.com/Gunduz-Medya/teeny-tiny-web"
+			"link": "https://github.com/barisgunduz"
 		},
 		{
 			"name": "X",
-			"link": "https://x.com/teenytinyweb"
+			"link": "https://x.com/iambarisgunduz"
 		},
 		{
 			"name": "Instagram",
-			"link": "https://www.instagram.com/teenytinyweb"
+			"link": "https://www.instagram.com/iambarisgunduz"
 		}
 	]
 }

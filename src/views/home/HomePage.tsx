@@ -120,21 +120,18 @@ export default function HomePage() {
                             height={65}
                         />
                     </Link>
-
-                    <Link href="https://www.gunduzmedya.com" title="Developed by Gündüz Medya" target="_blank">
+                    <Link href="https://buymeacoffee.com/barisgunduz" title="Buy Me a Coffee" target="_blank">
                         <Image
-                            src="/img/logo/gunduz-medya-logo-white-bg.jpg"
-                            alt="Gündüz Medya"
-                            width={65}
+                            src="/img/logo/bmc-button.png"
+                            alt="Buy Me a Coffee"
+                            width={230}
                             height={65}
-                            className="rounded-md"
                         />
                     </Link>
                 </div>
 
                 {/* Socials */}
-                <p className="mt-4">Connect with us:</p>
-                <div className="flex justify-center space-x-4 mt-2">
+                <div className="flex justify-center space-x-4 mt-6">
                     <Link href={siteData.socials[0].link} className="text-gray-400 hover:text-white" target="_blank">
                         <FaGithub className="text-2xl" />
                     </Link>
