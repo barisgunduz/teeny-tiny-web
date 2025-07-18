@@ -119,7 +119,7 @@ export default function PromptClientPage() {
                 <Modal isOpen={!!selected} onClose={() => setSelected(null)}>
                     <button
                         onClick={() => setSelected(null)}
-                        className="absolute top-4 right-4 text-gray-500 hover:text-black text-xl"
+                        className="absolute bottom-4 right-4 text-gray-500 hover:text-black text-xl"
                     >
                         ×
                     </button>
