@@ -8,6 +8,7 @@ import {
 	HomeIcon,
 	MapIcon,
 	RocketLaunchIcon,
+	SparklesIcon,
 	WrenchIcon,
 	XMarkIcon,
 } from "@heroicons/react/24/outline";
@@ -84,9 +85,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 							<ChartBarIcon className="h-5 w-5 mr-2" />
 							<span>Dummy Data</span>
 						</Link>
+						<Link href="/100-chatgpt-promt" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
+							<SparklesIcon className="h-5 w-5 mr-2" />
+							<span>AI Prompts</span>
+						</Link>
 						<Link href="/freebie" className="flex items-center text-textPrimary hover:text-accent" onClick={handleNavClick}>
 							<GiftIcon className="h-5 w-5 mr-2" />
-							<span>Freebie</span>
+							<span>Freebie (Coming Soon)</span>
 						</Link>
 					</nav>
 				</aside>

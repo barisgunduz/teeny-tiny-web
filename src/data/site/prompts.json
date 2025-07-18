@@ -1,0 +1,702 @@
+[
+    {
+        "id": 1,
+        "goal": "Explain a simple concept",
+        "prompt": "Explain the concept of blockchain in simple terms suitable for a 12-year-old.",
+        "note": "Useful for educational content or beginner-level blog posts.",
+        "category": "blog"
+    },
+    {
+        "id": 2,
+        "goal": "Generate blog titles",
+        "prompt": "Give me 10 creative blog post titles about the future of remote work.",
+        "note": "Perfect for brainstorming article ideas on trending topics.",
+        "category": "blog"
+    },
+    {
+        "id": 3,
+        "goal": "Outline a blog post",
+        "prompt": "Create a detailed outline for a blog post about time management techniques for freelancers.",
+        "note": "Helpful for content creators planning long-form posts.",
+        "category": "blog"
+    },
+    {
+        "id": 4,
+        "goal": "Turn bullet points into a paragraph",
+        "prompt": "Convert the following bullet points into a coherent introduction paragraph:\n- Fast food addiction\n- Impact on health\n- Rising awareness of healthy eating",
+        "note": "Great for expanding rough notes into readable content.",
+        "category": "blog"
+    },
+    {
+        "id": 5,
+        "goal": "Generate SEO meta descriptions",
+        "prompt": "Write a 160-character SEO meta description for a blog post about personal finance tips for millennials.",
+        "note": "Optimizes blog visibility in search engines.",
+        "category": "marketing"
+    },
+    {
+        "id": 6,
+        "goal": "Summarize a long article",
+        "prompt": "Summarize the following 1,000-word article into a short paragraph for LinkedIn.",
+        "note": "Useful for creating shareable social snippets from long reads.",
+        "category": "social"
+    },
+    {
+        "id": 7,
+        "goal": "Generate a hook",
+        "prompt": "Give me 5 catchy hook sentences to start a blog post about burnout in startup culture.",
+        "note": "Helps capture reader attention in the first lines.",
+        "category": "blog"
+    },
+    {
+        "id": 8,
+        "goal": "Translate tone",
+        "prompt": "Rewrite this paragraph in a more casual and engaging tone, suitable for Gen Z readers.",
+        "note": "Adapts formal content to social or informal contexts.",
+        "category": "social"
+    },
+    {
+        "id": 9,
+        "goal": "Compare two ideas",
+        "prompt": "Write a comparison between remote work and hybrid work models for a productivity blog.",
+        "note": "Useful for analytical or opinion-style blog posts.",
+        "category": "blog"
+    },
+    {
+        "id": 10,
+        "goal": "Turn a story into an article",
+        "prompt": "Turn this short story about overcoming procrastination into a structured blog article.",
+        "note": "Great for storytelling-based content writing.",
+        "category": "blog"
+    },
+    {
+        "id": 11,
+        "goal": "Deep dive article outline",
+        "prompt": "Create a comprehensive blog post outline about the psychological effects of social media usage among teenagers.",
+        "note": "Helps structure long-form educational or opinion articles.",
+        "category": "blog"
+    },
+    {
+        "id": 12,
+        "goal": "Transform webinar into article",
+        "prompt": "Summarize this 45-minute webinar transcript into a 1,200-word blog post with clear section headings.",
+        "note": "Ideal for repurposing audio/video content into written form.",
+        "category": "blog"
+    },
+    {
+        "id": 13,
+        "goal": "Generate expert-level questions",
+        "prompt": "Write 10 in-depth interview questions for a cybersecurity expert about zero-day vulnerabilities.",
+        "note": "Useful for podcasts, newsletters, or article research.",
+        "category": "code"
+    },
+    {
+        "id": 14,
+        "goal": "Convert data into narrative",
+        "prompt": "Turn this survey result data into a compelling narrative blog post about consumer behavior trends in 2025.",
+        "note": "Translates numbers into engaging insights.",
+        "category": "marketing"
+    },
+    {
+        "id": 15,
+        "goal": "Long-form newsletter draft",
+        "prompt": "Draft a 1000-word newsletter about the rise of no-code platforms and their impact on developers.",
+        "note": "For email content creators and tech writers.",
+        "category": "blog"
+    },
+    {
+        "id": 16,
+        "goal": "Create an explainer article",
+        "prompt": "Write a clear and detailed explainer article about quantum computing for non-technical readers.",
+        "note": "Educational content that bridges tech and general audience.",
+        "category": "blog"
+    },
+    {
+        "id": 17,
+        "goal": "Content repurposing",
+        "prompt": "Turn this blog post into a 10-slide Instagram carousel with catchy headings and value-based points.",
+        "note": "Useful for social media growth and reuse.",
+        "category": "social"
+    },
+    {
+        "id": 18,
+        "goal": "Article from personal story",
+        "prompt": "Turn this story of switching careers from law to UX design into a motivational LinkedIn article.",
+        "note": "Empowers personal branding and story-based content.",
+        "category": "blog"
+    },
+    {
+        "id": 19,
+        "goal": "Listicle post generation",
+        "prompt": "Write a listicle of '10 Habits That Kill Productivity' with short explanations for each.",
+        "note": "Perfect for fast-paced, value-packed blog posts.",
+        "category": "blog"
+    },
+    {
+        "id": 20,
+        "goal": "Controversial topic draft",
+        "prompt": "Write a balanced blog article exploring whether AI-generated art should be considered 'real' art.",
+        "note": "For thought leadership and discussion-based blogs.",
+        "category": "blog"
+    },
+    {
+        "id": 21,
+        "goal": "Comparative review",
+        "prompt": "Write a comparison article between Substack and Ghost as newsletter platforms.",
+        "note": "Ideal for tool breakdowns and tech decision content.",
+        "category": "blog"
+    },
+    {
+        "id": 22,
+        "goal": "Opinionated article",
+        "prompt": "Write a strong opinion piece on why remote work is here to stay, backed by research and examples.",
+        "note": "Great for building authority and voice.",
+        "category": "blog"
+    },
+    {
+        "id": 23,
+        "goal": "Write a case study",
+        "prompt": "Create a case study about how a small business doubled its leads using TikTok ads.",
+        "note": "Powerful for service providers and marketers.",
+        "category": "marketing"
+    },
+    {
+        "id": 24,
+        "goal": "Write an explainer thread",
+        "prompt": "Write a Twitter/X thread explaining how neural networks learn from data, step by step.",
+        "note": "Transforms complex concepts into viral threads.",
+        "category": "social"
+    },
+    {
+        "id": 25,
+        "goal": "Write a press release",
+        "prompt": "Draft a press release announcing the launch of a mobile app for food waste tracking.",
+        "note": "Corporate content with a professional tone.",
+        "category": "marketing"
+    },
+    {
+        "id": 26,
+        "goal": "Write a how-to article",
+        "prompt": "Write a full-length 'How to Build a Personal Brand Online' guide for beginners.",
+        "note": "Long-form evergreen content format.",
+        "category": "blog"
+    },
+    {
+        "id": 27,
+        "goal": "Trend prediction post",
+        "prompt": "Create a prediction article about the top 5 digital marketing trends to watch in 2026.",
+        "note": "Ideal for future-facing industry content.",
+        "category": "marketing"
+    },
+    {
+        "id": 28,
+        "goal": "Challenge-based blog",
+        "prompt": "Write a blog post about taking a 30-day digital detox challenge and the lessons learned.",
+        "note": "Personal + challenge format content.",
+        "category": "blog"
+    },
+    {
+        "id": 29,
+        "goal": "Framework-based article",
+        "prompt": "Write a blog article teaching the 'Pomodoro Technique' for productivity with examples and tips.",
+        "note": "Perfect for actionable, how-to content.",
+        "category": "blog"
+    },
+    {
+        "id": 30,
+        "goal": "Content pillar draft",
+        "prompt": "Outline the main pillars and subtopics for a content series about sustainable living.",
+        "note": "Helps build long-term content strategy.",
+        "category": "blog"
+    },
+    {
+        "id": 31,
+        "goal": "Role-based expert explanation",
+        "prompt": "You are a lawyer. Explain the difference between a contract and a memorandum of understanding to a startup founder.",
+        "note": "Great for role-based expert content.",
+        "category": "blog"
+    },
+    {
+        "id": 32,
+        "goal": "Create an email course",
+        "prompt": "Create a 5-day email course for beginners about mindfulness and stress management.",
+        "note": "Valuable for lead generation and educational content.",
+        "category": "marketing"
+    },
+    {
+        "id": 33,
+        "goal": "Long-form lifestyle article",
+        "prompt": "Write a detailed blog post about the pros and cons of living in a tiny house.",
+        "note": "For lifestyle blogs or personal experience articles.",
+        "category": "blog"
+    },
+    {
+        "id": 34,
+        "goal": "Instructional guide",
+        "prompt": "Write a step-by-step guide on how to host a successful online workshop for creatives.",
+        "note": "Educational and practical format.",
+        "category": "education"
+    },
+    {
+        "id": 35,
+        "goal": "Personality-based writing",
+        "prompt": "Write a blog post on 'Morning Routines of Creative People' as if you’re a productivity coach.",
+        "note": "Blends character and authority writing.",
+        "category": "blog"
+    },
+    {
+        "id": 36,
+        "goal": "Explain through analogy",
+        "prompt": "Explain how email marketing works using the analogy of a coffee shop.",
+        "note": "Makes complex concepts easier to grasp.",
+        "category": "marketing"
+    },
+    {
+        "id": 37,
+        "goal": "Write a personal letter",
+        "prompt": "Write a heartfelt letter to your future self about what matters to you right now.",
+        "note": "Great for introspective or motivational content.",
+        "category": "blog"
+    },
+    {
+        "id": 38,
+        "goal": "Generate quiz content",
+        "prompt": "Create a 7-question quiz to help readers discover their ideal productivity style.",
+        "note": "Interactive content that drives engagement.",
+        "category": "social"
+    },
+    {
+        "id": 39,
+        "goal": "Thought experiment",
+        "prompt": "You are a psychologist. Write an article exploring how social media would evolve in a world without likes or followers.",
+        "note": "Ideal for abstract and forward-thinking content.",
+        "category": "blog"
+    },
+    {
+        "id": 40,
+        "goal": "Myth-busting content",
+        "prompt": "Write a blog post debunking 5 common myths about freelancing.",
+        "note": "Creates authority and educates readers.",
+        "category": "blog"
+    },
+    {
+        "id": 41,
+        "goal": "Event recap",
+        "prompt": "Write a summary article covering the key insights from a design conference you just attended.",
+        "note": "Great for time-sensitive or reflective content.",
+        "category": "blog"
+    },
+    {
+        "id": 42,
+        "goal": "Instructional infographic prompt",
+        "prompt": "Create text content for an infographic that explains how personal branding works online.",
+        "note": "Visual content generation support.",
+        "category": "marketing"
+    },
+    {
+        "id": 43,
+        "goal": "Magazine-style narrative",
+        "prompt": "Write a feature-style article about how the digital nomad lifestyle is affecting global cities.",
+        "note": "Blends data, interviews, and storytelling.",
+        "category": "blog"
+    },
+    {
+        "id": 44,
+        "goal": "Social proof collection",
+        "prompt": "Write 5 short testimonial examples from imaginary customers of a digital planning app.",
+        "note": "Builds trust on product pages or landing pages.",
+        "category": "marketing"
+    },
+    {
+        "id": 45,
+        "goal": "Legal content simplification",
+        "prompt": "You are an attorney. Explain in plain English what GDPR compliance means for small business owners.",
+        "note": "Helps non-lawyers understand legal responsibilities.",
+        "category": "blog"
+    },
+    {
+        "id": 46,
+        "goal": "Write a fictional article",
+        "prompt": "Write a fictional article set in 2040 about how AI co-parents children alongside humans.",
+        "note": "Blends sci-fi, narrative, and philosophical themes.",
+        "category": "blog"
+    },
+    {
+        "id": 47,
+        "goal": "FAQ content generation",
+        "prompt": "Generate an FAQ section for a beginner's guide to investing in crypto.",
+        "note": "Useful for documentation, landing pages or blog appendices.",
+        "category": "code"
+    },
+    {
+        "id": 48,
+        "goal": "Local guide",
+        "prompt": "Write a travel-style blog post titled ‘A Creative’s Guide to Spending 48 Hours in Berlin’.",
+        "note": "Lifestyle content meets destination focus.",
+        "category": "blog"
+    },
+    {
+        "id": 49,
+        "goal": "Create a podcast summary",
+        "prompt": "Summarize the key ideas from a podcast episode into a blog post, using headings and takeaways.",
+        "note": "For content repurposing and SEO.",
+        "category": "blog"
+    },
+    {
+        "id": 50,
+        "goal": "Comparison list",
+        "prompt": "Create a blog post comparing 3 popular newsletter tools from a beginner’s perspective: Substack, Beehiiv, and Mailchimp.",
+        "note": "Decision-making content for first-time creators.",
+        "category": "marketing"
+    },
+    {
+        "id": 51,
+        "goal": "Build a content manifesto",
+        "prompt": "Write a personal content manifesto as a creator who values authenticity over virality.",
+        "note": "Powerful for brand positioning and audience connection.",
+        "category": "blog"
+    },
+    {
+        "id": 52,
+        "goal": "Draft a mini e-book",
+        "prompt": "Create a 5-section e-book outline titled 'Freelance Foundations: How to Build a Sustainable Creative Career'.",
+        "note": "Ideal for lead magnets or deep resources.",
+        "category": "education"
+    },
+    {
+        "id": 53,
+        "goal": "Write a contrarian opinion piece",
+        "prompt": "Write a contrarian article arguing that failure is more valuable than success in early-stage entrepreneurship.",
+        "note": "Stimulates discussion and shares unique perspectives.",
+        "category": "blog"
+    },
+    {
+        "id": 54,
+        "goal": "Generate quotes",
+        "prompt": "Generate 10 original motivational quotes about resilience in creative work.",
+        "note": "Great for visual content, carousels or headers.",
+        "category": "social"
+    },
+    {
+        "id": 55,
+        "goal": "Translate research to public",
+        "prompt": "You are a science writer. Translate this recent AI research paper into an accessible article for curious non-experts.",
+        "note": "For bridging academic and general audiences.",
+        "category": "blog"
+    },
+    {
+        "id": 56,
+        "goal": "Write an email drip campaign",
+        "prompt": "Write a 3-part email sequence to promote a new productivity tool to early adopters.",
+        "note": "Ideal for SaaS or product-based businesses.",
+        "category": "marketing"
+    },
+    {
+        "id": 57,
+        "goal": "Generate carousel captions",
+        "prompt": "Create 7-slide Instagram carousel captions on 'Overcoming Creative Block'.",
+        "note": "Quick content with educational impact.",
+        "category": "social"
+    },
+    {
+        "id": 58,
+        "goal": "Role-based content rebuttal",
+        "prompt": "You are a policy analyst. Write a rebuttal article to a recent op-ed that claims AI will destroy all jobs by 2030.",
+        "note": "Strong voice, research-backed content.",
+        "category": "blog"
+    },
+    {
+        "id": 59,
+        "goal": "Satirical piece",
+        "prompt": "Write a satirical blog post titled '10 AI Tools That Will Definitely Not Take Your Job'.",
+        "note": "Humor content that sparks engagement.",
+        "category": "blog"
+    },
+    {
+        "id": 60,
+        "goal": "Framework creation",
+        "prompt": "Create a 4-part framework for sustainable creativity that balances productivity and rest.",
+        "note": "Great for coaches, educators, and structured content.",
+        "category": "education"
+    },
+    {
+        "id": 61,
+        "goal": "Discussion starter",
+        "prompt": "Write a discussion-starting LinkedIn post about whether traditional universities are still relevant in the creator economy.",
+        "note": "Engagement post for community platforms.",
+        "category": "social"
+    },
+    {
+        "id": 62,
+        "goal": "Cultural commentary",
+        "prompt": "Write a blog post analyzing how Gen Z is changing workplace communication culture.",
+        "note": "Sociological + workplace content.",
+        "category": "blog"
+    },
+    {
+        "id": 63,
+        "goal": "Content roundup",
+        "prompt": "Write a 'Top 5 Must-Read Newsletters for Creators' article with commentary on each.",
+        "note": "Curation-style authority building content.",
+        "category": "blog"
+    },
+    {
+        "id": 64,
+        "goal": "Construct an AMA article",
+        "prompt": "Write an Ask Me Anything (AMA)-style article as a creator who went from 0 to 100K followers in one year.",
+        "note": "Combines story, value, and structure.",
+        "category": "blog"
+    },
+    {
+        "id": 65,
+        "goal": "Twitter/X thread prompt",
+        "prompt": "Write a Twitter thread explaining what burnout really feels like for creative professionals and how to spot it early.",
+        "note": "Emotional, value-packed thread.",
+        "category": "social"
+    },
+    {
+        "id": 66,
+        "goal": "Write a featured interview",
+        "prompt": "Write a featured article interview with a fictional YouTube creator who left finance to start a storytelling channel.",
+        "note": "Human-interest narrative content.",
+        "category": "blog"
+    },
+    {
+        "id": 67,
+        "goal": "Problem → Solution article",
+        "prompt": "Write a blog post describing the problem of context switching and how it impacts creative focus — then propose realistic solutions.",
+        "note": "Educational, insight-driven writing.",
+        "category": "blog"
+    },
+    {
+        "id": 68,
+        "goal": "Create a downloadable resource",
+        "prompt": "Write the content of a printable cheat sheet titled 'Content Creation Rituals That Work in 2025'.",
+        "note": "For lead gen, community and shareable tools.",
+        "category": "marketing"
+    },
+    {
+        "id": 69,
+        "goal": "Language-based prompt",
+        "prompt": "Translate this English blog post into Turkish while adapting idioms and examples for local relevance.",
+        "note": "Multilingual localization prompt.",
+        "category": "education"
+    },
+    {
+        "id": 70,
+        "goal": "Mini podcast transcript prompt",
+        "prompt": "Write a script for a 4-minute solo podcast episode on why imposter syndrome is common among creators.",
+        "note": "Supports audio-first creators.",
+        "category": "blog"
+    },
+    {
+        "id": 71,
+        "goal": "YouTube video script",
+        "prompt": "Write a complete script for a 6-minute YouTube video titled 'How I Create 1 Week of Content in 1 Hour'.",
+        "note": "Useful for productivity-focused creators.",
+        "category": "video"
+    },
+    {
+        "id": 72,
+        "goal": "Instagram Reel voiceover",
+        "prompt": "Generate a motivational voiceover script for a 30-second Instagram reel using the theme 'Keep showing up'.",
+        "note": "Social video idea with emotional pull.",
+        "category": "social"
+    },
+    {
+        "id": 73,
+        "goal": "Storytelling exercise",
+        "prompt": "Write a short story that teaches the value of patience through a metaphorical journey.",
+        "note": "Great for storytelling practice or threads.",
+        "category": "creative"
+    },
+    {
+        "id": 74,
+        "goal": "Explainer video script",
+        "prompt": "Script a short animated explainer for beginners about 'How Stock Options Work'.",
+        "note": "Works for FinTech and finance educators.",
+        "category": "education"
+    },
+    {
+        "id": 75,
+        "goal": "Reddit-style opinion post",
+        "prompt": "Write a Reddit-style opinion post titled 'Why Modern Productivity Culture is Unsustainable'.",
+        "note": "Relatable and rant-style longform post.",
+        "category": "blog"
+    },
+    {
+        "id": 76,
+        "goal": "Generate case study",
+        "prompt": "Create a case study format about a startup that used AI tools to reduce customer service response time by 50%.",
+        "note": "Perfect for B2B content marketing.",
+        "category": "marketing"
+    },
+    {
+        "id": 77,
+        "goal": "Health & wellness blog",
+        "prompt": "Write a wellness blog post titled '5 Ways to Improve Your Digital Health Without Deleting Social Media'.",
+        "note": "Valuable for lifestyle creators.",
+        "category": "blog"
+    },
+    {
+        "id": 78,
+        "goal": "Legal content writer",
+        "prompt": "You are an internet law expert. Write a simple article explaining what 'fair use' means in content creation.",
+        "note": "Useful for creators working with copyrighted material.",
+        "category": "education"
+    },
+    {
+        "id": 79,
+        "goal": "Design tutorial outline",
+        "prompt": "Outline a design tutorial titled 'How to Create a Brand Kit with Free Tools'.",
+        "note": "Tutorial-style content for visual creators.",
+        "category": "education"
+    },
+    {
+        "id": 80,
+        "goal": "E-learning course outline",
+        "prompt": "Create a 5-module online course outline called 'Intro to Prompt Engineering for Content Creators'.",
+        "note": "Long-form educational structure.",
+        "category": "education"
+    },
+    {
+        "id": 81,
+        "goal": "Niche advice column",
+        "prompt": "Write an advice column from the POV of a therapist talking to burned-out content creators.",
+        "note": "For empathetic mental health content.",
+        "category": "blog"
+    },
+    {
+        "id": 82,
+        "goal": "Metaphor-based education",
+        "prompt": "Explain the concept of 'compound interest' using a garden metaphor in under 300 words.",
+        "note": "Creative finance education.",
+        "category": "education"
+    },
+    {
+        "id": 83,
+        "goal": "Podcast guest pitch",
+        "prompt": "Write a cold email to pitch yourself as a guest for a podcast focused on creator monetization.",
+        "note": "Networking and brand building prompt.",
+        "category": "marketing"
+    },
+    {
+        "id": 84,
+        "goal": "Community engagement",
+        "prompt": "List 5 conversation-starter questions for a niche Discord group of freelance illustrators.",
+        "note": "Boosts engagement and connection.",
+        "category": "community"
+    },
+    {
+        "id": 85,
+        "goal": "Roleplay simulation",
+        "prompt": "Act as a literary agent. Suggest 3 potential publishers for a self-help book titled 'Start Before You’re Ready'.",
+        "note": "Simulation-style content for creatives.",
+        "category": "creative"
+    },
+    {
+        "id": 86,
+        "goal": "Ethical discussion",
+        "prompt": "Write a LinkedIn post discussing whether AI-generated art should be considered 'original work'.",
+        "note": "Thought-provoking and high engagement.",
+        "category": "social"
+    },
+    {
+        "id": 87,
+        "goal": "Niche news recap",
+        "prompt": "Summarize this week's top 3 news updates in the world of creator tools and platforms.",
+        "note": "Weekly digest-style content idea.",
+        "category": "blog"
+    },
+    {
+        "id": 88,
+        "goal": "Workshop description",
+        "prompt": "Write a promotional description for a live workshop titled 'Build Your Personal Brand in 7 Days'.",
+        "note": "Useful for events or Gumroad pages.",
+        "category": "marketing"
+    },
+    {
+        "id": 89,
+        "goal": "Creator-themed poem",
+        "prompt": "Write a poem titled 'The Algorithm Doesn’t Love Me Today'.",
+        "note": "Creative, emotional, and relatable.",
+        "category": "creative"
+    },
+    {
+        "id": 90,
+        "goal": "Content calendar prompt",
+        "prompt": "Generate a 30-day content calendar for a TikTok creator focused on productivity tips.",
+        "note": "Actionable and systematic idea.",
+        "category": "marketing"
+    },
+    {
+        "id": 91,
+        "goal": "Mindset thread",
+        "prompt": "Write a Twitter/X thread on why comparing your journey to others kills creativity.",
+        "note": "Short-form, impactful philosophy.",
+        "category": "social"
+    },
+    {
+        "id": 92,
+        "goal": "Newsletter intro",
+        "prompt": "Write an engaging intro paragraph for a creator newsletter issue titled 'The Burnout Edition'.",
+        "note": "Hooks and voice for email.",
+        "category": "blog"
+    },
+    {
+        "id": 93,
+        "goal": "Microlearning carousel",
+        "prompt": "Create copy for a 5-slide Instagram carousel on 'Understanding Your Audience Persona'.",
+        "note": "Social educational content.",
+        "category": "social"
+    },
+    {
+        "id": 94,
+        "goal": "Expert roundup request",
+        "prompt": "Write a DM to 5 creators asking for their top tip for staying consistent with content.",
+        "note": "Community-driven content.",
+        "category": "community"
+    },
+    {
+        "id": 95,
+        "goal": "Audience Q&A video",
+        "prompt": "List 7 creative Q&A questions a YouTuber could ask their audience in a community video.",
+        "note": "Audience inclusion and engagement.",
+        "category": "video"
+    },
+    {
+        "id": 96,
+        "goal": "Creator milestone post",
+        "prompt": "Write a caption for hitting 10,000 followers that is humble, emotional, and grateful.",
+        "note": "Celebratory social content.",
+        "category": "social"
+    },
+    {
+        "id": 97,
+        "goal": "Translate tone",
+        "prompt": "Rewrite this blog post in a Gen Z tone while keeping the main points intact.",
+        "note": "Adaptation and voice exercise.",
+        "category": "creative"
+    },
+    {
+        "id": 98,
+        "goal": "Opposing argument",
+        "prompt": "Write the opposing view of a blog that claims 'You Need to Post Daily to Grow'.",
+        "note": "Debate-style content with reasoning.",
+        "category": "blog"
+    },
+    {
+        "id": 99,
+        "goal": "Tough love post",
+        "prompt": "Write a no-fluff, tough-love style Instagram caption for creators who keep procrastinating.",
+        "note": "Direct voice content that hits.",
+        "category": "social"
+    },
+    {
+        "id": 100,
+        "goal": "Final challenge",
+        "prompt": "You are a creative strategist. Write your '10 Commandments of Content Creation' as a manifesto.",
+        "note": "Perfect closing piece for legacy content.",
+        "category": "blog"
+    }
+]

@@ -15,6 +15,8 @@ import dummyData from "@/data/site/dummy.json";
 import projectsData from "@/data/site/projects.json";
 import siteData from "@/data/site/site.json";
 import toolsData from "@/data/site/tools.json";
+import promptsData from "@/data/site/prompts.json";
+import { SparklesIcon } from "@heroicons/react/24/outline";
 
 export default function HomePage() {
     const [projectsCount, setProjectsCount] = useState(0);
@@ -22,13 +24,15 @@ export default function HomePage() {
     const [docsCount, setDocsCount] = useState(0);
     const [toolsCount, setToolsCount] = useState(0);
     const [dummyDataCount, setDummyDataCount] = useState(0);
+    const [promptsCount, setPromptsCount] = useState(0);
 
     useEffect(() => {
         setProjectsCount(projectsData.length);
         setRoadmapsCount(roadmapsData.length);
         setDocsCount(docsData.length);
         setToolsCount(toolsData.length);
-        setDummyDataCount(Object.keys(dummyData).length); // Count categories dynamically
+        setDummyDataCount(Object.keys(dummyData).length);
+        setPromptsCount(promptsData.length);
     }, []);
 
     return (
@@ -95,7 +99,6 @@ export default function HomePage() {
                         </div>
                     </Link>
                 </div>
-                {/* Dummy Data Card */}
                 <div className="bg-white p-6 rounded-lg shadow-md">
                     <Link href="/dummy">
                         <div className="cursor-pointer">
@@ -103,6 +106,18 @@ export default function HomePage() {
                             <h3 className="text-xl font-semibold mt-2">Dummy Data</h3>
                             <p className="text-gray-600">
                                 <CountUp end={dummyDataCount} duration={2} /> categories
+                            </p>
+                        </div>
+                    </Link>
+                </div>
+                {/* AI Prompts Card */}
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                    <Link href="/100-chatgpt-promt">
+                        <div className="cursor-pointer">
+                           <SparklesIcon className="w-10 h-10 text-blue-500 mx-auto" />
+                            <h3 className="text-xl font-semibold mt-2">AI Prompts</h3>
+                            <p className="text-gray-600">
+                                <CountUp end={promptsCount} duration={2} /> available
                             </p>
                         </div>
                     </Link>
